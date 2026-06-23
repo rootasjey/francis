@@ -1,5 +1,10 @@
 // Wrangler configuration for Workers/Pages Functions
 // Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+//
+// Before deploying:
+//   1. Create D1 database:     wrangler d1 create francis
+//   2. Copy the database_id below
+//   3. Deploy:                  wrangler deploy
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "francis",
@@ -18,7 +23,9 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": ""
+      "database_id": "",
+      "database_name": "francis",
+      "migrations_dir": "./server/db/migrations"
     }
-  ],
+  ]
 }

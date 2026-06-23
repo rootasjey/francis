@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <NuxtLayout>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import '@una-ui/preset/una.css'
+
+useHead({
+  bodyAttrs: { class: 'bg-background text-foreground' },
+})
 </script>

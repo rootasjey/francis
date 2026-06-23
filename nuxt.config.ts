@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    apiDefaultLimit: Number(process.env.NUXT_API_DEFAULT_LIMIT || '10000'),
     // Public keys (exposed to client-side)
     public: {
       authUrl: process.env.NUXT_AUTH_ORIGIN || 'http://localhost:3000',
