@@ -38,6 +38,11 @@ export type CreateKeyRequest = {
   limitPerDay?: number
 }
 
+export type UpdateKeyRequest = {
+  name?: string
+  limitPerDay?: number
+}
+
 export type CreateKeyResponse = {
   key: string
   record: ApiKeyRecord
