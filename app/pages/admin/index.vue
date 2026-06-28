@@ -45,7 +45,7 @@
           />
         </div>
         <button
-          class="flex h-[42px] items-center gap-2 rounded-lg bg-primary px-6 font-semibold text-primary-foreground transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+          class="flex h-[42px] items-center gap-2 rounded-xl bg-foreground px-6 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
           :disabled="creating"
           @click="createKey"
         >
@@ -194,6 +194,179 @@
         </div>
       </div>
     </div>
+
+    <!-- Settings -->
+    <div class="rounded-2xl border border-border bg-card p-6">
+      <div class="flex items-center gap-3">
+        <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-muted">
+          <span class="i-lucide-settings text-sm text-muted-foreground" />
+        </div>
+        <div>
+          <h2 class="font-title text-lg tracking-tight">Settings</h2>
+          <p class="font-meta text-xs text-muted-foreground/60">OpenRouter configuration for live translations.</p>
+        </div>
+      </div>
+
+      <div v-if="configPending" class="mt-6 space-y-3">
+        <div class="h-10 animate-pulse rounded-lg bg-muted" />
+        <div class="h-10 animate-pulse rounded-lg bg-muted" />
+        <div class="h-20 animate-pulse rounded-lg bg-muted" />
+      </div>
+
+      <div v-else class="mt-6 space-y-5">
+        <!-- Model -->
+        <div>
+          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Primary model</label>
+          <div class="mt-2 flex gap-2">
+            <input
+              v-model="configDraft.openrouter_model"
+              class="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
+              placeholder="google/gemini-3.1-flash-lite"
+            />
+            <button
+              class="rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+              :disabled="!configDraft.openrouter_model || configSaving === 'openrouter_model'"
+              @click="saveConfig('openrouter_model')"
+            >
+              {{ configSaving === 'openrouter_model' ? 'Saving...' : 'Save' }}
+            </button>
+          </div>
+          <p class="mt-1.5 font-meta text-[11px] text-muted-foreground/60">e.g. google/gemini-3.1-flash-lite, openai/gpt-4o-mini</p>
+        </div>
+
+        <!-- Fallback models -->
+        <div>
+          <div class="flex items-center justify-between">
+            <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Fallback models</label>
+            <span class="font-meta text-[10px] text-muted-foreground/50">Tried in order if primary fails · drag the handle to reorder</span>
+          </div>
+
+          <div class="mt-2 space-y-2">
+            <TransitionGroup name="fallback-list" tag="div" class="space-y-2">
+              <div
+                v-for="(model, idx) in fallbackList"
+                :key="idx"
+                :draggable="true"
+                :class="[
+                  'group relative flex items-center gap-3 rounded-lg border-2 p-1 transition-all duration-200',
+                  draggedIndex === idx
+                    ? 'border-transparent opacity-30'
+                    : dragOverIndex === idx && draggedIndex !== null
+                      ? 'border-primary bg-primary/5 shadow-sm'
+                      : 'border-transparent',
+                ]"
+                @dragstart="onDragStart($event, idx)"
+                @dragover.prevent="onDragOver($event, idx)"
+                @dragenter.prevent="onDragEnter(idx)"
+                @dragleave="onDragLeave(idx)"
+                @drop="onDrop($event, idx)"
+                @dragend="onDragEnd"
+              >
+                <button
+                  type="button"
+                  class="flex h-9 w-5 shrink-0 cursor-grab items-center justify-center text-muted-foreground/30 transition-all duration-200 hover:text-primary group-hover:text-primary/70 active:cursor-grabbing"
+                  :class="dragOverIndex === idx && draggedIndex !== null && draggedIndex !== idx ? 'text-primary' : ''"
+                  :title="`Drag to reorder (position ${idx + 1})`"
+                  :aria-label="`Drag handle for fallback model ${idx + 1}`"
+                >
+                  <span class="i-lucide-grip-vertical text-xs" />
+                </button>
+                <span
+                  class="flex h-7 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[11px] font-semibold tracking-tight transition-colors duration-200"
+                  :class="dragOverIndex === idx && draggedIndex !== null && draggedIndex !== idx
+                    ? 'bg-primary/15 text-primary'
+                    : 'bg-muted text-muted-foreground'"
+                >
+                  {{ idx + 1 }}
+                </span>
+                <input
+                  v-model="fallbackList[idx]"
+                  class="flex-1 rounded-lg border border-border bg-background px-3 py-2 font-mono text-xs text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
+                  :placeholder="idx === 0 ? 'google/gemini-2.0-flash-001' : 'next fallback model'"
+                />
+                <button
+                  class="flex h-9 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground/30 transition-all duration-200 hover:bg-rose-500/10 hover:text-rose-500 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted-foreground/30"
+                  :disabled="fallbackList.length <= 1"
+                  @click="removeFallback(idx)"
+                >
+                  <span class="i-lucide-x text-sm" />
+                </button>
+              </div>
+            </TransitionGroup>
+
+            <div class="flex items-center gap-2 pt-1">
+              <button
+                class="flex items-center gap-1.5 rounded-lg border border-dashed border-border bg-transparent px-3 py-2 text-xs text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-foreground"
+                @click="addFallback"
+              >
+                <span class="i-lucide-plus text-xs" />
+                Add fallback model
+              </button>
+
+              <div class="ml-auto flex items-center gap-2">
+                <button
+                  v-if="fallbackListChanged"
+                  class="rounded-lg px-3 py-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                  @click="loadConfig"
+                >
+                  Cancel
+                </button>
+                <button
+                  class="rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+                  :disabled="!fallbackListChanged || configSaving === 'openrouter_fallback_models'"
+                  @click="saveFallbacks()"
+                >
+                  <span v-if="configSaving === 'openrouter_fallback_models'" class="inline-flex items-center gap-2">
+                    <span class="i-lucide-loader-2 animate-spin text-xs" />
+                    Saving
+                  </span>
+                  <span v-else-if="!fallbackListChanged && dragJustSaved" class="inline-flex items-center gap-2">
+                    <span class="i-lucide-check text-xs" />
+                    Saved
+                  </span>
+                  <span v-else>Save order</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- API Key -->
+        <div>
+          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">OpenRouter API key</label>
+          <div class="mt-2 flex gap-2">
+            <input
+              v-model="configDraft.openrouter_api_key"
+              type="password"
+              class="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              :placeholder="hasStoredKey ? '•••••••••••• (stored)' : 'sk-or-v1-...'"
+            />
+            <button
+              class="rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+              :disabled="!configDraft.openrouter_api_key || configSaving === 'openrouter_api_key'"
+              @click="saveConfig('openrouter_api_key')"
+            >
+              {{ configSaving === 'openrouter_api_key' ? 'Saving...' : 'Save' }}
+            </button>
+          </div>
+          <p class="mt-1.5 font-meta text-[11px] text-muted-foreground/60">Get one at openrouter.ai. Stored in DB, never sent to the client.</p>
+        </div>
+
+        <!-- Success/Error messages -->
+        <Transition name="fade">
+          <p v-if="saveMessage" class="flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs text-emerald-600 dark:text-emerald-400">
+            <span class="i-lucide-check-circle-2" />
+            {{ saveMessage }}
+          </p>
+        </Transition>
+        <Transition name="fade">
+          <p v-if="saveError" class="flex items-center gap-2 rounded-lg bg-rose-500/10 px-3 py-2 text-xs text-rose-500">
+            <span class="i-lucide-alert-circle" />
+            {{ saveError }}
+          </p>
+        </Transition>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -314,6 +487,187 @@ function formatDate(value?: number | null) {
   if (!value) return ''
   return new Date(value).toLocaleString()
 }
+
+type ConfigItem = { value: string, isSecret: boolean, updatedAt: number | null, updatedBy: string | null }
+
+const configPending = ref(true)
+const configDraft = reactive<Record<string, string>>({
+  openrouter_model: '',
+  openrouter_api_key: '',
+})
+const fallbackList = ref<string[]>([])
+const originalFallbacks = ref<string[]>([])
+const configMeta = ref<Record<string, ConfigItem>>({})
+const hasStoredKey = ref(false)
+const configSaving = ref<string | null>(null)
+const dragJustSaved = ref(false)
+const saveMessage = ref('')
+const saveError = ref('')
+
+const fallbackListChanged = computed(() => {
+  if (fallbackList.value.length !== originalFallbacks.value.length) return true
+  return fallbackList.value.some((v, i) => v !== originalFallbacks.value[i])
+})
+
+function parseFallbacks(json: string): string[] {
+  try {
+    const parsed = JSON.parse(json)
+    return Array.isArray(parsed) ? parsed.filter(v => typeof v === 'string') : []
+  } catch {
+    return []
+  }
+}
+
+async function loadConfig() {
+  try {
+    const data = await $fetch<Record<string, ConfigItem>>('/api/admin/config')
+    configMeta.value = data
+    configDraft.openrouter_model = data.openrouter_model?.value ?? ''
+    const fb = parseFallbacks(data.openrouter_fallback_models?.value ?? '[]')
+    fallbackList.value = fb.length > 0 ? fb : ['']
+    originalFallbacks.value = [...fallbackList.value]
+    hasStoredKey.value = !!data.openrouter_api_key?.value
+  } catch (err) {
+    console.error('Failed to load config', err)
+  } finally {
+    configPending.value = false
+  }
+}
+
+async function saveConfig(key: string, value?: string) {
+  saveMessage.value = ''
+  saveError.value = ''
+  configSaving.value = key
+  try {
+    const payloadValue = value ?? configDraft[key]
+    await $fetch('/api/admin/config', {
+      method: 'POST',
+      body: { key, value: payloadValue },
+    })
+    saveMessage.value = `Saved ${key}.`
+    if (key === 'openrouter_api_key') {
+      hasStoredKey.value = true
+      configDraft.openrouter_api_key = ''
+    }
+    setTimeout(() => { saveMessage.value = '' }, 3000)
+  } catch (err: any) {
+    saveError.value = err?.data?.statusMessage || 'Failed to save.'
+  } finally {
+    configSaving.value = null
+  }
+}
+
+async function saveFallbacks(showMessage = true) {
+  const cleaned = fallbackList.value.map(m => m.trim()).filter(Boolean)
+  if (cleaned.length === 0) {
+    saveError.value = 'At least one fallback is required (or remove all to disable).'
+    setTimeout(() => { saveError.value = '' }, 4000)
+    return
+  }
+  saveError.value = ''
+  configSaving.value = 'openrouter_fallback_models'
+  try {
+    await $fetch('/api/admin/config', {
+      method: 'POST',
+      body: { key: 'openrouter_fallback_models', value: JSON.stringify(cleaned) },
+    })
+    originalFallbacks.value = [...cleaned]
+    fallbackList.value = [...cleaned]
+    if (showMessage) {
+      saveMessage.value = 'Saved fallback order.'
+      setTimeout(() => { saveMessage.value = '' }, 3000)
+    }
+  } catch (err: any) {
+    saveError.value = err?.data?.statusMessage || 'Failed to save.'
+  } finally {
+    configSaving.value = null
+  }
+}
+
+let autoSaveTimer: ReturnType<typeof setTimeout> | null = null
+
+function autoSaveFallbacks() {
+  if (autoSaveTimer) clearTimeout(autoSaveTimer)
+  autoSaveTimer = setTimeout(async () => {
+    await saveFallbacks(false)
+    dragJustSaved.value = true
+    setTimeout(() => { dragJustSaved.value = false }, 2500)
+  }, 600)
+}
+
+function addFallback() {
+  fallbackList.value.push('')
+}
+
+function removeFallback(idx: number) {
+  if (fallbackList.value.length <= 1) return
+  fallbackList.value.splice(idx, 1)
+}
+
+// --- Drag and drop ---
+
+const draggedIndex = ref<number | null>(null)
+const dragOverIndex = ref<number | null>(null)
+
+function onDragStart(event: DragEvent, idx: number) {
+  if (!event.dataTransfer) return
+  draggedIndex.value = idx
+  event.dataTransfer.effectAllowed = 'move'
+  event.dataTransfer.setData('text/plain', String(idx))
+}
+
+function onDragOver(event: DragEvent, idx: number) {
+  if (!event.dataTransfer) return
+  event.dataTransfer.dropEffect = 'move'
+  if (dragOverIndex.value !== idx) {
+    dragOverIndex.value = idx
+  }
+}
+
+function onDragEnter(idx: number) {
+  if (draggedIndex.value === null || draggedIndex.value === idx) return
+  dragOverIndex.value = idx
+}
+
+function onDragLeave(idx: number) {
+  // Ne reset que si on quitte vraiment (le dragleave fire souvent pendant le drop)
+  if (dragOverIndex.value === idx) {
+    dragOverIndex.value = null
+  }
+}
+
+function onDrop(event: DragEvent, idx: number) {
+  event.preventDefault()
+  const from = draggedIndex.value
+  // Reset dragOverIndex AVANT de modifier la liste pour éviter le flash du border
+  dragOverIndex.value = null
+
+  if (from === null || from === idx) {
+    draggedIndex.value = null
+    return
+  }
+  const list = [...fallbackList.value]
+  const [moved] = list.splice(from, 1)
+  list.splice(idx, 0, moved!)
+  fallbackList.value = list
+  // Reset draggedIndex après le re-render pour que l'opacité revienne smoothly
+  requestAnimationFrame(() => {
+    draggedIndex.value = null
+  })
+  // Auto-save après le drag
+  autoSaveFallbacks()
+}
+
+function onDragEnd() {
+  // Au cas où dragend fire sans drop (drop outside)
+  draggedIndex.value = null
+  dragOverIndex.value = null
+}
+
+onMounted(() => {
+  refreshKeys()
+  loadConfig()
+})
 </script>
 
 <style scoped>
@@ -343,5 +697,31 @@ function formatDate(value?: number | null) {
 .toast-leave-to {
   opacity: 0;
   transform: translateY(-4px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.fallback-list-enter-active,
+.fallback-list-leave-active {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fallback-list-enter-from {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.fallback-list-leave-to {
+  opacity: 0;
+  transform: translateX(8px);
+}
+.fallback-list-move {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 </style>

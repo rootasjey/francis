@@ -42,3 +42,15 @@ export const usageDaily = sqliteTable('usage_daily', {
   keyDayUnique: uniqueIndex('usage_daily_key_day_uniq').on(table.apiKeyId, table.day),
   keyIndex: index('usage_daily_key_idx').on(table.apiKeyId),
 }))
+
+export const appConfig = sqliteTable('app_config', {
+  key: text('key').primaryKey(),
+  value: text('value').notNull(),
+  isSecret: integer('is_secret', { mode: 'boolean' }).notNull().default(false),
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+    .notNull()
+    .default(sql`(strftime('%s','now') * 1000)`),
+  updatedBy: text('updated_by'),
+}, (table) => ({
+  updatedAtIndex: index('app_config_updated_at_idx').on(table.updatedAt),
+}))

@@ -32,6 +32,7 @@ export default {
         serif: 'Gambetta',
         subtitle: 'Pilcrow rounded',
         title: 'Khand',
+        meta: 'Pilcrow rounded',
       },
       processors: [
         createLocalFontProcessor({

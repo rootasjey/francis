@@ -33,6 +33,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiDefaultLimit: Number(process.env.NUXT_API_DEFAULT_LIMIT || '10000'),
     apiMaxLimit: Number(process.env.NUXT_API_MAX_LIMIT || '100000'),
+    openrouterApiKey: process.env.NUXT_OPENROUTER_API_KEY || '',
+    openrouterModel: process.env.NUXT_OPENROUTER_MODEL || 'google/gemini-3.1-flash-lite',
     // Public keys (exposed to client-side)
     public: {
       authUrl: process.env.NUXT_AUTH_ORIGIN || 'http://localhost:3000',
@@ -80,6 +82,19 @@ export default defineNuxtConfig({
           700: '#B84217',
           800: '#993715',
           900: '#7A2C12',
+        },
+        accent: {
+          DEFAULT: '#FF8C42',
+          50: '#FFF3E6',
+          100: '#FFE0C2',
+          200: '#FFC299',
+          300: '#FFA366',
+          400: '#FF8C42',
+          500: '#FF7A26',
+          600: '#E66A1A',
+          700: '#CC5A10',
+          800: '#994308',
+          900: '#662D04',
         },
       },
     },

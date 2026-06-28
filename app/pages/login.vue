@@ -1,43 +1,49 @@
 <template>
-  <section class="mx-auto max-w-lg space-y-8 rounded-3xl border border-border bg-card p-8">
+  <section class="mx-auto max-w-lg space-y-8">
     <div class="space-y-2">
-      <h1 class="text-3xl font-semibold">Welcome back</h1>
-      <p class="text-sm text-muted-foreground">Sign in to access your dashboard.</p>
+      <h1 class="font-title text-3xl tracking-tight">Welcome back</h1>
+      <p class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Sign in to access your dashboard.</p>
     </div>
 
-    <form class="space-y-4" @submit.prevent="submit">
+    <form class="space-y-5" @submit.prevent="submit">
       <div>
-        <label class="text-xs text-muted-foreground">Email</label>
+        <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Email</label>
         <input
           v-model="form.email"
           type="email"
-          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground"
+          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
           placeholder="you@verbatims.cc"
           required
         />
       </div>
       <div>
-        <label class="text-xs text-muted-foreground">Password</label>
+        <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Password</label>
         <input
           v-model="form.password"
           type="password"
-          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground"
-          placeholder="••••••••"
+          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+          placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;"
           required
         />
       </div>
       <button
-        class="w-full rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+        class="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
         :disabled="loading"
       >
+        <span v-if="loading" class="i-lucide-loader-2 animate-spin text-sm" />
         {{ loading ? 'Signing in&hellip;' : 'Sign in' }}
       </button>
-      <p v-if="error" class="text-xs text-rose-400">{{ error }}</p>
+      <Transition name="fade">
+        <p v-if="error" class="flex items-center gap-2 font-meta text-xs text-rose-400">
+          <span class="i-lucide-alert-circle text-xs" />
+          {{ error }}
+        </p>
+      </Transition>
     </form>
 
-    <p class="text-xs text-muted-foreground">
+    <p class="font-meta text-xs text-muted-foreground">
       New here?
-      <NuxtLink to="/signup" class="text-foreground hover:underline">Create an account</NuxtLink>
+      <NuxtLink to="/signup" class="font-medium text-foreground underline decoration-border decoration-1 underline-offset-2 transition-colors duration-200 hover:decoration-foreground">Create an account</NuxtLink>
     </p>
   </section>
 </template>
@@ -46,7 +52,7 @@
 import { reactive, ref } from 'vue'
 import { navigateTo, useUserSession } from '#imports'
 
-definePageMeta({ middleware: 'guest' })
+definePageMeta({ middleware: 'guest', pageTransition: { name: 'page', mode: 'out-in' } })
 
 const session = useUserSession()
 
@@ -81,3 +87,16 @@ async function submit() {
   }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+</style>
+
