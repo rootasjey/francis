@@ -23,7 +23,7 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": "",
+      "database_id": "0fd59ab0-f302-4e48-9171-5fcbbdb92d61",
       "database_name": "francis",
       "migrations_dir": "./server/db/migrations"
     }
