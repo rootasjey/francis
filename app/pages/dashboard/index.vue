@@ -1,29 +1,32 @@
 <template>
-  <section class="space-y-10">
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <h1 class="font-title text-3xl tracking-tight">Dashboard</h1>
-        <p class="mt-1 font-meta text-xs tracking-wider text-muted-foreground uppercase">Monitor usage, keys, and daily limits.</p>
-      </div>
-      <div class="flex items-center gap-2 rounded-xl border border-accent/20 bg-accent/5 px-4 py-2 font-meta text-xs text-accent">
-        <span class="i-lucide-calendar text-xs" />
-        Last 30 days
+  <section class="border-x dark:border-gray-800 max-w-6xl mx-auto py-12 px-6 space-y-12">
+    <!-- Header -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+          <span class="i-lucide-layout-dashboard text-sm text-primary" />
+        </div>
+        <div>
+          <h1 class="font-sans text-3xl font-bold tracking-tight">Dashboard</h1>
+          <p class="font-mono text-xs text-muted-foreground/60">Monitor usage, keys, and daily limits.</p>
+        </div>
       </div>
     </div>
 
-    <div class="rounded-2xl border border-border bg-card p-5">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-muted">
-            <span class="i-lucide-user text-sm text-muted-foreground" />
+    <!-- Signed in -->
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-muted/30 overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-background">
+            <span class="i-lucide-user text-xs text-muted-foreground" />
           </div>
           <div>
-            <p class="font-medium text-sm">Signed in</p>
-            <p class="font-mono text-xs text-muted-foreground">{{ session.user.value?.email }}</p>
+            <p class="text-sm font-medium">Signed in</p>
+            <p class="font-mono text-xs text-muted-foreground/60">{{ session.user.value?.email }}</p>
           </div>
         </div>
         <button
-          class="rounded-lg border border-border bg-muted px-4 py-2 font-meta text-xs font-semibold text-foreground transition-all duration-200 hover:bg-accent"
+          class="rounded-lg border border-border dark:border-gray-800 bg-background px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-muted"
           @click="logout"
         >
           Sign out
@@ -31,71 +34,75 @@
       </div>
     </div>
 
-    <!-- Stats with context -->
+    <!-- Stats -->
     <div class="grid gap-4 lg:grid-cols-4">
       <div
         v-for="(stat, i) in stats"
         :key="stat.label"
-        class="group rounded-2xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary/20"
+        class="rounded-2 border border-border dark:border-gray-800 bg-card p-5 transition-all duration-200 hover:border-primary/20"
         :style="{ animationDelay: `${i * 80}ms` }"
       >
-        <p class="font-meta text-xs tracking-wider text-muted-foreground uppercase">{{ stat.label }}</p>
-        <p class="mt-2 font-title text-3xl tracking-tight" :class="stat.valueClass">{{ stat.value }}</p>
+        <p class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">{{ stat.label }}</p>
+        <p class="mt-2 font-sans text-3xl font-bold tracking-tight" :class="stat.valueClass">{{ stat.value }}</p>
         <div class="mt-3 flex items-center gap-2">
           <span :class="stat.trendIcon" class="text-xs" />
-          <span class="font-meta text-xs text-muted-foreground">{{ stat.trend }}</span>
+          <span class="font-mono text-xs text-muted-foreground/60">{{ stat.trend }}</span>
         </div>
       </div>
     </div>
 
     <!-- Chart + Keys -->
     <div class="grid gap-6 lg:grid-cols-[2fr_1fr]">
-      <div class="rounded-2xl border border-border bg-card p-6">
-        <div class="flex items-center justify-between">
+      <!-- Chart -->
+      <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+        <div class="flex items-center justify-between border-b border-border dark:border-gray-800 px-6 py-3.5">
           <div>
-            <h2 class="font-title text-lg tracking-tight">Requests over time</h2>
-            <p class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Rolling 30-day volume</p>
+            <h2 class="text-sm font-semibold">Requests over time</h2>
+            <p class="font-mono text-[11px] text-muted-foreground/60">Rolling 30-day volume</p>
           </div>
-          <div class="flex items-center gap-2 font-meta text-xs text-muted-foreground">
+          <div class="flex items-center gap-2 font-mono text-[11px] text-muted-foreground/60">
             <span class="h-2 w-2 rounded-full bg-primary" />
             API
           </div>
         </div>
-        <div class="mt-6 rounded-xl border border-border bg-gradient-to-b from-muted via-transparent to-transparent p-4">
-          <!-- Loading skeleton -->
-          <div v-if="loadingUsage" class="flex h-40 items-center justify-center">
-            <div class="flex items-center gap-2 text-xs text-muted-foreground">
-              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" />
-              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" style="animation-delay: 200ms" />
-              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" style="animation-delay: 400ms" />
-              Loading
+        <div class="p-6">
+          <div class="rounded-xl border border-border bg-gradient-to-b from-muted via-transparent to-transparent p-4">
+            <!-- Loading skeleton -->
+            <div v-if="loadingUsage" class="flex h-40 items-center justify-center">
+              <div class="flex items-center gap-2 text-xs text-muted-foreground">
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" />
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" style="animation-delay: 200ms" />
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" style="animation-delay: 400ms" />
+                Loading
+              </div>
             </div>
-          </div>
-          <svg
-            v-else-if="chartPath"
-            ref="chartSvg"
-            viewBox="0 0 100 40"
-            class="h-40 w-full"
-          >
-            <path :d="chartPath" fill="none" stroke="#3C82F6" stroke-width="2" class="chart-line" />
-          </svg>
-          <div v-else class="flex h-40 flex-col items-center justify-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted">
-              <span class="i-lucide-bar-chart-3 text-lg text-muted-foreground/50" />
-            </div>
-            <div class="text-center">
-              <p class="text-sm font-medium text-foreground">No usage data yet</p>
-              <p class="mt-1 max-w-xs text-xs text-muted-foreground">Select a key from the Keys panel to see request volume over the last 30 days.</p>
+            <svg
+              v-else-if="chartPath"
+              ref="chartSvg"
+              viewBox="0 0 100 40"
+              class="h-40 w-full"
+            >
+              <path :d="chartPath" fill="none" stroke="#3C82F6" stroke-width="2" class="chart-line" />
+            </svg>
+            <div v-else class="flex h-40 flex-col items-center justify-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted">
+                <span class="i-lucide-bar-chart-3 text-lg text-muted-foreground/50" />
+              </div>
+              <div class="text-center">
+                <p class="text-sm font-medium text-foreground">No usage data yet</p>
+                <p class="mt-1 max-w-xs text-xs text-muted-foreground">Select a key from the Keys panel to see request volume over the last 30 days.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="rounded-2xl border border-border bg-card p-6">
-        <div class="flex items-center justify-between">
-          <h2 class="font-title text-lg tracking-tight">Keys</h2>
+      <!-- Keys -->
+      <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+        <div class="flex items-center justify-between border-b border-border dark:border-gray-800 px-6 py-3.5">
+          <h2 class="text-sm font-semibold">Keys</h2>
           <button
-            class="flex items-center gap-1.5 rounded-lg border border-border bg-muted px-3 py-1.5 font-meta text-xs text-muted-foreground transition-all duration-200 hover:bg-accent"
+            class="flex items-center gap-1.5 rounded-lg border border-border dark:border-gray-800 bg-background px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-muted"
             :disabled="keysPending"
             @click="() => refreshKeys()"
           >
@@ -103,55 +110,55 @@
             Refresh
           </button>
         </div>
-        <div class="mt-4">
-          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Usage source</label>
+        <div class="p-6">
+          <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">Usage source</label>
           <select
             v-model="selectedKeyId"
-            class="mt-2 w-full rounded-lg border border-border bg-background px-3 py-2.5 font-mono text-sm text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
+            class="mt-2 w-full rounded-lg border border-border bg-background px-3 py-2 font-mono text-sm text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
           >
-            <option value="" class="font-meta">Select a key</option>
+            <option value="" class="font-mono">Select a key</option>
             <option v-for="key in keys" :key="key.id" :value="key.id" class="font-mono">
               {{ key.name }} ({{ key.prefix }}&bullet;&bullet;&bullet;&bullet;)
             </option>
           </select>
-        </div>
 
-        <!-- Loading skeleton for keys -->
-        <div v-if="keysPending" class="mt-4 space-y-3">
-          <div v-for="n in 2" :key="n" class="animate-pulse rounded-xl border border-border bg-muted p-4">
-            <div class="h-4 w-24 rounded bg-muted-foreground/10" />
-            <div class="mt-2 h-3 w-32 rounded bg-muted-foreground/10" />
-          </div>
-        </div>
-
-        <TransitionGroup v-else name="key-list" tag="div" class="mt-4 space-y-3">
-          <div
-            v-for="key in keys"
-            :key="key.id"
-            class="rounded-xl border border-border bg-muted p-4 transition-all duration-200 hover:border-primary/20"
-          >
-            <div class="flex items-start justify-between">
-              <div>
-                <p class="text-sm font-medium">{{ key.name }}</p>
-                <p class="mt-0.5 font-mono text-xs text-muted-foreground">{{ key.prefix }}&bullet;&bullet;&bullet;&bullet;</p>
-              </div>
-              <span
-                class="rounded-full px-2 py-0.5 font-meta text-[10px] tracking-wider uppercase"
-                :class="key.revokedAt ? 'bg-rose-400/10 text-rose-400' : 'bg-emerald-400/10 text-emerald-400'"
-              >
-                {{ key.revokedAt ? 'Revoked' : 'Active' }}
-              </span>
+          <!-- Loading skeleton for keys -->
+          <div v-if="keysPending" class="mt-4 space-y-3">
+            <div v-for="n in 2" :key="n" class="animate-pulse rounded-xl border border-border bg-muted p-4">
+              <div class="h-4 w-24 rounded bg-muted-foreground/10" />
+              <div class="mt-2 h-3 w-32 rounded bg-muted-foreground/10" />
             </div>
           </div>
-        </TransitionGroup>
 
-        <div v-if="!keys.length && !keysPending" class="mt-8 flex flex-col items-center gap-3">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted">
-            <span class="i-lucide-key-round text-lg text-muted-foreground/50" />
-          </div>
-          <div class="text-center">
-            <p class="text-sm font-medium text-foreground">No API keys</p>
-            <p class="mt-1 text-xs text-muted-foreground">Go to the Admin panel to create your first key.</p>
+          <TransitionGroup v-else name="key-list" tag="div" class="mt-4 space-y-3">
+            <div
+              v-for="key in keys"
+              :key="key.id"
+              class="rounded-xl border border-border bg-muted p-4 transition-all duration-200 hover:border-primary/20"
+            >
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-sm font-medium">{{ key.name }}</p>
+                  <p class="mt-0.5 font-mono text-xs text-muted-foreground">{{ key.prefix }}&bullet;&bullet;&bullet;&bullet;</p>
+                </div>
+                <span
+                  class="rounded-full px-2 py-0.5 font-mono text-[10px] tracking-wider uppercase"
+                  :class="key.revokedAt ? 'bg-rose-400/10 text-rose-400' : 'bg-emerald-400/10 text-emerald-400'"
+                >
+                  {{ key.revokedAt ? 'Revoked' : 'Active' }}
+                </span>
+              </div>
+            </div>
+          </TransitionGroup>
+
+          <div v-if="!keys.length && !keysPending" class="mt-8 flex flex-col items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted">
+              <span class="i-lucide-key-round text-lg text-muted-foreground/50" />
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-medium text-foreground">No API keys</p>
+              <p class="mt-1 text-xs text-muted-foreground">Go to the Admin panel to create your first key.</p>
+            </div>
           </div>
         </div>
       </div>

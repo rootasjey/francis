@@ -1,23 +1,32 @@
 <template>
-  <section class="space-y-10">
-    <div>
-      <h1 class="font-title text-3xl tracking-tight">Admin</h1>
-      <p class="mt-1 font-meta text-xs tracking-wider text-muted-foreground uppercase">Manage API keys, limits, and billing-ready metadata.</p>
+  <section class="border-x dark:border-gray-800 max-w-6xl mx-auto py-12 px-6 space-y-12">
+    <!-- Header -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+          <span class="i-lucide-shield text-sm text-primary" />
+        </div>
+        <div>
+          <h1 class="font-sans text-3xl font-bold tracking-tight">Admin</h1>
+          <p class="font-mono text-xs text-muted-foreground/60">Manage API keys, limits, and billing-ready metadata.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="rounded-2xl border border-border bg-card p-5">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-muted">
-            <span class="i-lucide-shield text-sm text-muted-foreground" />
+    <!-- Admin session -->
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-muted/30 overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-background">
+            <span class="i-lucide-shield text-xs text-muted-foreground" />
           </div>
           <div>
-            <p class="font-medium text-sm">Admin session</p>
-            <p class="font-mono text-xs text-muted-foreground">{{ session.user.value?.email }}</p>
+            <p class="text-sm font-medium">Admin session</p>
+            <p class="font-mono text-xs text-muted-foreground/60">{{ session.user.value?.email }}</p>
           </div>
         </div>
         <button
-          class="rounded-lg border border-border bg-muted px-4 py-2 font-meta text-xs font-semibold text-foreground transition-all duration-200 hover:bg-accent"
+          class="rounded-lg border border-border dark:border-gray-800 bg-background px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-muted"
           @click="logout"
         >
           Sign out
@@ -25,63 +34,69 @@
       </div>
     </div>
 
-    <div class="rounded-2xl border border-border bg-card p-6">
-      <h2 class="font-title text-lg tracking-tight">Create API key</h2>
-      <div class="mt-5 grid gap-5 md:grid-cols-[1fr_1fr_auto] md:items-end">
-        <div>
-          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Key name</label>
-          <input
-            v-model="form.name"
-            class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
-            placeholder="Verbatims production"
-          />
-        </div>
-        <div>
-          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Daily limit</label>
-          <input
-            v-model="form.limitPerDay"
-            class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
-            placeholder="10000"
-          />
-        </div>
-        <button
-          class="flex h-[42px] items-center gap-2 rounded-xl bg-foreground px-6 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
-          :disabled="creating"
-          @click="createKey"
-        >
-          <span v-if="creating" class="i-lucide-loader-2 animate-spin text-sm" />
-          {{ creating ? 'Generating&hellip;' : 'Generate key' }}
-        </button>
+    <!-- Create API key -->
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+      <div class="border-b border-border dark:border-gray-800 px-6 py-3.5">
+        <h2 class="text-sm font-semibold">Create API key</h2>
       </div>
-      <p v-if="createError" class="mt-3 font-meta text-xs text-rose-400">{{ createError }}</p>
-      <Transition name="toast">
-        <div
-          v-if="createdKey"
-          class="mt-4 overflow-hidden rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-4"
-        >
-          <div class="flex items-start gap-3">
-            <span class="i-lucide-check-circle-2 mt-0.5 text-sm text-emerald-400" />
-            <div>
-              <p class="font-meta text-xs font-semibold tracking-wider text-emerald-400 uppercase">Key created</p>
-              <p class="mt-1 break-all font-mono text-xs text-emerald-400/80">{{ createdKey }}</p>
-              <p class="mt-1 font-meta text-[10px] text-emerald-400/60">Copy this key now. You won't see it again.</p>
-            </div>
-            <button
-              class="ml-auto rounded-lg border border-emerald-400/30 px-3 py-1.5 font-meta text-[10px] text-emerald-400 transition-all duration-200 hover:bg-emerald-400/10"
-              @click="createdKey = ''"
-            >
-              Dismiss
-            </button>
+      <div class="p-6">
+        <div class="grid gap-5 md:grid-cols-[1fr_1fr_auto] md:items-end">
+          <div>
+            <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">Key name</label>
+            <input
+              v-model="form.name"
+              class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              placeholder="Verbatims production"
+            />
           </div>
+          <div>
+            <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">Daily limit</label>
+            <input
+              v-model="form.limitPerDay"
+              class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              placeholder="10000"
+            />
+          </div>
+          <button
+            class="flex h-[42px] items-center gap-2 rounded-lg bg-foreground px-6 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+            :disabled="creating"
+            @click="createKey"
+          >
+            <span v-if="creating" class="i-lucide-loader-2 animate-spin text-sm" />
+            {{ creating ? 'Generating&hellip;' : 'Generate key' }}
+          </button>
         </div>
-      </Transition>
+        <p v-if="createError" class="mt-3 font-mono text-xs text-rose-400">{{ createError }}</p>
+        <Transition name="toast">
+          <div
+            v-if="createdKey"
+            class="mt-4 overflow-hidden rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-4"
+          >
+            <div class="flex items-start gap-3">
+              <span class="i-lucide-check-circle-2 mt-0.5 text-sm text-emerald-400" />
+              <div>
+                <p class="font-mono text-xs font-semibold tracking-wider text-emerald-400 uppercase">Key created</p>
+                <p class="mt-1 break-all font-mono text-xs text-emerald-400/80">{{ createdKey }}</p>
+                <p class="mt-1 font-mono text-[10px] text-emerald-400/60">Copy this key now. You won't see it again.</p>
+              </div>
+              <button
+                class="ml-auto rounded-lg border border-emerald-400/30 px-3 py-1.5 font-mono text-[10px] text-emerald-400 transition-all duration-200 hover:bg-emerald-400/10"
+                @click="createdKey = ''"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        </Transition>
+      </div>
     </div>
 
-    <div class="rounded-2xl border border-border bg-card p-6">
-      <div class="flex items-center justify-between">
-        <h2 class="font-title text-lg tracking-tight">API keys</h2>
+    <!-- API keys list -->
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+      <div class="flex items-center justify-between border-b border-border dark:border-gray-800 px-6 py-3.5">
+        <h2 class="text-sm font-semibold">API keys</h2>
         <button
-          class="flex items-center gap-1.5 rounded-lg border border-border bg-muted px-3 py-1.5 font-meta text-xs text-muted-foreground transition-all duration-200 hover:bg-accent"
+          class="flex items-center gap-1.5 rounded-lg border border-border dark:border-gray-800 bg-background px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-muted"
           :disabled="keysPending"
           @click="() => refreshKeys()"
         >
@@ -90,13 +105,13 @@
         </button>
       </div>
 
-      <div v-if="keysError" class="mt-4 flex items-center gap-2 rounded-lg bg-rose-400/10 p-3 font-meta text-xs text-rose-400">
+      <div v-if="keysError" class="m-6 flex items-center gap-2 rounded-lg bg-rose-400/10 p-3 font-mono text-xs text-rose-400">
         <span class="i-lucide-alert-circle text-xs" />
         Failed to load keys.
       </div>
 
       <!-- Loading skeleton -->
-      <div v-if="keysPending" class="mt-4 space-y-3">
+      <div v-if="keysPending" class="p-6 space-y-3">
         <div v-for="n in 3" :key="n" class="animate-pulse rounded-xl border border-border bg-muted p-4">
           <div class="flex items-center justify-between">
             <div class="h-4 w-32 rounded bg-muted-foreground/10" />
@@ -106,11 +121,11 @@
         </div>
       </div>
 
-      <TransitionGroup v-else name="key-list" tag="div" class="mt-4 space-y-3">
+      <TransitionGroup v-else name="key-list" tag="div" class="divide-y divide-border dark:divide-gray-800">
         <div
           v-for="key in keys"
           :key="key.id"
-          class="rounded-xl border border-border bg-muted p-4 transition-all duration-200 hover:border-primary/20"
+          class="px-6 py-4 transition-all duration-200 hover:bg-muted/30"
         >
           <div v-if="editing?.id === key.id" class="space-y-3">
             <input
@@ -127,7 +142,7 @@
             />
             <div class="flex gap-2">
               <button
-                class="flex h-[34px] items-center gap-1.5 rounded-lg bg-primary px-4 font-meta text-xs font-semibold text-primary-foreground transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                class="flex h-[34px] items-center gap-1.5 rounded-lg bg-primary px-4 font-mono text-xs font-semibold text-primary-foreground transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                 :disabled="saving === key.id"
                 @click="saveEdit(key.id)"
               >
@@ -135,13 +150,13 @@
                 {{ saving === key.id ? 'Saving&hellip;' : 'Save' }}
               </button>
               <button
-                class="flex h-[34px] items-center rounded-lg border border-border bg-muted px-4 font-meta text-xs text-muted-foreground transition-all duration-200 hover:bg-accent"
+                class="flex h-[34px] items-center rounded-lg border border-border bg-muted px-4 font-mono text-xs text-muted-foreground transition-all duration-200 hover:bg-accent"
                 @click="cancelEdit"
               >
                 Cancel
               </button>
             </div>
-            <p v-if="editError" class="font-meta text-xs text-rose-400">{{ editError }}</p>
+            <p v-if="editError" class="font-mono text-xs text-rose-400">{{ editError }}</p>
           </div>
           <template v-else>
             <div class="flex items-center justify-between gap-4">
@@ -151,14 +166,14 @@
               </div>
               <div class="flex items-center gap-2">
                 <button
-                  class="rounded-lg border border-border px-3 py-1.5 font-meta text-[11px] text-muted-foreground transition-all duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-30"
+                  class="rounded-lg border border-border px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-30"
                   :disabled="!!key.revokedAt"
                   @click="startEdit(key)"
                 >
                   Edit
                 </button>
                 <button
-                  class="rounded-lg border border-rose-400/30 px-3 py-1.5 font-meta text-[11px] text-rose-400 transition-all duration-200 hover:bg-rose-400/10 disabled:cursor-not-allowed disabled:opacity-30"
+                  class="rounded-lg border border-rose-400/30 px-3 py-1.5 font-mono text-[11px] text-rose-400 transition-all duration-200 hover:bg-rose-400/10 disabled:cursor-not-allowed disabled:opacity-30"
                   :disabled="!!key.revokedAt"
                   @click="revokeKey(key.id)"
                 >
@@ -166,7 +181,7 @@
                 </button>
               </div>
             </div>
-            <div class="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-meta text-xs text-muted-foreground">
+            <div class="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs text-muted-foreground">
               <span class="flex items-center gap-1.5">
                 <span class="i-lucide-gauge text-[10px]" />
                 {{ key.limitPerDay.toLocaleString() }}/day
@@ -184,7 +199,7 @@
         </div>
       </TransitionGroup>
 
-      <div v-if="!keys.length && !keysPending" class="mt-10 flex flex-col items-center gap-3">
+      <div v-if="!keys.length && !keysPending" class="flex flex-col items-center gap-3 px-6 py-10">
         <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted">
           <span class="i-lucide-key-round text-lg text-muted-foreground/50" />
         </div>
@@ -196,49 +211,49 @@
     </div>
 
     <!-- Settings -->
-    <div class="rounded-2xl border border-border bg-card p-6">
-      <div class="flex items-center gap-3">
-        <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-muted">
-          <span class="i-lucide-settings text-sm text-muted-foreground" />
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+      <div class="flex items-center gap-3 border-b border-border dark:border-gray-800 px-6 py-3.5">
+        <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-muted">
+          <span class="i-lucide-settings text-xs text-muted-foreground" />
         </div>
         <div>
-          <h2 class="font-title text-lg tracking-tight">Settings</h2>
-          <p class="font-meta text-xs text-muted-foreground/60">OpenRouter configuration for live translations.</p>
+          <h2 class="text-sm font-semibold">Settings</h2>
+          <p class="font-mono text-[11px] text-muted-foreground/60">OpenRouter configuration for live translations.</p>
         </div>
       </div>
 
-      <div v-if="configPending" class="mt-6 space-y-3">
+      <div v-if="configPending" class="p-6 space-y-3">
         <div class="h-10 animate-pulse rounded-lg bg-muted" />
         <div class="h-10 animate-pulse rounded-lg bg-muted" />
         <div class="h-20 animate-pulse rounded-lg bg-muted" />
       </div>
 
-      <div v-else class="mt-6 space-y-5">
+      <div v-else class="p-6 space-y-5">
         <!-- Model -->
         <div>
-          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Primary model</label>
+          <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">Primary model</label>
           <div class="mt-2 flex gap-2">
             <input
               v-model="configDraft.openrouter_model"
-              class="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
+              class="flex-1 rounded-lg border border-border bg-background px-4 py-2 font-mono text-sm text-foreground transition-all duration-200 focus:border-primary/30 focus:outline-none"
               placeholder="google/gemini-3.1-flash-lite"
             />
             <button
-              class="rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+              class="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
               :disabled="!configDraft.openrouter_model || configSaving === 'openrouter_model'"
               @click="saveConfig('openrouter_model')"
             >
               {{ configSaving === 'openrouter_model' ? 'Saving...' : 'Save' }}
             </button>
           </div>
-          <p class="mt-1.5 font-meta text-[11px] text-muted-foreground/60">e.g. google/gemini-3.1-flash-lite, openai/gpt-4o-mini</p>
+          <p class="mt-1.5 font-mono text-[11px] text-muted-foreground/60">e.g. google/gemini-3.1-flash-lite, openai/gpt-4o-mini</p>
         </div>
 
         <!-- Fallback models -->
         <div>
           <div class="flex items-center justify-between">
-            <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Fallback models</label>
-            <span class="font-meta text-[10px] text-muted-foreground/50">Tried in order if primary fails · drag the handle to reorder</span>
+            <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">Fallback models</label>
+            <span class="font-mono text-[10px] text-muted-foreground/50">Tried in order if primary fails · drag the handle to reorder</span>
           </div>
 
           <div class="mt-2 space-y-2">
@@ -312,7 +327,7 @@
                   Cancel
                 </button>
                 <button
-                  class="rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+                  class="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
                   :disabled="!fallbackListChanged || configSaving === 'openrouter_fallback_models'"
                   @click="saveFallbacks()"
                 >
@@ -333,23 +348,23 @@
 
         <!-- API Key -->
         <div>
-          <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">OpenRouter API key</label>
+          <label class="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground/60 uppercase">OpenRouter API key</label>
           <div class="mt-2 flex gap-2">
             <input
               v-model="configDraft.openrouter_api_key"
               type="password"
-              class="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              class="flex-1 rounded-lg border border-border bg-background px-4 py-2 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
               :placeholder="hasStoredKey ? '•••••••••••• (stored)' : 'sk-or-v1-...'"
             />
             <button
-              class="rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
+              class="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:opacity-50"
               :disabled="!configDraft.openrouter_api_key || configSaving === 'openrouter_api_key'"
               @click="saveConfig('openrouter_api_key')"
             >
               {{ configSaving === 'openrouter_api_key' ? 'Saving...' : 'Save' }}
             </button>
           </div>
-          <p class="mt-1.5 font-meta text-[11px] text-muted-foreground/60">Get one at openrouter.ai. Stored in DB, never sent to the client.</p>
+          <p class="mt-1.5 font-mono text-[11px] text-muted-foreground/60">Get one at openrouter.ai. Stored in DB, never sent to the client.</p>
         </div>
 
         <!-- Success/Error messages -->
@@ -630,7 +645,6 @@ function onDragEnter(idx: number) {
 }
 
 function onDragLeave(idx: number) {
-  // Ne reset que si on quitte vraiment (le dragleave fire souvent pendant le drop)
   if (dragOverIndex.value === idx) {
     dragOverIndex.value = null
   }
@@ -639,7 +653,6 @@ function onDragLeave(idx: number) {
 function onDrop(event: DragEvent, idx: number) {
   event.preventDefault()
   const from = draggedIndex.value
-  // Reset dragOverIndex AVANT de modifier la liste pour éviter le flash du border
   dragOverIndex.value = null
 
   if (from === null || from === idx) {
@@ -650,16 +663,13 @@ function onDrop(event: DragEvent, idx: number) {
   const [moved] = list.splice(from, 1)
   list.splice(idx, 0, moved!)
   fallbackList.value = list
-  // Reset draggedIndex après le re-render pour que l'opacité revienne smoothly
   requestAnimationFrame(() => {
     draggedIndex.value = null
   })
-  // Auto-save après le drag
   autoSaveFallbacks()
 }
 
 function onDragEnd() {
-  // Au cas où dragend fire sans drop (drop outside)
   draggedIndex.value = null
   dragOverIndex.value = null
 }
