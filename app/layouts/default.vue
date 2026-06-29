@@ -46,12 +46,12 @@
       <slot />
     </main>
 
-    <footer class="border-t border-border py-10">
+    <footer class="border-t border-border dark:border-gray-800 py-10">
       <div class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
         <div class="flex items-center gap-4">
           <NuxtLink to="/status" class="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">Status</NuxtLink>
-          <span class="text-muted-foreground/30">&middot;</span>
-          <p>Francis API &bull; Language detection for Verbatims</p>
+          <div class="w-px h-4 bg-muted-foreground/30 hover:bg-blue/50"></div>
+          <span class="font-500">Francis API</span> <span>&bull;</span> <span class="font-500">Language detection</span>
           <div class="relative flex items-center">
             <span v-if="colorMode.preference === 'light'" class="absolute left-2 pointer-events-none i-lucide-sun text-xs text-muted-foreground" />
             <span v-else-if="colorMode.preference === 'dark'" class="absolute left-2 pointer-events-none i-lucide-moon text-xs text-muted-foreground" />
@@ -127,7 +127,7 @@ const navItems = [
     ],
   },
   { label: 'Pricing', to: '#' },
-  { label: 'Blog', to: '#' },
+  { label: 'Purpose', to: '/purpose' },
   { label: 'Company', to: '#' },
 ]
 </script>

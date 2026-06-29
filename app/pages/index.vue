@@ -1,10 +1,10 @@
 <template>
-  <section class="space-y-16 border-x max-w-6xl mx-auto py-12">
+  <section class="space-y-24 border-x dark:border-gray-800 max-w-6xl mx-auto py-12">
     <!-- Hero -->
     <div class="space-y-8 max-w-5xl mx-auto">
       <!-- Headline -->
       <h1 class="max-w-4xl font-sans text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-[5rem]">
-        Detect <span class="text-accent">language</span> in <span class="group relative inline-block"><span class="relative z-10">milliseconds</span><span class="absolute right-0 top-0 translate-x-2 -translate-y-1.5 opacity-0 group-hover:opacity-50 dark:group-hover:opacity-60 group-hover:block transition-all duration-500 delay-75 pointer-events-none select-none"><span class="text-blue-500">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-3.5 opacity-0 group-hover:opacity-40 dark:group-hover:opacity-50 transition-all duration-500 delay-150 pointer-events-none select-none"><span class="text-rose-400">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-5 -translate-y-1 opacity-0 group-hover:opacity-30 dark:group-hover:opacity-40 transition-all duration-500 delay-225 pointer-events-none select-none"><span class="text-accent">milliseconds</span></span></span>. The edge-native API
+        Detect <span class="text-accent dark:text-[#9FA1FF]">language</span> in <span class="group relative inline-block"><span class="relative z-10">milliseconds</span><span class="absolute right-0 top-0 translate-x-2 -translate-y-1.5 opacity-0 group-hover:opacity-50 dark:group-hover:opacity-60 group-hover:block transition-all duration-500 delay-75 pointer-events-none select-none"><span class="text-blue-500">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-3.5 opacity-0 group-hover:opacity-40 dark:group-hover:opacity-50 transition-all duration-500 delay-150 pointer-events-none select-none"><span class="text-rose-400">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-5 -translate-y-1 opacity-0 group-hover:opacity-30 dark:group-hover:opacity-40 transition-all duration-500 delay-225 pointer-events-none select-none"><span class="text-accent">milliseconds</span></span></span>. The edge-native API
       </h1>
 
       <!-- Subtitle -->
@@ -16,7 +16,7 @@
       <!-- Badge -->
       <div class="inline-flex items-center gap-3 rounded-1 bg-foreground
         px-5 py-2 text-sm font-600 text-background
-        dark:bg-transparent dark:text-white border border-gray-500">
+        dark:bg-gray-900 dark:text-white border border-gray-500 dark:border-transparent">
         <span>Francis is now live on Cloudflare Workers</span>
         <span class="opacity-30">|</span>
         <span class="opacity-80">Learn more</span>
@@ -25,7 +25,9 @@
     </div>
 
     <!-- Product showcase -->
-    <div class="animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto overflow-hidden rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-800">
+    <div class="animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto
+      overflow-hidden rounded-2 border border-border dark:border-gray-800
+      bg-gray-200 dark:bg-gray-950">
       <!-- Meta line -->
       <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border dark:border-gray-800 pb-4 font-mono text-[11px] text-muted-foreground/60">
         <span class="flex items-center gap-1.5">
@@ -92,10 +94,10 @@
       </p>
 
       <div class="mt-10 flex items-center justify-between border-t border-border dark:border-gray-900 pt-6">
-        <p class="text-[10px] text-muted-foreground/50">Multilingual text &middot; {{ sentences.length }} sentences &middot; {{ sentences.length }} languages</p>
-        <div class="flex items-center gap-2 text-[10px] text-muted-foreground/40">
+        <p class="text-sm text-muted-foreground/50">Multilingual text &middot; {{ sentences.length }} sentences &middot; {{ sentences.length }} languages</p>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground/40">
           <span class="i-lucide-mouse-pointer-2 h-3 w-3" />
-          <span class="text-[10px] text-muted-foreground/50">Click any sentence to switch its language</span>
+          <span class="text-sm text-muted-foreground/50">Click any sentence to switch its language</span>
         </div>
       </div>
     </div>
@@ -118,16 +120,37 @@
           :key="feature.title"
           class="group grid md:grid-cols-[5rem_3rem_1fr] items-start gap-4 md:gap-0"
         >
-          <span class="hidden font-mono text-4xl font-bold tracking-tight text-foreground/5 transition-colors duration-300 md:block md:text-right group-hover:text-accent/15">
+          <span class="hidden font-mono text-4xl font-bold tracking-tight text-foreground/5 dark:text-foreground/45 transition-colors duration-300 md:block md:text-right"
+            :class="[{
+              'group-hover:text-blue/65': feature.number === 1,
+              'group-hover:text-red/65': feature.number === 2,
+              'group-hover:text-yellow/65': feature.number === 3,
+            }]">
             {{ String(feature.number).padStart(2, '0') }}
           </span>
           <div class="hidden md:flex justify-center h-full pt-3">
-            <div class="w-px h-16 bg-gradient-to-b from-border to-transparent transition-colors duration-300 group-hover:from-accent/40" />
+            <div class="w-px h-16 bg-gradient-to-b from-border to-transparent transition-colors duration-300"
+              :class="[{
+                'group-hover:from-blue/40': feature.number === 1,
+                'group-hover:from-red/40': feature.number === 2,
+                'group-hover:from-yellow/40': feature.number === 3,
+              }]">
+            </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center gap-3">
-              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted transition-colors duration-300 group-hover:bg-accent/10">
-                <span :class="feature.icon" class="text-base text-foreground/60 transition-colors duration-300 group-hover:text-accent" />
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted transition-colors duration-300"
+                :class="[{
+                  'group-hover:bg-blue/10': feature.number === 1,
+                  'group-hover:bg-red/10': feature.number === 2,
+                  'group-hover:bg-yellow/10': feature.number === 3,
+                }]">
+                <span :class="[feature.icon, {
+                  'group-hover:text-blue': feature.number === 1,
+                  'group-hover:text-red': feature.number === 2,
+                  'group-hover:text-yellow': feature.number === 3,
+                  }]">
+                </span>
               </span>
               <h3 class="text-xl font-semibold tracking-tight">{{ feature.title }}</h3>
             </div>
@@ -138,7 +161,7 @@
     </div>
 
     <!-- API Quickstart -->
-    <div id="api" class="border-y border-gray-300">
+    <div id="api" class="border-y border-gray-300 dark:border-gray-800">
       <div class="py-16 max-w-5xl mx-auto flex justify-between gap-8">
         <div class="max-w-5xl mx-auto">
           <div class="max-w-2xl flex flex-wrap items-center justify-between gap-4 mb-8">
@@ -146,12 +169,11 @@
               <h2 class="font-sans text-5xl font-bold tracking-tight">API quickstart</h2>
               <p class="mt-1 text-sm text-muted-foreground">One endpoint, one header, any language.</p>
             </div>
-            <span class="rounded-full border border-border bg-background px-3.5 py-1.5 text-[11px] font-mono text-muted-foreground">francis.verbatims.cc</span>
           </div>
 
           <!-- Compact inline demo -->
-          <div class="rounded-1 max-w-2xl border border-border bg-gray-200 dark:bg-gray-800 overflow-hidden">
-            <div class="flex items-center gap-3 px-4 py-3 border-b border-border">
+          <div class="rounded-1 max-w-2xl border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
               <span class="text-xs text-muted-foreground/50">Terminal</span>
               <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
             </div>
@@ -159,20 +181,20 @@
               <div class="flex items-start gap-2 opacity-70">
                 <span class="text-muted-foreground/30 shrink-0">$</span>
                 <div>
-                  <span class="text-muted-foreground/40">curl -X POST</span>
+                  <span class="text-muted-foreground/40  dark:text-foreground">curl -X POST</span>
                   <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span>
-                  <span class="text-muted-foreground/40">\</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-H</span>
+                  <span class="text-muted-foreground/40 dark:text-foreground">\</span><br/>
+                  <span class="text-muted-foreground/40 dark:text-foreground">&nbsp;&nbsp;-H</span>
                   <span class="text-accent">'x-api-key: fcs_****'</span>
-                  <span class="text-muted-foreground/40">\</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
+                  <span class="text-muted-foreground/40 dark:text-foreground">\</span><br/>
+                  <span class="text-muted-foreground/40 dark:text-foreground">&nbsp;&nbsp;-d</span>
                   <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world"}'</span>
                 </div>
               </div>
               <div class="mt-3 flex items-start gap-2">
                 <span class="text-emerald-500 shrink-0">&rarr;</span>
-                <div class="rounded-md bg-foreground px-3 py-2 w-full">
-                  <span class="text-background/40">{ </span><span class="text-background/60">"language"</span><span class="text-background/40">: </span><span class="text-emerald-400">"eng"</span><span class="text-background/40">, </span><span class="text-background/60">"confidence"</span><span class="text-background/40">: </span><span class="text-background/80">0.97</span><span class="text-background/40">, </span><span class="text-background/60">"alternatives"</span><span class="text-background/40">: [</span><span class="text-background/60">"spa"</span><span class="text-background/40">, </span><span class="text-background/60">"fra"</span><span class="text-background/40">] }</span>
+                <div class="rounded-md bg-foreground dark:bg-gray-900 px-3 py-2 w-full">
+                  <span class="text-background/40 dark:text-foreground">{ </span><span class="text-background/60 dark:text-foreground">"language"</span><span class="text-background/40">: </span><span class="text-emerald-400">"eng"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"confidence"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-background/80 dark:text-foreground">0.97</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"alternatives"</span><span class="text-background/40 dark:text-foreground">: [</span><span class="text-background/60 dark:text-foreground">"spa"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"fra"</span><span class="text-background/40 dark:text-foreground">] }</span>
                 </div>
               </div>
             </div>
@@ -212,14 +234,14 @@
     </div>
 
     <!-- Language grid -->
-    <div class=" max-w-5xl mx-auto space-y-4">
-      <div class="flex items-center justify-between">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <div class="max-w-5xl mx-auto px-8 flex items-center justify-between">
         <p class="text-xs text-muted-foreground/60">Supported languages <span class="font-semibold text-foreground/80">180+</span></p>
         <p class="text-[10px] text-muted-foreground/40">ISO 639-3 codes</p>
       </div>
       <div class="flex flex-wrap justify-center gap-2">
         <span v-for="lang in languages" :key="lang.code"
-          class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-[11px] text-foreground/80 transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent">
+          class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background dark:bg-gray-950 px-2.5 py-1.5 text-[11px] text-foreground/80 transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent">
           <span class="text-sm leading-none">{{ lang.flag }}</span>
           <span class="font-medium">{{ lang.code }}</span>
           <span class="text-muted-foreground/50">·</span>
@@ -232,7 +254,7 @@
     </div>
 
     <!-- Stats -->
-    <div class="max-w-5xl mx-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
+    <div class="max-w-5xl mx-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border dark:bg-gray-800">
       <div class="bg-muted/50 p-6 md:p-8">
         <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">180+</p>
         <p class="mt-1 text-xs text-muted-foreground">Languages supported</p>
@@ -248,19 +270,23 @@
     </div>
 
     <!-- CTA -->
-    <div class="max-w-5xl mx-auto rounded-2 bg-foreground p-8 md:p-12">
+    <div class="max-w-5xl mx-auto rounded-2 bg-foreground dark:bg-gray-950 p-8 md:p-12">
       <div class="max-w-xl mx-auto text-center space-y-6">
-        <h2 class="font-sans text-3xl font-bold tracking-tight text-background md:text-4xl">
+        <h2 class="font-sans text-3xl font-bold tracking-tight text-background dark:text-white md:text-4xl">
           Start detecting language<br/>
           in <span class="text-accent">milliseconds</span>.
         </h2>
-        <p class="text-sm text-background/60 leading-relaxed">
+        <p class="text-sm text-background/60 dark:text-white/60 leading-relaxed">
           Get a free API key and integrate language detection into your app in minutes.
           No credit card required.
         </p>
         <NuxtLink
           to="/dashboard"
-          class="inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 font-semibold text-foreground transition-all duration-200 hover:brightness-90"
+          class="inline-flex items-center gap-2 rounded-xl bg-background
+            px-7 py-3.5 font-semibold text-foreground
+            dark:bg-gray-900 hover:dark:bg-gray-800 active:dark:bg-gray-800
+            hover:scale-105 active:scale-99
+            transition-all duration-200 hover:brightness-90"
         >
           Get Started
           <span class="i-lucide-arrow-right text-sm" />

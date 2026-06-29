@@ -22,7 +22,7 @@
     </div>
 
     <!-- Loading skeleton -->
-    <div v-if="loading && !data" class="rounded-2 border border-border overflow-hidden">
+    <div v-if="loading && !data" class="rounded-2 border border-border dark:border-gray-800 overflow-hidden">
       <div class="divide-y divide-border">
         <div v-for="n in 5" :key="n" class="flex items-center gap-4 px-6 py-5">
           <div class="h-2 w-2 rounded-full bg-muted-foreground/10" />
@@ -33,9 +33,9 @@
     </div>
 
     <!-- Status panel -->
-    <div v-else-if="data" class="rounded-2 border border-border bg-muted/30 overflow-hidden">
+    <div v-else-if="data" class="rounded-2 border border-border dark:border-gray-800 bg-muted/30 overflow-hidden">
       <!-- Panel header -->
-      <div class="flex items-center justify-between border-b border-border px-6 py-3.5">
+      <div class="flex items-center justify-between border-b border-border dark:border-gray-800 px-6 py-3.5">
         <div class="flex items-center gap-3">
           <div class="flex h-8 w-8 items-center justify-center rounded-lg" :class="overallBgClass">
             <span :class="overallIcon" class="text-sm" />
@@ -48,7 +48,10 @@
         <div class="flex items-center gap-2">
           <span class="font-mono text-[10px] text-muted-foreground/30">{{ data.service }} v{{ data.version }}</span>
           <button
-            class="rounded-lg border border-border bg-background px-3 py-1.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:bg-muted disabled:opacity-50"
+            class="rounded-lg border border-border
+              dark:border-gray-800 bg-background px-3 py-1.5
+              font-mono text-[11px] text-muted-foreground transition-all duration-200
+              hover:bg-muted dark:hover:bg-gray-800 hover:scale-105 active:scale-99 disabled:opacity-50"
             :disabled="loading"
             @click="handleRefresh"
           >
@@ -59,7 +62,7 @@
       </div>
 
       <!-- Service rows -->
-      <div class="divide-y divide-border">
+      <div class="divide-y divide-border dark:divide-gray-800">
         <div
           v-for="(check, name) in data.checks"
           :key="name"
@@ -94,7 +97,7 @@
       <p class="mt-3 text-sm font-medium text-foreground">Failed to fetch status</p>
       <p class="mt-1 text-xs text-muted-foreground">{{ error }}</p>
       <button
-        class="mt-4 rounded-lg border border-border bg-muted px-4 py-2 font-meta text-xs text-muted-foreground transition-all duration-200 hover:bg-muted-foreground/10"
+        class="mt-4 rounded-lg border border-border dark:border-gray-800 bg-muted px-4 py-2 font-meta text-xs text-muted-foreground transition-all duration-200 hover:bg-muted-foreground/10"
         @click="handleRefresh"
       >
         Try again
@@ -150,7 +153,7 @@ const overallClass = computed(() => {
     case 'ok': return 'bg-emerald-400/10 text-emerald-500 border border-emerald-400/20'
     case 'degraded': return 'bg-amber-400/10 text-amber-500 border border-amber-400/20'
     case 'down': return 'bg-red-400/10 text-red-400 border border-red-400/20'
-    default: return 'bg-muted text-muted-foreground border border-border'
+    default: return 'bg-muted text-muted-foreground border border-border dark:border-gray-800'
   }
 })
 
