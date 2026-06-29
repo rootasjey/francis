@@ -14,6 +14,11 @@
               class="flex-initial"
               navigation-menu="ghost-white"
               navigation-menu-link="ghost-white"
+              :una="{
+                navigationMenuTrigger: 'hover:bg-[#6B7280]/15',
+                navigationMenuLink: 'hover:bg-[#6B7280]/15',
+                navigationMenuContentItem: 'hover:bg-[#6B7280]/15',
+              }"
             />
           </nav>
         </div>
