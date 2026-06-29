@@ -1,3 +1,5 @@
+![Francis API](/public/images/francis-home-dark.png)
+
 # Francis
 
 Language detection API powered by [franc-all](https://github.com/wooorm/franc) on Cloudflare Workers. Built for [Verbatims](https://github.com/rootasjey/verbatims).
@@ -125,9 +127,9 @@ bunx wrangler --cwd .output deploy
 # Generate an API key from the admin panel
 ```
 
-## Integration with Verbatims
+## Integration with your app
 
-On the Verbatims side, add a server endpoint:
+In your Nuxt app, add a server endpoint:
 
 ```typescript
 // server/api/detect-language.post.ts
@@ -135,7 +137,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody<{ text: string }>(event)
   const runtimeConfig = useRuntimeConfig()
 
-  const response = await $fetch('https://francis.verbatims.cc/api/v1/detect', {
+  const response = await $fetch('https://francis.example.com/api/v1/detect', {
     method: 'POST',
     headers: { 'x-api-key': runtimeConfig.francisApiKey },
     body: { text: body.text, minLength: 12, only: ['eng','fra','lat','spa','deu','ita','por','rus','jpn','cmn','zho'] },
@@ -152,4 +154,4 @@ runtimeConfig: {
 }
 ```
 
-And in `useQuoteForm.ts`, replace `import('franc-min')` with `$fetch('/api/detect-language', { body: { text } })`.
+Then replace any inline franc detection (e.g. `import('franc-min')`) with a `$fetch` call to your new endpoint.
