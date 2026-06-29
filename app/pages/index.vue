@@ -1,7 +1,7 @@
 <template>
-  <section class="space-y-16 border-x max-w-6xl mx-auto px-12 py-12">
+  <section class="space-y-16 border-x max-w-6xl mx-auto py-12">
     <!-- Hero -->
-    <div class="space-y-8">
+    <div class="space-y-8 max-w-5xl mx-auto">
       <!-- Headline -->
       <h1 class="max-w-4xl font-sans text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-[5rem]">
         Detect <span class="text-accent">language</span> in <span class="group relative inline-block"><span class="relative z-10">milliseconds</span><span class="absolute right-0 top-0 translate-x-2 -translate-y-1.5 opacity-0 group-hover:opacity-50 dark:group-hover:opacity-60 group-hover:block transition-all duration-500 delay-75 pointer-events-none select-none"><span class="text-blue-500">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-3.5 opacity-0 group-hover:opacity-40 dark:group-hover:opacity-50 transition-all duration-500 delay-150 pointer-events-none select-none"><span class="text-rose-400">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-5 -translate-y-1 opacity-0 group-hover:opacity-30 dark:group-hover:opacity-40 transition-all duration-500 delay-225 pointer-events-none select-none"><span class="text-accent">milliseconds</span></span></span>. The edge-native API
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Product showcase -->
-    <div class="animate-slide-up overflow-hidden rounded-2 border border-border dark:border-gray-800 bg-card p-8 md:p-12 lg:p-16">
+    <div class="animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto overflow-hidden rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-800">
       <!-- Meta line -->
       <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border dark:border-gray-800 pb-4 font-mono text-[11px] text-muted-foreground/60">
         <span class="flex items-center gap-1.5">
@@ -101,39 +101,170 @@
     </div>
 
     <!-- Features -->
-    <div class="grid gap-6 md:grid-cols-3">
-      <div
-        v-for="feature in features"
-        :key="feature.title"
-        class="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-md"
-      >
-        <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
-          <span :class="feature.icon" class="text-base text-foreground" />
+    <div class="space-y-12 max-w-5xl mx-auto">
+      <div class="max-w-2xl">
+        <h2 class="font-sans text-4xl font-bold tracking-tight md:text-5xl">
+          Built for developers.<br/>
+          <span class="text-accent">Purpose-built</span> for the edge.
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
+          Every feature is designed to make language detection fast, private, and painless to integrate.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <div
+          v-for="(feature, i) in features"
+          :key="feature.title"
+          class="group grid md:grid-cols-[5rem_3rem_1fr] items-start gap-4 md:gap-0"
+        >
+          <span class="hidden font-mono text-4xl font-bold tracking-tight text-foreground/5 transition-colors duration-300 md:block md:text-right group-hover:text-accent/15">
+            {{ String(feature.number).padStart(2, '0') }}
+          </span>
+          <div class="hidden md:flex justify-center h-full pt-3">
+            <div class="w-px h-16 bg-gradient-to-b from-border to-transparent transition-colors duration-300 group-hover:from-accent/40" />
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted transition-colors duration-300 group-hover:bg-accent/10">
+                <span :class="feature.icon" class="text-base text-foreground/60 transition-colors duration-300 group-hover:text-accent" />
+              </span>
+              <h3 class="text-xl font-semibold tracking-tight">{{ feature.title }}</h3>
+            </div>
+            <p class="max-w-lg text-sm leading-relaxed text-muted-foreground">{{ feature.description }}</p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold tracking-tight">{{ feature.title }}</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{{ feature.description }}</p>
       </div>
     </div>
 
     <!-- API Quickstart -->
-    <div id="api" class="space-y-8 rounded-2xl border border-border bg-card p-8 shadow-sm lg:p-10">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight">API quickstart</h2>
-          <p class="mt-1 text-sm text-muted-foreground">One endpoint, one header, any language.</p>
+    <div id="api" class="border-y border-gray-300">
+      <div class="py-16 max-w-5xl mx-auto flex justify-between gap-8">
+        <div class="max-w-5xl mx-auto">
+          <div class="max-w-2xl flex flex-wrap items-center justify-between gap-4 mb-8">
+            <div>
+              <h2 class="font-sans text-5xl font-bold tracking-tight">API quickstart</h2>
+              <p class="mt-1 text-sm text-muted-foreground">One endpoint, one header, any language.</p>
+            </div>
+            <span class="rounded-full border border-border bg-background px-3.5 py-1.5 text-[11px] font-mono text-muted-foreground">francis.verbatims.cc</span>
+          </div>
+
+          <!-- Compact inline demo -->
+          <div class="rounded-1 max-w-2xl border border-border bg-gray-200 dark:bg-gray-800 overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-border">
+              <span class="text-xs text-muted-foreground/50">Terminal</span>
+              <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
+            </div>
+            <div class="px-4 py-4 font-mono text-xs leading-loose">
+              <div class="flex items-start gap-2 opacity-70">
+                <span class="text-muted-foreground/30 shrink-0">$</span>
+                <div>
+                  <span class="text-muted-foreground/40">curl -X POST</span>
+                  <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span>
+                  <span class="text-muted-foreground/40">\</span><br/>
+                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-H</span>
+                  <span class="text-accent">'x-api-key: fcs_****'</span>
+                  <span class="text-muted-foreground/40">\</span><br/>
+                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
+                  <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world"}'</span>
+                </div>
+              </div>
+              <div class="mt-3 flex items-start gap-2">
+                <span class="text-emerald-500 shrink-0">&rarr;</span>
+                <div class="rounded-md bg-foreground px-3 py-2 w-full">
+                  <span class="text-background/40">{ </span><span class="text-background/60">"language"</span><span class="text-background/40">: </span><span class="text-emerald-400">"eng"</span><span class="text-background/40">, </span><span class="text-background/60">"confidence"</span><span class="text-background/40">: </span><span class="text-background/80">0.97</span><span class="text-background/40">, </span><span class="text-background/60">"alternatives"</span><span class="text-background/40">: [</span><span class="text-background/60">"spa"</span><span class="text-background/40">, </span><span class="text-background/60">"fra"</span><span class="text-background/40">] }</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 mb-6 max-w-2xl flex flex-wrap justify-center gap-2">
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
+              <span class="i-lucide-globe h-3 w-3" />
+              180+ languages
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
+              <span class="i-lucide-book-open h-3 w-3" />
+              ISO 639-3
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
+              <span class="i-lucide-zap h-3 w-3" />
+              Edge native
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
+              <span class="i-lucide-key h-3 w-3" />
+              API key auth
+            </span>
+          </div>
         </div>
-        <span class="rounded-full border border-border bg-muted px-4 py-1.5 text-xs text-muted-foreground">francis.verbatims.cc</span>
+
+        <div class="max-w-sm mx-auto">
+          <div class="ml-8">
+            <h3 class="text-wrap font-sans text-8xl font-600 text-orange-300 tracking-tight">Start today for free</h3>
+            <p class="text-sm text-muted-foreground/60 mt-2">No credit card required</p>
+            <NLink to="/signup" class="mt-4 inline-flex items-center gap-1.5 rounded-full border border-border bg-gray-300 px-3 py-1.5 text-[12px] font-600 text-muted-foreground hover:bg-gray-400 hover:scale-104 active:bg-gray-50 active:scale-99 transition-[transform]">
+              Get started
+              <span class="i-lucide-arrow-right h-3 w-3" />
+            </NLink>
+          </div>
+        </div>
       </div>
-      <div class="grid gap-6 lg:grid-cols-2">
-        <div class="space-y-3">
-          <p class="text-xs text-muted-foreground uppercase">Headers</p>
-          <pre class="rounded-xl bg-muted/60 p-4 font-mono text-xs leading-relaxed text-foreground"><span class="text-muted-foreground/40">x-api-key:</span> fcs_************************</pre>
-        </div>
-        <div class="space-y-3">
-          <p class="text-xs text-muted-foreground uppercase">Request</p>
-          <pre class="rounded-xl bg-muted/60 p-4 font-mono text-xs leading-relaxed text-foreground"><span class="text-muted-foreground/40">POST /api/v1/detect</span>
-{ <span class="text-muted-foreground/40">"text"</span>: <span class="text-emerald-600 dark:text-emerald-400">"Hello from Verbatims"</span> }</pre>
-        </div>
+    </div>
+
+    <!-- Language grid -->
+    <div class=" max-w-5xl mx-auto space-y-4">
+      <div class="flex items-center justify-between">
+        <p class="text-xs text-muted-foreground/60">Supported languages <span class="font-semibold text-foreground/80">180+</span></p>
+        <p class="text-[10px] text-muted-foreground/40">ISO 639-3 codes</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <span v-for="lang in languages" :key="lang.code"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-[11px] text-foreground/80 transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent">
+          <span class="text-sm leading-none">{{ lang.flag }}</span>
+          <span class="font-medium">{{ lang.code }}</span>
+          <span class="text-muted-foreground/50">·</span>
+          <span class="text-muted-foreground/70">{{ lang.name }}</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-border bg-transparent px-2.5 py-1.5 text-[11px] text-muted-foreground/50">
+          + many more
+        </span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="max-w-5xl mx-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
+      <div class="bg-muted/50 p-6 md:p-8">
+        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">180+</p>
+        <p class="mt-1 text-xs text-muted-foreground">Languages supported</p>
+      </div>
+      <div class="bg-muted/50 p-6 md:p-8">
+        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">&lt;50ms</p>
+        <p class="mt-1 text-xs text-muted-foreground">Average response time</p>
+      </div>
+      <div class="bg-muted/50 p-6 md:p-8">
+        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">0</p>
+        <p class="mt-1 text-xs text-muted-foreground">Data retention</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="max-w-5xl mx-auto rounded-2 bg-foreground p-8 md:p-12">
+      <div class="max-w-xl mx-auto text-center space-y-6">
+        <h2 class="font-sans text-3xl font-bold tracking-tight text-background md:text-4xl">
+          Start detecting language<br/>
+          in <span class="text-accent">milliseconds</span>.
+        </h2>
+        <p class="text-sm text-background/60 leading-relaxed">
+          Get a free API key and integrate language detection into your app in minutes.
+          No credit card required.
+        </p>
+        <NuxtLink
+          to="/dashboard"
+          class="inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 font-semibold text-foreground transition-all duration-200 hover:brightness-90"
+        >
+          Get Started
+          <span class="i-lucide-arrow-right text-sm" />
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -354,21 +485,47 @@ onMounted(async () => {
   setTimeout(startTypewriter, 300)
 })
 
+const languages = [
+  { flag: '🇬🇧', code: 'eng', name: 'English' },
+  { flag: '🇫🇷', code: 'fra', name: 'French' },
+  { flag: '🇪🇸', code: 'spa', name: 'Spanish' },
+  { flag: '🇩🇪', code: 'deu', name: 'German' },
+  { flag: '🇮🇹', code: 'ita', name: 'Italian' },
+  { flag: '🇵🇹', code: 'por', name: 'Portuguese' },
+  { flag: '🇷🇺', code: 'rus', name: 'Russian' },
+  { flag: '🇯🇵', code: 'jpn', name: 'Japanese' },
+  { flag: '🇨🇳', code: 'cmn', name: 'Mandarin' },
+  { flag: '🇰🇷', code: 'kor', name: 'Korean' },
+  { flag: '🇦🇪', code: 'ara', name: 'Arabic' },
+  { flag: '🇮🇳', code: 'hin', name: 'Hindi' },
+  { flag: '🇳🇱', code: 'nld', name: 'Dutch' },
+  { flag: '🇸🇪', code: 'swe', name: 'Swedish' },
+  { flag: '🇵🇱', code: 'pol', name: 'Polish' },
+  { flag: '🇹🇷', code: 'tur', name: 'Turkish' },
+  { flag: '🇻🇳', code: 'vie', name: 'Vietnamese' },
+  { flag: '🇹🇭', code: 'tha', name: 'Thai' },
+  { flag: '🇮🇩', code: 'ind', name: 'Indonesian' },
+  { flag: '🇬🇷', code: 'ell', name: 'Greek' },
+]
+
 const features = [
   {
     title: 'Key management',
     description: 'Generate, revoke, and rotate API keys in one place. Built for multi-project usage.',
     icon: 'i-lucide-key-round',
+    number: 1,
   },
   {
     title: 'Usage controls',
     description: 'Daily limits, usage summaries, and pricing-ready tables for future billing integrations.',
     icon: 'i-lucide-gauge',
+    number: 2,
   },
   {
     title: 'Workers performance',
     description: 'HTTP-first endpoints optimized for Worker-to-Worker calls and edge latency.',
     icon: 'i-lucide-zap',
+    number: 3,
   },
 ]
 </script>
