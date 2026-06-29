@@ -25,9 +25,9 @@
     </div>
 
     <!-- Product showcase -->
-    <div class="animate-slide-up overflow-hidden rounded-2 border border-border bg-[#eee] p-8 md:p-12 lg:p-16">
+    <div class="animate-slide-up overflow-hidden rounded-2 border border-border dark:border-gray-800 bg-card p-8 md:p-12 lg:p-16">
       <!-- Meta line -->
-      <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border pb-4 font-mono text-[11px] text-muted-foreground/60">
+      <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border dark:border-gray-800 pb-4 font-mono text-[11px] text-muted-foreground/60">
         <span class="flex items-center gap-1.5">
           <span class="i-lucide-calendar h-3 w-3" />
           {{ feed.date }}
@@ -56,10 +56,10 @@
 
       <!-- Loading skeleton -->
       <div v-if="isLoading" class="space-y-3">
-        <div class="h-5 w-3/4 animate-pulse rounded bg-muted" />
-        <div class="h-5 w-2/3 animate-pulse rounded bg-muted" />
-        <div class="h-5 w-1/2 animate-pulse rounded bg-muted" />
-        <div class="h-5 w-3/5 animate-pulse rounded bg-muted" />
+        <div class="h-5 w-3/4 animate-pulse rounded bg-muted dark:bg-gray-700" />
+        <div class="h-5 w-2/3 animate-pulse rounded bg-muted dark:bg-gray-700" />
+        <div class="h-5 w-1/2 animate-pulse rounded bg-muted dark:bg-gray-700" />
+        <div class="h-5 w-3/5 animate-pulse rounded bg-muted dark:bg-gray-700" />
       </div>
 
       <!-- Paragraph -->
@@ -80,7 +80,7 @@
               class="ml-0.5 inline-block h-[1em] w-[2px] -mb-0.5 bg-foreground animate-cursor align-middle"
             />
           </span>
-          <span class="invisible absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg border border-border bg-card p-2 text-xs shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 z-10">
+          <span class="invisible absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-2 border border-border dark:border-gray-800 bg-card p-2 text-xs shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 z-10">
             <span class="flex items-center gap-2">
               <span class="text-base leading-none">{{ activeVariant(sentence, i).flag }}</span>
               <span class="font-medium text-foreground/90">{{ activeVariant(sentence, i).name }}</span>
@@ -91,7 +91,7 @@
         </span>
       </p>
 
-      <div class="mt-10 flex items-center justify-between border-t border-border pt-6">
+      <div class="mt-10 flex items-center justify-between border-t border-border dark:border-gray-900 pt-6">
         <p class="text-[10px] text-muted-foreground/50">Multilingual text &middot; {{ sentences.length }} sentences &middot; {{ sentences.length }} languages</p>
         <div class="flex items-center gap-2 text-[10px] text-muted-foreground/40">
           <span class="i-lucide-mouse-pointer-2 h-3 w-3" />
@@ -177,6 +177,7 @@ const LANG_MAP: Record<string, { flag: string, name: string, code: string }> = {
   es: { flag: '🇪🇸', name: 'Spanish', code: 'spa' },
   de: { flag: '🇩🇪', name: 'German', code: 'deu' },
   it: { flag: '🇮🇹', name: 'Italian', code: 'ita' },
+  ja: { flag: '🇯🇵', name: 'Japanese', code: 'jpn' },
 }
 
 const FALLBACK_SENTENCES: MultiLangSentence[] = [

@@ -20,6 +20,10 @@ interface FeedResponse {
     text: string
     year: number
   } | null
+  wikipediaJa: {
+    text: string
+    year: number
+  } | null
   quote: {
     text: string
     author: string
@@ -32,7 +36,7 @@ interface FeedResponse {
   } | null
   segments: Array<{
     text: string
-    lang: 'en' | 'fr' | 'es' | 'de' | 'it' | 'jp' | 'cn' | 'ru' | 'pt'
+    lang: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ja' | 'cn' | 'ru' | 'pt'
     translations: { fr?: string, es?: string, de?: string, it?: string }
   }>
 }
@@ -91,22 +95,49 @@ async function getHackerNews(): Promise<FeedResponse['hackerNews']> {
   }
 }
 
-async function getWikipedia(): Promise<FeedResponse['wikipedia']> {
+const JA_FALLBACKS: { text: string, year: number }[] = [
+  { text: '日本とアメリカ合衆国が日米安全保障条約を締結。', year: 1960 },
+  { text: '東京スカイツリーが開業。', year: 2012 },
+  { text: 'サッカー日本代表がワールドカップ初出場。', year: 1998 },
+  { text: 'Windows 95が発売。', year: 1995 },
+  { text: '初の日本語入力システム「Wnn」が登場。', year: 1987 },
+  { text: '日本初の原子力発電所が運転開始。', year: 1966 },
+  { text: '人類が月面に立つ。', year: 1969 },
+  { text: '国際宇宙ステーションの建設が始まる。', year: 1998 },
+]
+
+async function getWikipedia(lang: string): Promise<{ text: string, year: number } | null> {
   try {
     const now = new Date()
     const month = now.getUTCMonth() + 1
     const day = now.getUTCDate()
-    const res = await fetch(
-      `https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}`,
-      { headers: { 'User-Agent': 'francis-api/1.0' } },
-    )
-    if (!res.ok) return null
+    const url = `https://${lang}.wikipedia.org/api/rest_v1/feed/onthisday/events/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}`
+    const res = await fetch(url, { headers: { 'User-Agent': 'francis-api/1.0' } })
+    if (!res.ok) {
+      console.warn(`[feed] Wikipedia ${lang} responded ${res.status}`)
+      if (lang === 'ja') {
+        const fallback = JA_FALLBACKS[Math.floor(Math.random() * JA_FALLBACKS.length)]!
+        return { text: fallback.text, year: fallback.year }
+      }
+      return null
+    }
     const data = (await res.json()) as { events?: Array<{ year: number, text: string }> }
     const events = data.events
-    if (!events || events.length === 0) return null
+    if (!events || events.length === 0) {
+      if (lang === 'ja') {
+        const fallback = JA_FALLBACKS[Math.floor(Math.random() * JA_FALLBACKS.length)]!
+        return { text: fallback.text, year: fallback.year }
+      }
+      return null
+    }
     const event = events[Math.floor(Math.random() * events.length)]!
     return { text: event.text, year: event.year }
-  } catch {
+  } catch (err) {
+    console.warn(`[feed] Wikipedia ${lang} fetch failed:`, err)
+    if (lang === 'ja') {
+      const fallback = JA_FALLBACKS[Math.floor(Math.random() * JA_FALLBACKS.length)]!
+      return { text: fallback.text, year: fallback.year }
+    }
     return null
   }
 }
@@ -217,10 +248,11 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     hour12: false,
   })
 
-  const [weather, hackerNews, wikipedia, quote, exchangeRate] = await Promise.all([
+  const [weather, hackerNews, wikipedia, wikipediaJa, quote, exchangeRate] = await Promise.all([
     getWeatherAndSun(),
     getHackerNews(),
-    getWikipedia(),
+    getWikipedia('en'),
+    getWikipedia('ja'),
     getQuote(),
     getExchangeRate(),
   ])
@@ -255,6 +287,14 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     segments.push({
       text: `On this day in ${wikipedia.year}, ${wikipedia.text}`,
       lang: 'en',
+      translations: {},
+    })
+  }
+
+  if (wikipediaJa) {
+    segments.push({
+      text: `${wikipediaJa.year}年、${wikipediaJa.text}`,
+      lang: 'ja',
       translations: {},
     })
   }
@@ -304,6 +344,7 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     sun: weather.sun,
     hackerNews,
     wikipedia,
+    wikipediaJa,
     quote,
     exchangeRate,
     segments,
