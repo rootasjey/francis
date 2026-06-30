@@ -128,6 +128,6 @@ const navItems = [
   },
   { label: 'Pricing', to: '#' },
   { label: 'Purpose', to: '/purpose' },
-  { label: 'Company', to: '#' },
+  { label: 'About', to: '/about' },
 ]
 </script>
