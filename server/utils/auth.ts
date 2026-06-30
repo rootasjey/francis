@@ -49,7 +49,7 @@ export async function requireApiKey(event: H3Event) {
   return key
 }
 
-export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerDay: number) {
+export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerDay: number, weight = 1) {
   const db = getDb(event)
   const day = new Date().toISOString().slice(0, 10)
 
@@ -71,12 +71,12 @@ export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerD
       id: crypto.randomUUID(),
       apiKeyId,
       day,
-      requests: 1,
+      requests: weight,
     })
     .onConflictDoUpdate({
       target: [usageDaily.apiKeyId, usageDaily.day],
       set: {
-        requests: sql`${usageDaily.requests} + 1`,
+        requests: sql`${usageDaily.requests} + ${weight}`,
       },
     })
 

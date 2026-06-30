@@ -58,7 +58,7 @@
 
       <div v-else class="grid gap-px rounded-1 border border-border dark:border-gray-800 overflow-hidden bg-border dark:bg-gray-800">
         <div v-for="lang in filtered" :key="lang.code"
-          class="grid grid-cols-[auto_1fr_auto] items-center bg-card dark:bg-gray-950 px-4 py-2.5 transition-colors duration-150 hover:bg-accent/5"
+          class="grid grid-cols-[auto_1fr_auto] items-center bg-gray-100 dark:bg-gray-950 px-4 py-2.5 transition-colors duration-150 hover:bg-accent/5"
           :class="lang.scripts.length > 1 ? 'gap-2 md:gap-6' : 'gap-3'">
           <code class="font-mono text-[11px] text-muted-foreground/60 w-10 shrink-0">{{ lang.code }}</code>
           <span class="text-sm font-500 truncate">{{ lang.name }}</span>

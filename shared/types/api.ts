@@ -61,3 +61,20 @@ export type UsageResponse = {
   apiKeyId: string
   items: UsageSummary[]
 }
+
+export type TranslateRequest = {
+  text: string | string[]
+  target: string | string[]
+  source?: string
+}
+
+export type TranslateResult = {
+  detectedSource?: string
+  target: string
+  text: string
+}
+
+export type TranslateResponse = {
+  translations: TranslateResult[]
+  model: string
+}

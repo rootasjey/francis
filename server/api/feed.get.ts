@@ -331,7 +331,7 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     const translations = await translateBatch(texts, apiKey, primaryModel, fallbackModels)
     if (translations) {
       segments.forEach((seg, i) => {
-        seg.translations = translations[i] || {}
+        seg.translations = translations[i] || { fr: '', es: '', de: '', it: '' }
       })
     }
   }

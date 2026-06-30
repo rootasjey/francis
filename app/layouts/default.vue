@@ -90,24 +90,19 @@ const navItems = [
     label: 'Features',
     items: [
       {
-        label: 'Key Management',
-        description: 'Generate, revoke, and rotate API keys in one place.',
-        to: '#features',
-      },
-      {
-        label: 'Usage Controls',
-        description: 'Daily limits, usage summaries, and billing-ready tables.',
-        to: '#features',
-      },
-      {
-        label: 'Workers Performance',
-        description: 'HTTP-first endpoints optimized for edge latency.',
-        to: '#features',
-      },
-      {
         label: 'Language Detection',
         description: '400+ languages detected in milliseconds.',
         to: '/languages',
+      },
+      {
+        label: 'Multi-language Translation',
+        description: 'Translate text into 100+ languages with AI.',
+        to: '/translate',
+      },
+      {
+        label: 'Workers Performance',
+        description: 'Edge-native latency and architecture.',
+        to: '/performance',
       },
     ],
   },
