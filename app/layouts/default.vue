@@ -112,17 +112,17 @@ const navItems = [
       {
         label: 'Quickstart',
         description: 'Get up and running in minutes.',
-        to: '#api',
+        to: '/docs/quickstart',
       },
       {
         label: 'API Reference',
         description: 'Complete endpoint documentation.',
-        to: '#api',
+        to: '/docs/api-reference',
       },
       {
         label: 'Changelog',
         description: 'Latest updates and releases.',
-        to: '#',
+        to: '/changelog',
       },
     ],
   },
