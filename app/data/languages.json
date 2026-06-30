@@ -1,0 +1,2889 @@
+{
+  "total": 411,
+  "languages": [
+    {
+      "code": "abk",
+      "name": "Abkhazian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ace",
+      "name": "Achinese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "acu",
+      "name": "Achuar-Shiwiar",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ada",
+      "name": "Adangme",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ady",
+      "name": "Adyghe",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "aar",
+      "name": "Afar",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "afr",
+      "name": "Afrikaans",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "agr",
+      "name": "Aguaruna",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ajg",
+      "name": "Aja",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "amc",
+      "name": "Amahuaca",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "amr",
+      "name": "Amarakaeri",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qva",
+      "name": "Ambo-Pasco Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "amh",
+      "name": "Amharic",
+      "scripts": [
+        "Ethiopic"
+      ]
+    },
+    {
+      "code": "ami",
+      "name": "Amis",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "njo",
+      "name": "Ao Naga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "arl",
+      "name": "Arabela",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qxu",
+      "name": "Arequipa-La Unión Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hye",
+      "name": "Armenian",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "cni",
+      "name": "Asháninka",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "aii",
+      "name": "Assyrian Neo-Aramaic",
+      "scripts": [
+        "Syriac"
+      ]
+    },
+    {
+      "code": "ast",
+      "name": "Asturian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kwi",
+      "name": "Awa-Cuaiquer",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "quy",
+      "name": "Ayacucho Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bba",
+      "name": "Baatonum",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ban",
+      "name": "Balinese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "rmn",
+      "name": "Balkan Romani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bam",
+      "name": "Bambara",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bax",
+      "name": "Bamun",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bci",
+      "name": "Baoulé",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bfa",
+      "name": "Bari",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "eus",
+      "name": "Basque",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bel",
+      "name": "Belarusian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "bem",
+      "name": "Bemba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ben",
+      "name": "Bengali",
+      "scripts": [
+        "Bengali"
+      ]
+    },
+    {
+      "code": "bho",
+      "name": "Bhojpuri",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "bin",
+      "name": "Bini",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bis",
+      "name": "Bislama",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "boa",
+      "name": "Bora",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bos",
+      "name": "Bosnian",
+      "scripts": [
+        "Latin",
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "nku",
+      "name": "Bouna Kulango",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bre",
+      "name": "Breton",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bug",
+      "name": "Buginese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bul",
+      "name": "Bulgarian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "bum",
+      "name": "Bulu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mya",
+      "name": "Burmese",
+      "scripts": [
+        "Myanmar"
+      ]
+    },
+    {
+      "code": "buc",
+      "name": "Bushi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qvc",
+      "name": "Cajamarca Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cbu",
+      "name": "Candoshi-Shapra",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cot",
+      "name": "Caquinte",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hns",
+      "name": "Caribbean Hindustani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cbr",
+      "name": "Cashibo-Cacataibo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cbs",
+      "name": "Cashinahua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cat",
+      "name": "Catalan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ceb",
+      "name": "Cebuano",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tzm",
+      "name": "Central Atlas Tamazight",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ayr",
+      "name": "Central Aymara",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "bcl",
+      "name": "Central Bikol",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "knc",
+      "name": "Central Kanuri",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ckb",
+      "name": "Central Kurdish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "maz",
+      "name": "Central Mazahua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nhn",
+      "name": "Central Nahuatl",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cbi",
+      "name": "Chachi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cha",
+      "name": "Chamorro",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cbt",
+      "name": "Chayahuita",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "chr",
+      "name": "Cherokee",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "cic",
+      "name": "Chickasaw",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "csa",
+      "name": "Chiltepec Chinantec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qug",
+      "name": "Chimborazo Highland Quichua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cjk",
+      "name": "Chokwe",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "chk",
+      "name": "Chuukese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "chv",
+      "name": "Chuvash",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "cof",
+      "name": "Colorado",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cos",
+      "name": "Corsican",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "crh",
+      "name": "Crimean Tatar",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hrv",
+      "name": "Croatian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "quz",
+      "name": "Cusco Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ces",
+      "name": "Czech",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dag",
+      "name": "Dagbani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dan",
+      "name": "Danish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "prs",
+      "name": "Dari",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "ddn",
+      "name": "Dendi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "div",
+      "name": "Dhivehi",
+      "scripts": [
+        "Thaana"
+      ]
+    },
+    {
+      "code": "tbz",
+      "name": "Ditammari",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "duu",
+      "name": "Drung",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nld",
+      "name": "Dutch",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dyu",
+      "name": "Dyula",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dzo",
+      "name": "Dzongkha",
+      "scripts": [
+        "Tibetan"
+      ]
+    },
+    {
+      "code": "ike",
+      "name": "Eastern Canadian Inuktitut",
+      "scripts": [
+        "Canadian_Aboriginal"
+      ]
+    },
+    {
+      "code": "emk",
+      "name": "Eastern Maninkakan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ydd",
+      "name": "Eastern Yiddish",
+      "scripts": [
+        "Hebrew"
+      ]
+    },
+    {
+      "code": "eng",
+      "name": "English",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ese",
+      "name": "Ese Ejja",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "epo",
+      "name": "Esperanto",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "eve",
+      "name": "Even",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "evn",
+      "name": "Evenki",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ewe",
+      "name": "Ewe",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cfm",
+      "name": "Falam Chin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fat",
+      "name": "Fanti",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fao",
+      "name": "Faroese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fij",
+      "name": "Fijian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fin",
+      "name": "Finnish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fon",
+      "name": "Fon",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fra",
+      "name": "French",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fur",
+      "name": "Friulian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fvr",
+      "name": "Fur",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gaa",
+      "name": "Ga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gag",
+      "name": "Gagauz",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "glg",
+      "name": "Galician",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lug",
+      "name": "Ganda",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cab",
+      "name": "Garifuna",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gej",
+      "name": "Gen",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kat",
+      "name": "Georgian",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "deu",
+      "name": "German",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "niv",
+      "name": "Gilyak",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "gjn",
+      "name": "Gonja",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gyr",
+      "name": "Guarayu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ztu",
+      "name": "Güilá Zapotec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gkp",
+      "name": "Guinea Kpelle",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "guj",
+      "name": "Gujarati",
+      "scripts": [
+        "Gujarati"
+      ]
+    },
+    {
+      "code": "guk",
+      "name": "Gumuz",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hat",
+      "name": "Haitian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cnh",
+      "name": "Hakha Chin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "khk",
+      "name": "Halh Mongolian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "hni",
+      "name": "Hani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hau",
+      "name": "Hausa",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "haw",
+      "name": "Hawaiian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "heb",
+      "name": "Hebrew",
+      "scripts": [
+        "Hebrew"
+      ]
+    },
+    {
+      "code": "hil",
+      "name": "Hiligaynon",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hin",
+      "name": "Hindi",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "hnj",
+      "name": "Hmong Njua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qvh",
+      "name": "Huamalíes-Dos de Mayo Huánuco Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hus",
+      "name": "Huastec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qwh",
+      "name": "Huaylas Ancash Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hun",
+      "name": "Hungarian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ibb",
+      "name": "Ibibio",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "isl",
+      "name": "Icelandic",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ido",
+      "name": "Ido",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "idu",
+      "name": "Idoma",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ibo",
+      "name": "Igbo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ilo",
+      "name": "Iloko",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ind",
+      "name": "Indonesian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ina",
+      "name": "Interlingua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pes",
+      "name": "Iranian Persian",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "gle",
+      "name": "Irish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ita",
+      "name": "Italian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mzi",
+      "name": "Ixcatlán Mazatec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "jpn",
+      "name": "Japanese",
+      "scripts": [
+        "Japanese"
+      ]
+    },
+    {
+      "code": "jav",
+      "name": "Javanese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dyo",
+      "name": "Jola-Fonyi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "quc",
+      "name": "K'iche'",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kbd",
+      "name": "Kabardian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "kbp",
+      "name": "Kabiyè",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kea",
+      "name": "Kabuverdianu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kbr",
+      "name": "Kafa",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kal",
+      "name": "Kalaallisut",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kan",
+      "name": "Kannada",
+      "scripts": [
+        "Kannada"
+      ]
+    },
+    {
+      "code": "kqn",
+      "name": "Kaonde",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cak",
+      "name": "Kaqchikel",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kaa",
+      "name": "Kara-Kalpak",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "krl",
+      "name": "Karelian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "xsm",
+      "name": "Kasem",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kaz",
+      "name": "Kazakh",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "kek",
+      "name": "Kekchí",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kjh",
+      "name": "Khakas",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "kha",
+      "name": "Khasi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "khm",
+      "name": "Khmer",
+      "scripts": [
+        "Khmer"
+      ]
+    },
+    {
+      "code": "kkh",
+      "name": "Khün",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "kmb",
+      "name": "Kimbundu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kin",
+      "name": "Kinyarwanda",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kir",
+      "name": "Kirghiz",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ktu",
+      "name": "Kituba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "koi",
+      "name": "Komi-Permyak",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "koo",
+      "name": "Konzo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kng",
+      "name": "Koongo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kor",
+      "name": "Korean",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "kri",
+      "name": "Krio",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fkv",
+      "name": "Kven Finnish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lld",
+      "name": "Ladin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lad",
+      "name": "Ladino",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lns",
+      "name": "Lamnso'",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lao",
+      "name": "Lao",
+      "scripts": [
+        "Lao"
+      ]
+    },
+    {
+      "code": "lat",
+      "name": "Latin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lij",
+      "name": "Ligurian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lin",
+      "name": "Lingala",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lit",
+      "name": "Lithuanian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lob",
+      "name": "Lobi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "src",
+      "name": "Logudorese Sardinian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nds",
+      "name": "Low German",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "loz",
+      "name": "Lozi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lua",
+      "name": "Luba-Lulua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lun",
+      "name": "Lunda",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lus",
+      "name": "Lushai",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lue",
+      "name": "Luvale",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ltz",
+      "name": "Luxembourgish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "rup",
+      "name": "Macedo-Romanian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mkd",
+      "name": "Macedonian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "mad",
+      "name": "Madurese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mag",
+      "name": "Magahi",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "mai",
+      "name": "Maithili",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "vmw",
+      "name": "Makhuwa",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kde",
+      "name": "Makonde",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zlm",
+      "name": "Malay",
+      "scripts": [
+        "Latin",
+        "Arabic"
+      ]
+    },
+    {
+      "code": "mal",
+      "name": "Malayalam",
+      "scripts": [
+        "Malayalam"
+      ]
+    },
+    {
+      "code": "mlt",
+      "name": "Maltese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mam",
+      "name": "Mam",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cmn",
+      "name": "Mandarin Chinese",
+      "scripts": [
+        "Sinitic"
+      ]
+    },
+    {
+      "code": "glv",
+      "name": "Manx",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "swb",
+      "name": "Maore Comorian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mri",
+      "name": "Maori",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "arn",
+      "name": "Mapudungun",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mar",
+      "name": "Marathi",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "qvm",
+      "name": "Margos-Yarowilca-Lauricocha Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mah",
+      "name": "Marshallese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mcf",
+      "name": "Matsés",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hlt",
+      "name": "Matu Chin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "men",
+      "name": "Mende",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mxv",
+      "name": "Metlatónoc Mixtec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ote",
+      "name": "Mezquital Otomi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mic",
+      "name": "Mi'kmaq",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zam",
+      "name": "Miahuatlán Zapotec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "min",
+      "name": "Minangkabau",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "miq",
+      "name": "Mískito",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mfq",
+      "name": "Moba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ell",
+      "name": "Modern Greek",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "mnw",
+      "name": "Mon",
+      "scripts": [
+        "Myanmar"
+      ]
+    },
+    {
+      "code": "cnr",
+      "name": "Montenegrin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mor",
+      "name": "Moro",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mos",
+      "name": "Mossi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mxi",
+      "name": "Mozarabic",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "huu",
+      "name": "Murui Huitoto",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gld",
+      "name": "Nanai",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "nav",
+      "name": "Navajo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ndo",
+      "name": "Ndonga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yrk",
+      "name": "Nenets",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "npi",
+      "name": "Nepali",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "nio",
+      "name": "Nganasan",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "zdj",
+      "name": "Ngazidja Comorian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fuv",
+      "name": "Nigerian Fulfulde",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pcm",
+      "name": "Nigerian Pidgin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "niu",
+      "name": "Niuean",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "not",
+      "name": "Nomatsiguenga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "azj",
+      "name": "North Azerbaijani",
+      "scripts": [
+        "Latin",
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "qvn",
+      "name": "North Junín Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dip",
+      "name": "Northeastern Dinka",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "qxn",
+      "name": "Northern Conchucos Ancash Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "kqs",
+      "name": "Northern Kissi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pbu",
+      "name": "Northern Pashto",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "hea",
+      "name": "Northern Qiandong Miao",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sme",
+      "name": "Northern Sami",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "uzn",
+      "name": "Northern Uzbek",
+      "scripts": [
+        "Latin",
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ykg",
+      "name": "Northern Yukaghir",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ojb",
+      "name": "Northwestern Ojibwa",
+      "scripts": [
+        "Canadian_Aboriginal"
+      ]
+    },
+    {
+      "code": "nob",
+      "name": "Norwegian Bokmål",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nno",
+      "name": "Norwegian Nynorsk",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nym",
+      "name": "Nyamwezi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nya",
+      "name": "Nyanja",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nyn",
+      "name": "Nyankole",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nba",
+      "name": "Nyemba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nzi",
+      "name": "Nzima",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "oci",
+      "name": "Occitan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "chj",
+      "name": "Ojitlán Chinantec",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "oki",
+      "name": "Okiek",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "oaa",
+      "name": "Orok",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "orh",
+      "name": "Oroqen",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "oss",
+      "name": "Ossetian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "lot",
+      "name": "Otuho",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pbb",
+      "name": "Páez",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pau",
+      "name": "Palauan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pam",
+      "name": "Pampanga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pan",
+      "name": "Panjabi",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "top",
+      "name": "Papantla Totonac",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pap",
+      "name": "Papiamento",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gug",
+      "name": "Paraguayan Guaraní",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nso",
+      "name": "Pedi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pcd",
+      "name": "Picard",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cpu",
+      "name": "Pichis Ashéninka",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pis",
+      "name": "Pijin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "piu",
+      "name": "Pintupi-Luritja",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ppl",
+      "name": "Pipil",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "plt",
+      "name": "Plateau Malagasy",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pon",
+      "name": "Pohnpeian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pol",
+      "name": "Polish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "por",
+      "name": "Portuguese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fuf",
+      "name": "Pular",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tsz",
+      "name": "Purepecha",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "que",
+      "name": "Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "rar",
+      "name": "Rarotongan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "rgn",
+      "name": "Romagnol",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ron",
+      "name": "Romanian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "roh",
+      "name": "Romansh",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "run",
+      "name": "Rundi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "rus",
+      "name": "Russian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "slr",
+      "name": "Salar",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "smo",
+      "name": "Samoan",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sag",
+      "name": "Sango",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "san",
+      "name": "Sanskrit",
+      "scripts": [
+        "Devanagari"
+      ]
+    },
+    {
+      "code": "sat",
+      "name": "Santali",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "cri",
+      "name": "Sãotomense",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "skr",
+      "name": "Saraiki",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "sco",
+      "name": "Scots",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gla",
+      "name": "Scottish Gaelic",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sey",
+      "name": "Secoya",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "srp",
+      "name": "Serbian",
+      "scripts": [
+        "Latin",
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "srr",
+      "name": "Serer",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "crs",
+      "name": "Seselwa Creole French",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "shn",
+      "name": "Shan",
+      "scripts": [
+        "Myanmar"
+      ]
+    },
+    {
+      "code": "mcd",
+      "name": "Sharanahua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "shk",
+      "name": "Shilluk",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "shp",
+      "name": "Shipibo-Conibo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sna",
+      "name": "Shona",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cjs",
+      "name": "Shor",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "jiv",
+      "name": "Shuar",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "iii",
+      "name": "Sichuan Yi",
+      "scripts": [
+        "Yi"
+      ]
+    },
+    {
+      "code": "sid",
+      "name": "Sidamo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sin",
+      "name": "Sinhala",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "snn",
+      "name": "Siona",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "slk",
+      "name": "Slovak",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "slv",
+      "name": "Slovenian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "som",
+      "name": "Somali",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "snk",
+      "name": "Soninke",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "azb",
+      "name": "South Azerbaijani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "quh",
+      "name": "South Bolivian Quechua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "nbl",
+      "name": "South Ndebele",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ijs",
+      "name": "Southeast Ijo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "alt",
+      "name": "Southern Altai",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "dga",
+      "name": "Southern Dagaare",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hms",
+      "name": "Southern Qiandong Miao",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sot",
+      "name": "Southern Sotho",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "spa",
+      "name": "Spanish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "arb",
+      "name": "Standard Arabic",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "ekk",
+      "name": "Standard Estonian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lvs",
+      "name": "Standard Latvian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zgh",
+      "name": "Standard Moroccan Tamazight",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "suk",
+      "name": "Sukuma",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sun",
+      "name": "Sundanese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sus",
+      "name": "Susu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "swh",
+      "name": "Swahili",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "csw",
+      "name": "Swampy Cree",
+      "scripts": [
+        "Canadian_Aboriginal"
+      ]
+    },
+    {
+      "code": "ssw",
+      "name": "Swati",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "swe",
+      "name": "Swedish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gsw",
+      "name": "Swiss German",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tgl",
+      "name": "Tagalog",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tah",
+      "name": "Tahitian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "blt",
+      "name": "Tai Dam",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "tgk",
+      "name": "Tajik",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "tly",
+      "name": "Talysh",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tam",
+      "name": "Tamil",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "tat",
+      "name": "Tatar",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ctd",
+      "name": "Tedim Chin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tel",
+      "name": "Telugu",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "kdh",
+      "name": "Tem",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tet",
+      "name": "Tetum",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tdt",
+      "name": "Tetun Dili",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tha",
+      "name": "Thai",
+      "scripts": [
+        "Thai"
+      ]
+    },
+    {
+      "code": "bod",
+      "name": "Tibetan",
+      "scripts": [
+        "Tibetan"
+      ]
+    },
+    {
+      "code": "tca",
+      "name": "Ticuna",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tir",
+      "name": "Tigrinya",
+      "scripts": [
+        "Ethiopic"
+      ]
+    },
+    {
+      "code": "tem",
+      "name": "Timne",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tiv",
+      "name": "Tiv",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tob",
+      "name": "Toba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "toj",
+      "name": "Tojolabal",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tpi",
+      "name": "Tok Pisin",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ton",
+      "name": "Tonga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "toi",
+      "name": "Tonga (Zambia)",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "als",
+      "name": "Tosk Albanian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "mto",
+      "name": "Totontepec Mixe",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tso",
+      "name": "Tsonga",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tsn",
+      "name": "Tswana",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tur",
+      "name": "Turkish",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tuk",
+      "name": "Turkmen",
+      "scripts": [
+        "Latin",
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "tyv",
+      "name": "Tuvinian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "twi",
+      "name": "Twi",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tzh",
+      "name": "Tzeltal",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "tzo",
+      "name": "Tzotzil",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "udu",
+      "name": "Uduk",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "uig",
+      "name": "Uighur",
+      "scripts": [
+        "Latin",
+        "Arabic"
+      ]
+    },
+    {
+      "code": "ukr",
+      "name": "Ukrainian",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "umb",
+      "name": "Umbundu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pov",
+      "name": "Upper Guinea Crioulo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "hsb",
+      "name": "Upper Sorbian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "ura",
+      "name": "Urarina",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "urd",
+      "name": "Urdu",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "vai",
+      "name": "Vai",
+      "scripts": [
+        "Other"
+      ]
+    },
+    {
+      "code": "ven",
+      "name": "Venda",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "vec",
+      "name": "Venetian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "vep",
+      "name": "Veps",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "vie",
+      "name": "Vietnamese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "wwa",
+      "name": "Waama",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "wln",
+      "name": "Walloon",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "auc",
+      "name": "Waorani",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "war",
+      "name": "Waray",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "guc",
+      "name": "Wayuu",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "cym",
+      "name": "Welsh",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "gaz",
+      "name": "West Central Oromo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "lia",
+      "name": "West-Central Limba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "fry",
+      "name": "Western Frisian",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "pnb",
+      "name": "Western Panjabi",
+      "scripts": [
+        "Arabic"
+      ]
+    },
+    {
+      "code": "wol",
+      "name": "Wolof",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "xho",
+      "name": "Xhosa",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yad",
+      "name": "Yagua",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "sah",
+      "name": "Yakut",
+      "scripts": [
+        "Cyrillic"
+      ]
+    },
+    {
+      "code": "ame",
+      "name": "Yanesha'",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "guu",
+      "name": "Yanomamö",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yao",
+      "name": "Yao",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yap",
+      "name": "Yapese",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zyb",
+      "name": "Yongbei Zhuang",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yor",
+      "name": "Yoruba",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "yua",
+      "name": "Yucateco",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zro",
+      "name": "Záparo",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "dje",
+      "name": "Zarma",
+      "scripts": [
+        "Latin"
+      ]
+    },
+    {
+      "code": "zul",
+      "name": "Zulu",
+      "scripts": [
+        "Latin"
+      ]
+    }
+  ]
+}

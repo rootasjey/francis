@@ -106,8 +106,8 @@ const navItems = [
       },
       {
         label: 'Language Detection',
-        description: '180+ languages detected in milliseconds.',
-        to: '#features',
+        description: '400+ languages detected in milliseconds.',
+        to: '/languages',
       },
     ],
   },

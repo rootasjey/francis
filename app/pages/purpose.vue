@@ -32,7 +32,7 @@
         <p class="text-sm text-muted-foreground">Language detection, fast and simple</p>
         <p class="pt-4 font-size-6 leading-relaxed">
           Francis exposes a single, straightforward endpoint that accepts text and returns
-          the detected language along with a confidence score. It supports 180+ languages,
+          the detected language along with a confidence score. It supports 400+ languages,
           responds in milliseconds, and is designed to be integrated directly into the
           Verbatims citation workflow.
         </p>

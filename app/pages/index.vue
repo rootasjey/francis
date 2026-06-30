@@ -203,7 +203,7 @@
           <div class="mt-4 mb-6 max-w-2xl flex flex-wrap justify-center gap-2">
             <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
               <span class="i-lucide-globe h-3 w-3" />
-              180+ languages
+              400+ languages
             </span>
             <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
               <span class="i-lucide-book-open h-3 w-3" />
@@ -236,28 +236,30 @@
     <!-- Language grid -->
     <div class="max-w-5xl mx-auto space-y-4">
       <div class="max-w-5xl mx-auto px-8 flex items-center justify-between">
-        <p class="text-xs text-muted-foreground/60">Supported languages <span class="font-semibold text-foreground/80">180+</span></p>
+        <NuxtLink to="/languages" class="text-xs text-muted-foreground/60 hover:text-foreground transition-colors">Supported languages <span class="font-semibold text-foreground/80">400+</span></NuxtLink>
         <p class="text-[10px] text-muted-foreground/40">ISO 639-3 codes</p>
       </div>
       <div class="flex flex-wrap justify-center gap-2">
-        <span v-for="lang in languages" :key="lang.code"
+        <NuxtLink v-for="lang in languages" :key="lang.code"
+          :to="`/languages?q=${lang.code}`"
           class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background dark:bg-gray-950 px-2.5 py-1.5 text-[11px] text-foreground/80 transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent">
           <span class="text-sm leading-none">{{ lang.flag }}</span>
           <span class="font-medium">{{ lang.code }}</span>
           <span class="text-muted-foreground/50">·</span>
           <span class="text-muted-foreground/70">{{ lang.name }}</span>
-        </span>
-        <span class="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-border bg-transparent px-2.5 py-1.5 text-[11px] text-muted-foreground/50">
-          + many more
-        </span>
+        </NuxtLink>
+        <NuxtLink to="/languages"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-border bg-transparent px-2.5 py-1.5 text-[11px] text-muted-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors duration-200">
+          See all →
+        </NuxtLink>
       </div>
     </div>
 
     <!-- Stats -->
     <div class="max-w-5xl mx-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border dark:bg-gray-800">
       <div class="bg-muted/50 p-6 md:p-8">
-        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">180+</p>
-        <p class="mt-1 text-xs text-muted-foreground">Languages supported</p>
+        <NuxtLink to="/languages" class="font-sans text-3xl font-bold tracking-tight md:text-4xl hover:opacity-70 transition-opacity">400+</NuxtLink>
+        <NuxtLink to="/languages" class="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors block">Languages supported</NuxtLink>
       </div>
       <div class="bg-muted/50 p-6 md:p-8">
         <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">&lt;50ms</p>
