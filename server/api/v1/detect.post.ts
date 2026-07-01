@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
 
   const key = await requireApiKey(event)
 
-  await incrementUsage(event, key.id, key.limitPerDay)
+  await incrementUsage(event, key.id, key.limitPerDay, 1, key.userId)
 
   const db = getDb(event)
   await db

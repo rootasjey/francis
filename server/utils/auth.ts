@@ -49,7 +49,7 @@ export async function requireApiKey(event: H3Event) {
   return key
 }
 
-export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerDay: number, weight = 1) {
+export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerDay: number, weight = 1, userId?: string) {
   const db = getDb(event)
   const day = new Date().toISOString().slice(0, 10)
 
@@ -79,6 +79,27 @@ export async function incrementUsage(event: H3Event, apiKeyId: string, limitPerD
         requests: sql`${usageDaily.requests} + ${weight}`,
       },
     })
+
+  // Enqueue usage event for Polar ingestion (fire & forget)
+  if (userId) {
+    try {
+      const env = event.context.cloudflare?.env as { POLAR_EVENTS_QUEUE?: { send: (msg: unknown) => Promise<void> } } | undefined
+      if (env?.POLAR_EVENTS_QUEUE) {
+        await env.POLAR_EVENTS_QUEUE.send({
+          name: 'api_request',
+          externalCustomerId: userId,
+          metadata: {
+            requests: weight,
+            apiKeyId,
+            endpoint: event.path,
+          },
+          timestamp: new Date().toISOString(),
+        })
+      }
+    } catch {
+      // Non-bloquant : ignorer les erreurs de queue
+    }
+  }
 
   return day
 }
