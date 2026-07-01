@@ -67,19 +67,19 @@ Endpoint enregistré dans Polar : `https://francis.corpinot.cc/api/webhooks/pola
 - [ ] Créer le consumer de queue `server/plugins/queue-consumer.ts`
 - [ ] Modifier `incrementUsage` dans `server/utils/auth.ts` pour envoyer les events dans la queue
 
-### Phase 7 — Contrôle d'accès
+### Phase 7 — Contrôle d'accès ✅
 
-- [ ] Modifier `requireApiKey` dans `server/utils/auth.ts` pour vérifier l'abonnement via Customer State API
-- [ ] Fallback sur le système D1 si Polar est indisponible
+- [x] Modifier `requireApiKey` dans `server/utils/auth.ts` pour vérifier l'abonnement via Customer State API
+- [x] Fallback sur le système D1 si Polar est indisponible
 
-### Phase 7b — WAF Rate Limiting (optionnel, Cloudflare Pro)
+### Phase 7b — WAF Rate Limiting (Cloudflare Pro) ✅
 
-- [ ] Configurer une WAF Rate Limiting Rule dans le dashboard Cloudflare :
+- [x] Supprimer le rate limiter in-memory dans `server/api/demo/translate.post.ts`
+- [ ] Configurer une **WAF Rate Limiting Rule** dans le dashboard Cloudflare :
   - URI : `https://francis.corpinot.cc/api/demo/translate`
   - Méthode : POST
   - IP source : 3 requests / 10 seconds
   - Action : Block (429)
-- [ ] Supprimer le rate limiter in-memory dans `server/api/demo/translate.post.ts`
 
 ### Phase 8 — Customer Portal
 

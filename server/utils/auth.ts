@@ -5,6 +5,7 @@ import { apiKeys, usageDaily } from '../db/schema'
 import { getDb } from '../db/client'
 import { hashKey, normalizeKey } from './api-key'
 import { requireSessionUser } from './session'
+import { getPolarClient } from './polar'
 
 export async function requireAdmin(event: H3Event) {
   const session = await requireSessionUser(event)
@@ -44,6 +45,34 @@ export async function requireApiKey(event: H3Event) {
       statusCode: 401,
       statusMessage: 'Invalid API key',
     })
+  }
+
+  // Si Polar est configuré, vérifier l'abonnement
+  const config = useRuntimeConfig()
+  if (config.polarAccessToken && key.userId) {
+    try {
+      const polar = getPolarClient(event)
+      const state = await polar.customers.getStateByExternalId({
+        externalId: key.userId,
+      })
+
+      const hasActiveSub = (state.activeSubscriptions?.length ?? 0) > 0
+      const hasAccess = state.grantedBenefits?.some(
+        (b: any) => b.type === 'feature_flag' && b.properties?.flag === 'api_access',
+      )
+
+      if (!hasActiveSub && !hasAccess) {
+        throw createError({
+          statusCode: 402,
+          statusMessage: 'Subscription required. Subscribe at /polar/checkout',
+        })
+      }
+    } catch (err: any) {
+      // Propager les erreurs 402
+      if (err?.statusCode === 402) throw err
+      // Fallback silencieux si Polar est indisponible
+      console.warn('[polar] Subscription check failed, falling back to local limits:', err?.message)
+    }
   }
 
   return key

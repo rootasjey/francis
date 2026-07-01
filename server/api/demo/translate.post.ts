@@ -1,30 +1,9 @@
-import { createError, readBody, getRequestIP } from 'h3'
+import { createError, readBody } from 'h3'
 import type { TranslateRequest, TranslateResponse } from '../../../shared/types/api'
 import { translateTexts, validateTargetLanguages } from '../../utils/translate'
 import { getApiKeyAndModels } from '../../utils/config'
 
-const RATE_LIMIT_WINDOW = 10_000
-const MAX_REQUESTS_PER_WINDOW = 3
-const ipHits = new Map<string, { count: number; resetAt: number }>()
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now()
-  const entry = ipHits.get(ip)
-  if (!entry || now > entry.resetAt) {
-    ipHits.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW })
-    return true
-  }
-  if (entry.count >= MAX_REQUESTS_PER_WINDOW) return false
-  entry.count++
-  return true
-}
-
 export default defineEventHandler(async (event) => {
-  const ip = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
-  if (!checkRateLimit(ip)) {
-    throw createError({ statusCode: 429, statusMessage: 'Too many demo requests — try again in a few seconds' })
-  }
-
   const body = await readBody<TranslateRequest>(event)
 
   if (!body?.target) {
