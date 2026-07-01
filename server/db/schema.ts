@@ -7,6 +7,11 @@ export const users = sqliteTable('users', {
   name: text('name'),
   passwordHash: text('password_hash').notNull().default(''),
   role: text('role').notNull().default('user'),
+  polarCustomerId: text('polar_customer_id'),
+  polarSubscriptionId: text('polar_subscription_id'),
+  polarSubscriptionStatus: text('polar_subscription_status'),
+  polarProductTier: text('polar_product_tier'),
+  subscriptionEndsAt: integer('subscription_ends_at', { mode: 'timestamp_ms' }),
   createdAt: integer('created_at', { mode: 'timestamp_ms' })
     .notNull()
     .default(sql`(strftime('%s','now') * 1000)`),

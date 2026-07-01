@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '@una-ui/nuxt',
     'nuxt-auth-utils',
     '@vueuse/nuxt',
-    '@nuxthub/core'
+    '@nuxthub/core',
+    '@polar-sh/nuxt'
   ],
 
   nitro: {
@@ -28,6 +29,25 @@ export default defineNuxtConfig({
       wasm: true
     },
     ignore: ['scripts/**'],
+    cloudflare: {
+      wrangler: {
+        queues: {
+          producers: [
+            {
+              queue: 'polar-events',
+              binding: 'POLAR_EVENTS_QUEUE',
+            },
+          ],
+          consumers: [
+            {
+              queue: 'polar-events',
+              max_batch_size: 10,
+              max_retries: 5,
+            },
+          ],
+        },
+      },
+    },
   },
 
   runtimeConfig: {
@@ -35,6 +55,11 @@ export default defineNuxtConfig({
     apiMaxLimit: Number(process.env.NUXT_API_MAX_LIMIT || '100000'),
     openrouterApiKey: process.env.NUXT_OPENROUTER_API_KEY || '',
     openrouterModel: process.env.NUXT_OPENROUTER_MODEL || 'google/gemini-3.1-flash-lite',
+    polarAccessToken: process.env.NUXT_POLAR_ACCESS_TOKEN || '',
+    polarWebhookSecret: process.env.NUXT_POLAR_WEBHOOK_SECRET || '',
+    polarOrganizationId: process.env.NUXT_POLAR_ORGANIZATION_ID || '',
+    polarServer: process.env.NUXT_POLAR_SERVER || 'sandbox',
+    polarCheckoutSuccessUrl: process.env.NUXT_POLAR_CHECKOUT_SUCCESS_URL || 'http://localhost:3000/dashboard',
     // Public keys (exposed to client-side)
     public: {
       authUrl: process.env.NUXT_AUTH_ORIGIN || 'http://localhost:3000',
