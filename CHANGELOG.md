@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/rootasjey/francis/compare/v0.1.1...v0.1.2) (2026-07-01)
+
+
+### ✨ Features
+
+* **polar:** add checkout, webhooks, queue consumer, and event ingestion ([081a392](https://github.com/rootasjey/francis/commit/081a3925d51f1c17178e5d78b65aee74fc3f45fb))
+
 ### [0.1.1](https://github.com/rootasjey/francis/compare/v0.1.0...v0.1.1) (2026-07-01)
 
 
