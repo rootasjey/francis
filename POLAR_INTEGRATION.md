@@ -81,9 +81,9 @@ Endpoint enregistré dans Polar : `https://francis.corpinot.cc/api/webhooks/pola
   - IP source : 3 requests / 10 seconds
   - Action : Block (429)
 
-### Phase 8 — Customer Portal
+### Phase 8 — Customer Portal ✅
 
-- [ ] Créer `server/api/polar/portal.get.ts`
+- [x] Créer `server/api/polar/portal.get.ts`
 
 Endpoint : `GET /api/polar/portal` → redirige vers le customer portal Polar
 
