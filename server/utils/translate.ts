@@ -127,7 +127,8 @@ export async function translateTexts(
     return cached as Record<string, string>[]
   }
 
-  const models = [primaryModel, ...fallbackModels].filter(m => m && m !== primaryModel)
+  const allModels = [primaryModel, ...fallbackModels].filter(m => m)
+  const models = [...new Set(allModels)]
   let translations: Record<string, string>[] | null = null
 
   for (let i = 0; i < models.length; i++) {
