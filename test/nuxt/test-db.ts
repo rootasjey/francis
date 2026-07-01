@@ -12,6 +12,11 @@ const MIGRATIONS = [
     name TEXT,
     password_hash TEXT NOT NULL DEFAULT '',
     role TEXT NOT NULL DEFAULT 'user',
+    polar_customer_id TEXT,
+    polar_subscription_id TEXT,
+    polar_subscription_status TEXT,
+    polar_product_tier TEXT,
+    subscription_ends_at INTEGER,
     created_at INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000)
   )`,
   `CREATE TABLE IF NOT EXISTS api_keys (

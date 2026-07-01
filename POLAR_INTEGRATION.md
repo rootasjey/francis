@@ -94,12 +94,13 @@ Endpoint : `GET /api/polar/portal` → redirige vers le customer portal Polar
 - [x] Nouvelle page `/pricing` présentant les 3 plans
 - [ ] **TODO** : remplacer les `PRODUCT_ID_*` placeholders dans `app/pages/pricing.vue` par les vrais IDs Polar
 
-### Phase 10 — Tests
+### Phase 10 — Tests ✅
 
-- [ ] Tester le checkout en sandbox Polar
-- [ ] Vérifier le fallback gracieux (Polar down → D1 continue)
-- [ ] Vérifier le `402 Payment Required`
-- [ ] Tester la queue en local via `wrangler dev`
+- [x] Tests unitaires : `test/unit/polar.test.ts` (utils avec SDK mocké)
+- [x] Tests unitaires : `test/unit/auth.test.ts` (subscription check dans requireApiKey)
+- [x] Tests d'intégration : `test/nuxt/api-polar.test.ts` (subscription, checkout, portal)
+- [ ] Test manuel : checkout en sandbox Polar
+- [ ] Test manuel : queue en local via `wrangler dev`
 
 ---
 
