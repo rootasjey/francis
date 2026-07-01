@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/rootasjey/francis/compare/v0.1.5...v0.1.6) (2026-07-01)
+
+
+### 🧪 Tests
+
+* **polar:** add unit and integration tests for Polar integration ([0ab30ba](https://github.com/rootasjey/francis/commit/0ab30baf22ca26e5b0da2d912b1af6062a31f18c))
+
 ### [0.1.5](https://github.com/rootasjey/francis/compare/v0.1.4...v0.1.5) (2026-07-01)
 
 
