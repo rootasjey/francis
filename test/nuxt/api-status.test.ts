@@ -1,5 +1,5 @@
 import { vi, describe, expect, it, beforeEach } from 'vitest'
-import { setupApiGlobals, createMockDb } from './setup/api-helper'
+import { setupApiGlobals, createMockDb } from './test-utils'
 
 setupApiGlobals({ public: { appVersion: '0.1.0' } })
 
@@ -12,9 +12,7 @@ vi.mock('../../server/utils/config', () => ({
   })),
 }))
 
-function mockEvent() {
-  return { context: { cloudflare: { env: { DB: {} } } } } as any
-}
+const mockEvent = () => ({ context: { cloudflare: { env: { DB: {} } } } } as any)
 
 beforeEach(() => {
   vi.clearAllMocks()

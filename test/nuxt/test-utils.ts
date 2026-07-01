@@ -41,7 +41,20 @@ export function createMockDb() {
   }
 }
 
-export const mockEvent = {} as any
+export function mockReadBody() {
+  vi.mock('h3', async () => {
+    const actual = await vi.importActual<typeof import('h3')>('h3')
+    return {
+      ...actual,
+      readBody: vi.fn((event: any) => Promise.resolve(event.body)),
+      getRouterParam: vi.fn((event: any, name: string) => event.params?.[name]),
+    }
+  })
+}
+
+export function makeMockEvent(body?: any, params?: Record<string, string>) {
+  return { body, params, context: { cloudflare: { env: { DB: {} } } } } as any
+}
 
 export function mockError(result: unknown) {
   const err = result as Error & { statusCode?: number; statusMessage?: string }

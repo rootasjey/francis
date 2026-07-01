@@ -1,7 +1,9 @@
 import { vi, describe, expect, it, beforeEach } from 'vitest'
-import { setupApiGlobals, mockEvent } from './setup/api-helper'
+import { setupApiGlobals } from './test-utils'
 
 setupApiGlobals()
+
+const mockEvent = {} as any
 
 describe('GET /api/v1/health', () => {
   it('should return ok status', async () => {

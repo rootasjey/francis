@@ -1,5 +1,5 @@
 import { vi, describe, expect, it, beforeEach } from 'vitest'
-import { setupApiGlobals, createMockDb, mockEvent } from './setup/api-helper'
+import { setupApiGlobals, createMockDb, makeMockEvent } from './test-utils'
 
 setupApiGlobals()
 
@@ -31,7 +31,7 @@ describe('POST /api/auth/login', () => {
 
   it('should throw 400 for missing email', async () => {
     const handler = (await import('../../server/api/auth/login.post')).default
-    await expect(handler({ ...mockEvent, body: { password: 'pwd' } })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: { password: 'pwd' } })).rejects.toMatchObject({
       statusCode: 400,
       statusMessage: 'Invalid credentials',
     })
@@ -39,7 +39,7 @@ describe('POST /api/auth/login', () => {
 
   it('should throw 400 for missing password', async () => {
     const handler = (await import('../../server/api/auth/login.post')).default
-    await expect(handler({ ...mockEvent, body: { email: 'test@test.com' } })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: { email: 'test@test.com' } })).rejects.toMatchObject({
       statusCode: 400,
       statusMessage: 'Invalid credentials',
     })
@@ -51,7 +51,7 @@ describe('POST /api/auth/login', () => {
     })
 
     const handler = (await import('../../server/api/auth/login.post')).default
-    await expect(handler({ ...mockEvent, body: validBody })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: validBody })).rejects.toMatchObject({
       statusCode: 401,
       statusMessage: 'Invalid credentials',
     })
@@ -66,7 +66,7 @@ describe('POST /api/auth/login', () => {
     mockVerifyPassword.mockResolvedValue(false)
 
     const handler = (await import('../../server/api/auth/login.post')).default
-    await expect(handler({ ...mockEvent, body: validBody })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: validBody })).rejects.toMatchObject({
       statusCode: 401,
       statusMessage: 'Invalid credentials',
     })
@@ -81,7 +81,7 @@ describe('POST /api/auth/login', () => {
     mockVerifyPassword.mockResolvedValue(true)
 
     const handler = (await import('../../server/api/auth/login.post')).default
-    const result = await handler({ ...mockEvent, body: validBody })
+    const result = await handler({ ...makeMockEvent(), body: validBody })
     expect(result.user).toMatchObject({ id: '1', email: 'test@test.com', name: 'Test', role: 'user' })
     expect(mockSetUserSession).toHaveBeenCalled()
     expect(mockSetUserSession.mock.calls[0][1].user.email).toBe('test@test.com')
@@ -93,7 +93,7 @@ describe('POST /api/auth/signup', () => {
 
   it('should throw 400 for invalid email', async () => {
     const handler = (await import('../../server/api/auth/signup.post')).default
-    await expect(handler({ ...mockEvent, body: { email: 'bad', password: 'password123' } })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: { email: 'bad', password: 'password123' } })).rejects.toMatchObject({
       statusCode: 400,
       statusMessage: 'Invalid email',
     })
@@ -101,7 +101,7 @@ describe('POST /api/auth/signup', () => {
 
   it('should throw 400 for short password', async () => {
     const handler = (await import('../../server/api/auth/signup.post')).default
-    await expect(handler({ ...mockEvent, body: { email: 'a@b.com', password: 'short' } })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: { email: 'a@b.com', password: 'short' } })).rejects.toMatchObject({
       statusCode: 400,
       statusMessage: 'Password too short',
     })
@@ -116,7 +116,7 @@ describe('POST /api/auth/signup', () => {
     })
 
     const handler = (await import('../../server/api/auth/signup.post')).default
-    await expect(handler({ ...mockEvent, body: validBody })).rejects.toMatchObject({
+    await expect(handler({ ...makeMockEvent(), body: validBody })).rejects.toMatchObject({
       statusCode: 409,
       statusMessage: 'Email already registered',
     })
@@ -132,7 +132,7 @@ describe('POST /api/auth/signup', () => {
     mockHashPassword.mockResolvedValue('hashed-password')
 
     const handler = (await import('../../server/api/auth/signup.post')).default
-    const result = await handler({ ...mockEvent, body: validBody })
+    const result = await handler({ ...makeMockEvent(), body: validBody })
     expect(result.user.email).toBe('new@test.com')
     expect(result.user.role).toBe('admin')
     expect(mockSetUserSession).toHaveBeenCalled()
@@ -150,7 +150,7 @@ describe('POST /api/auth/signup', () => {
     mockHashPassword.mockResolvedValue('hashed-password')
 
     const handler = (await import('../../server/api/auth/signup.post')).default
-    const result = await handler({ ...mockEvent, body: validBody })
+    const result = await handler({ ...makeMockEvent(), body: validBody })
     expect(result.user.role).toBe('user')
   })
 })
