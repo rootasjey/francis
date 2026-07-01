@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/rootasjey/francis/compare/v0.1.0...v0.1.1) (2026-07-01)
+
+
+### 📝 Documentation
+
+* generalize Verbatims integration section to 'Integration with your app' and add screenshot ([1ad26b4](https://github.com/rootasjey/francis/commit/1ad26b41ce0f3610396d335cc3398e0f0eade362))
+
+
+### ✨ Features
+
+* add /languages page listing 400+ franc-all languages ([36647f0](https://github.com/rootasjey/francis/commit/36647f02b01aeb35ae9ce4ea5f27be6c509d072a))
+* **polar:** add Cloudflare Queue, Polar Nuxt module, and DB schema ([35ec992](https://github.com/rootasjey/francis/commit/35ec992362e5d6a7fb40ee375aae417bba6d2e70))
+
 ## 0.1.0 (2026-06-29)
 
 
