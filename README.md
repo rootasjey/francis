@@ -1,4 +1,4 @@
-![Francis API](/public/images/francis-home-dark.png)
+![Francis API](/public/images/francis-home-light.png)
 
 # Francis
 
