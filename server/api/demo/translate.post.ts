@@ -1,9 +1,21 @@
-import { createError, readBody } from 'h3'
+import { createError, readBody, getRequestIP } from 'h3'
 import type { TranslateRequest, TranslateResponse } from '../../../shared/types/api'
 import { translateTexts, validateTargetLanguages } from '../../utils/translate'
 import { getApiKeyAndModels } from '../../utils/config'
 
 export default defineEventHandler(async (event) => {
+  const ip = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
+  const env = event.context.cloudflare?.env as { KV?: { get: (k: string) => Promise<string | null>, put: (k: string, v: string, opts: { expirationTtl: number }) => Promise<void> } } | undefined
+
+  if (env?.KV) {
+    const key = `ratelimit:demo:${ip}`
+    const count = await env.KV.get(key)
+    if (count && Number(count) >= 3) {
+      throw createError({ statusCode: 429, statusMessage: 'Too many demo requests — try again in a few seconds' })
+    }
+    await env.KV.put(key, String((Number(count) || 0) + 1), { expirationTtl: 10 })
+  }
+
   const body = await readBody<TranslateRequest>(event)
 
   if (!body?.target) {

@@ -70,14 +70,12 @@ Endpoint enregistré dans Polar : `https://francis.corpinot.cc/api/webhooks/pola
 - [x] Modifier `requireApiKey` dans `server/utils/auth.ts` pour vérifier l'abonnement via Customer State API
 - [x] Fallback sur le système D1 si Polar est indisponible
 
-### Phase 7b — WAF Rate Limiting (Cloudflare Pro) ✅
+### Phase 7b — Rate Limiting (KV) ✅
 
-- [x] Supprimer le rate limiter in-memory dans `server/api/demo/translate.post.ts`
-- [ ] Configurer une **WAF Rate Limiting Rule** dans le dashboard Cloudflare :
-  - URI : `https://francis.corpinot.cc/api/demo/translate`
-  - Méthode : POST
-  - IP source : 3 requests / 10 seconds
-  - Action : Block (429)
+- [x] Rate limiter KV implémenté dans `server/api/demo/translate.post.ts`
+- [x] 3 requêtes / 10 secondes par IP
+- [x] Stocké dans Cloudflare KV (persistant, pas perdu au restart)
+- [x] Utilise `getRequestIP` (respecte X-Forwarded-For)
 
 ### Phase 8 — Customer Portal ✅
 
