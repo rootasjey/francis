@@ -2,14 +2,13 @@
 
 ## Plan d'implémentation
 
-### Phase 0 — Prérequis (compte Polar)
+### Phase 0 — Prérequis (compte Polar) ✅
 
-- [ ] Créer un compte sur https://polar.sh/signup
-- [ ] Créer une organisation
-- [ ] Générer un **Organization Access Token** (Settings → Organization → Access Tokens)
-- [ ] Créer un **Webhook Endpoint** pointant vers `https://francis.corpinot.cc/api/webhooks/polar`
-- [ ] Récupérer le **Webhook Secret**
-- [ ] Ajouter les variables d'environnement (voir `.env.example`)
+- [x] Compte créé sur polar.sh
+- [x] Organisation **GG CORP** créée (ID: `b45d3cbf-e83e-4d7e-aa80-5003801634b7`)
+- [x] **Organization Access Token** généré : `polar_oat_KtKYmk0HVkQWHblcCTavs3nJxVneg3Eu3RCEa0hgcVD`
+- [x] **Webhook Endpoint** créé : `https://francis.corpinot.cc/api/webhooks/polar` (secret: `whsec_d5OrfAHfbJ22e3CJnvTpozam71DV71u8X3SUo09doV2`)
+- [x] Variables d'environnement ajoutées au `.env`
 
 ### Phase 1 — Configuration et dépendances ✅
 
@@ -29,20 +28,19 @@
   npx wrangler d1 migrations apply francis --remote
   ```
 
-### Phase 3 — Produits et pricing (dashboard Polar)
+### Phase 3 — Produits et pricing ✅
 
-- [ ] Créer les produits suivants dans le dashboard Polar (Products → Create Product) :
+- [x] **Meter** `api_requests` créé (ID: `0dfa31c0-cc45-4ecf-ad58-4f05a6762644`)
+- [x] **Feature Flag benefit** `api_access` créé (ID: `4a8a3af0-06ba-4195-a3ce-707a4237865c`)
+- [x] Produits créés via API Polar :
 
-  | Tiers | Type | Prix | Requêtes incluses | Prix excédent |
-  |-------|------|------|-------------------|---------------|
-  | **Hobby** | Subscription | $9/mois | 5 000/mois | $0.002/req |
-  | **Pro** | Subscription | $49/mois | 50 000/mois | $0.001/req |
-  | **Enterprise** | Subscription | $199/mois | 500 000/mois | $0.0005/req |
+  | Tiers | Prix | Requêtes incluses | Prix excédent | Product ID |
+  |-------|------|-------------------|---------------|------------|
+  | **Hobby** | €9/mois | 5 000/mois | €0.002/req | `efb4c1a8-4560-475a-a84f-501f5ec36353` |
+  | **Pro** | €49/mois | 50 000/mois | €0.001/req | `151479c7-30c1-460b-b5fc-5d97cda2f286` |
+  | **Enterprise** | €199/mois | 500 000/mois | €0.0005/req | `806167c7-40cc-447e-a1ad-55da6ff1ea8c` |
 
-- [ ] Créer un **Meter** nommé `api_requests` (agrège le champ `requests` des events)
-- [ ] Ajouter un **Metered Unit Price** à chaque produit lié au meter `api_requests`
-- [ ] Ajouter un **Feature Flag benefit** `api_access` sur chaque produit
-- [ ] Noter les **Product IDs** de chaque tier (nécessaires pour le checkout)
+- [x] `pricing.vue` mis à jour avec les vrais Product IDs
 
 ### Phase 4 — Checkout ✅
 
