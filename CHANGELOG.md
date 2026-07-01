@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/rootasjey/francis/compare/v0.1.2...v0.1.3) (2026-07-01)
+
+
+### ✨ Features
+
+* **polar:** add subscription check in requireApiKey and remove demo rate limiter ([f2d4112](https://github.com/rootasjey/francis/commit/f2d41127719dac4f26d8b0882cc2f265f25f712a))
+
 ### [0.1.2](https://github.com/rootasjey/francis/compare/v0.1.1...v0.1.2) (2026-07-01)
 
 
