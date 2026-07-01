@@ -87,11 +87,12 @@ Endpoint enregistré dans Polar : `https://francis.corpinot.cc/api/webhooks/pola
 
 Endpoint : `GET /api/polar/portal` → redirige vers le customer portal Polar
 
-### Phase 9 — UI
+### Phase 9 — UI ✅
 
-- [ ] Dashboard : ajouter une section abonnement (tier actuel, statut, usage du mois, boutons Manage/Upgrade)
-- [ ] Admin : stats abonnés, revenue estimé
-- [ ] Nouvelle page `/pricing` présentant les 3 plans
+- [x] Dashboard : ajouter une section abonnement (tier actuel, statut, boutons Manage/Upgrade)
+- [x] Navigation : lien Pricing actif dans le menu
+- [x] Nouvelle page `/pricing` présentant les 3 plans
+- [ ] **TODO** : remplacer les `PRODUCT_ID_*` placeholders dans `app/pages/pricing.vue` par les vrais IDs Polar
 
 ### Phase 10 — Tests
 

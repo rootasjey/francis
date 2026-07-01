@@ -34,6 +34,93 @@
       </div>
     </div>
 
+    <!-- Subscription -->
+    <div class="rounded-2 border border-border dark:border-gray-800 bg-card overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-background">
+            <span class="i-lucide-credit-card text-xs text-muted-foreground" />
+          </div>
+          <div>
+            <p class="text-sm font-medium">Subscription</p>
+            <p class="font-mono text-xs text-muted-foreground/60">Plan, usage, and billing</p>
+          </div>
+        </div>
+        <div v-if="subPending" class="h-6 w-24 animate-pulse rounded bg-muted-foreground/10" />
+        <span
+          v-else-if="subData?.tier"
+          class="rounded-full px-3 py-1 font-mono text-[10px] font-semibold tracking-wider uppercase"
+          :class="subData.status === 'active'
+            ? 'bg-emerald-400/10 text-emerald-400'
+            : subData.status === 'canceled'
+              ? 'bg-amber-400/10 text-amber-400'
+              : 'bg-muted text-muted-foreground'"
+        >
+          {{ subData.tier }}
+        </span>
+        <span
+          v-else
+          class="rounded-full px-3 py-1 font-mono text-[10px] font-semibold tracking-wider uppercase bg-muted text-muted-foreground"
+        >
+          Free
+        </span>
+      </div>
+      <div class="border-t border-border dark:border-gray-800 px-6 py-4">
+        <div v-if="subPending" class="flex items-center gap-2 text-xs text-muted-foreground">
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground/30" />
+          Loading
+        </div>
+        <template v-else-if="subData?.tier && subData?.status === 'active'">
+          <p class="text-sm">
+            You're on the <strong class="capitalize">{{ subData.tier }}</strong> plan.
+          </p>
+          <p v-if="subData.endsAt" class="mt-1 font-mono text-xs text-muted-foreground">
+            Renews {{ formatDate(subData.endsAt) }}
+          </p>
+          <div class="mt-4 flex gap-3">
+            <a
+              href="/api/polar/portal"
+              class="rounded-lg border border-border bg-background px-4 py-2 font-mono text-xs text-foreground transition-colors duration-200 hover:bg-muted"
+            >
+              Manage
+            </a>
+          </div>
+        </template>
+        <template v-else-if="subData?.tier && subData?.status === 'canceled'">
+          <p class="text-sm text-muted-foreground">
+            Your <strong class="capitalize text-foreground">{{ subData.tier }}</strong> plan is canceled.
+          </p>
+          <p v-if="subData.endsAt" class="mt-1 font-mono text-xs text-muted-foreground">
+            Access until {{ formatDate(subData.endsAt) }}
+          </p>
+          <div class="mt-4 flex gap-3">
+            <a
+              href="/api/polar/portal"
+              class="rounded-lg border border-border bg-background px-4 py-2 font-mono text-xs text-foreground transition-colors duration-200 hover:bg-muted"
+            >
+              Reactivate
+            </a>
+          </div>
+        </template>
+        <template v-else>
+          <p class="text-sm text-muted-foreground">
+            You're on the <strong class="text-foreground">Free</strong> plan.
+          </p>
+          <p class="mt-1 font-mono text-xs text-muted-foreground">
+            Upgrade to unlock higher rate limits and more features.
+          </p>
+          <div class="mt-4 flex gap-3">
+            <NuxtLink
+              to="/pricing"
+              class="rounded-lg bg-foreground px-4 py-2 text-xs font-semibold text-background transition-all duration-200 hover:brightness-110"
+            >
+              Upgrade
+            </NuxtLink>
+          </div>
+        </template>
+      </div>
+    </div>
+
     <!-- Stats -->
     <div class="grid gap-4 lg:grid-cols-4">
       <div
@@ -171,10 +258,22 @@ import { computed, onMounted, ref, watch, nextTick } from 'vue'
 import { navigateTo, useUserSession } from '#imports'
 import type { ApiKeyListResponse, UsageResponse } from '~~/shared/types/api'
 
+type SubscriptionResponse = {
+  tier: string | null
+  status: string | null
+  endsAt: number | null
+  customerId: string | null
+}
+
 definePageMeta({ middleware: 'auth', pageTransition: { name: 'page', mode: 'out-in' } })
 
 const session = useUserSession()
 const chartSvg = ref<SVGSVGElement | null>(null)
+
+const { data: subData, pending: subPending } = useFetch<SubscriptionResponse>(
+  '/api/polar/subscription',
+  { server: false },
+)
 
 // --- data fetching ---
 
@@ -287,6 +386,13 @@ watch(selectedKeyId, (value) => {
 })
 
 // --- actions ---
+
+function formatDate(value: number | null) {
+  if (!value) return ''
+  return new Date(value).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric',
+  })
+}
 
 async function logout() {
   await $fetch('/api/auth/logout', { method: 'POST' })

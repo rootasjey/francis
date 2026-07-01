@@ -126,7 +126,7 @@ const navItems = [
       },
     ],
   },
-  { label: 'Pricing', to: '#' },
+  { label: 'Pricing', to: '/pricing' },
   { label: 'Purpose', to: '/purpose' },
   { label: 'About', to: '/about' },
 ]
