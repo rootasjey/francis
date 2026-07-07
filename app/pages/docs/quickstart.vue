@@ -1,8 +1,8 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-4xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-16">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
       <div class="flex items-center gap-3">
-        <h1 class="font-sans text-4xl md:text-6xl font-bold tracking-tight">
+        <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">
           Quickstart
         </h1>
         <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/10">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">1. Get an API key</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">1. Get an API key</h2>
       <p class="text-sm text-muted-foreground leading-relaxed">
         Sign up for a free account to receive an API key. Keys are prefixed with <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">fcs_</code> and are immediately ready to use.
       </p>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">2. Detect a language</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">2. Detect a language</h2>
       <p class="text-sm text-muted-foreground leading-relaxed">
         Send a <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">POST</code> request to <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">/api/v1/detect</code> with your text and API key.
       </p>
@@ -83,7 +83,7 @@
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">3. Translate text</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">3. Translate text</h2>
       <p class="text-sm text-muted-foreground leading-relaxed">
         Translate text into one or more languages with a single <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">POST /api/v1/translate</code> request.
       </p>
@@ -124,7 +124,7 @@
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">4. Monitor usage</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">4. Monitor usage</h2>
       <p class="text-sm text-muted-foreground leading-relaxed">
         Track your daily request volume per API key through the dashboard or via the <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">GET /api/v1/usage</code> endpoint. Each key has a configurable daily limit, and usage is counted atomically with every request.
       </p>

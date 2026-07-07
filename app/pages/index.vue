@@ -1,10 +1,13 @@
 <template>
   <section class="space-y-24 border-x dark:border-gray-800 max-w-6xl mx-auto py-12">
     <!-- Hero -->
-    <div class="space-y-8 max-w-5xl mx-auto">
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Background glow -->
+      <div class="absolute -inset-x-20 -top-20 -bottom-12 -z-10 rounded-[5rem] bg-gradient-to-b from-accent/[0.05] via-accent/[0.02] to-transparent blur-3xl" aria-hidden="true" />
+
       <!-- Headline -->
-      <h1 class="max-w-4xl font-sans text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-[5rem]">
-        Detect <span class="text-accent dark:text-[#9FA1FF]">language</span> in <span class="group relative inline-block"><span class="relative z-10">milliseconds</span><span class="absolute right-0 top-0 translate-x-2 -translate-y-1.5 opacity-0 group-hover:opacity-50 dark:group-hover:opacity-60 group-hover:block transition-all duration-500 delay-75 pointer-events-none select-none"><span class="text-blue-500">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-3.5 opacity-0 group-hover:opacity-40 dark:group-hover:opacity-50 transition-all duration-500 delay-150 pointer-events-none select-none"><span class="text-rose-400">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-5 -translate-y-1 opacity-0 group-hover:opacity-30 dark:group-hover:opacity-40 transition-all duration-500 delay-225 pointer-events-none select-none"><span class="text-accent">milliseconds</span></span></span>. The edge-native API
+      <h1 class="max-w-4xl italic font-serif text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-[5rem]">
+        Detect <span class="text-accent dark:text-amber">language</span> in <span class="group relative inline-block"><span class="relative z-10">milliseconds</span><span class="absolute right-0 top-0 translate-x-2 -translate-y-1.5 opacity-0 group-hover:opacity-50 dark:group-hover:opacity-60 group-hover:block transition-all duration-500 delay-75 pointer-events-none select-none"><span class="text-blue-500">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-3.5 opacity-0 group-hover:opacity-40 dark:group-hover:opacity-50 transition-all duration-500 delay-150 pointer-events-none select-none"><span class="text-rose-400">milliseconds</span></span><span class="absolute right-0 top-0 translate-x-5 -translate-y-1 opacity-0 group-hover:opacity-30 dark:group-hover:opacity-40 transition-all duration-500 delay-225 pointer-events-none select-none"><span class="text-accent">milliseconds</span></span></span>. <span class="inline-flex font-sans items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 align-middle text-base md:text-xl font-semibold text-accent tracking-normal leading-none -mt-1">The edge-native API</span>
       </h1>
 
       <!-- Subtitle -->
@@ -13,12 +16,12 @@
         in milliseconds with API keys, usage tracking, and a modern console.
       </p>
 
-    </div>
-
-    <!-- Product showcase -->
-    <div class="animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto
-      overflow-hidden rounded-2 border border-border dark:border-gray-800
-      bg-gray-200 dark:bg-gray-950">
+      <!-- Product showcase -->
+      <div class="mt-8 animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto
+        overflow-hidden rounded-2 border border-border dark:border-gray-800
+        hover:border-primary
+        bg-transparent dark:bg-gray-950 shadow-md hover:shadow-lg
+        transition-[shadow,colors]">
       <!-- Meta line -->
       <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border dark:border-gray-800 pb-4 font-mono text-[11px] text-muted-foreground/60">
         <span class="flex items-center gap-1.5">
@@ -91,16 +94,17 @@
           <span class="text-sm text-muted-foreground/50">Click any sentence to switch its language</span>
         </div>
       </div>
+        </div>
     </div>
 
     <!-- Features -->
     <div class="space-y-12 max-w-5xl mx-auto">
       <div class="max-w-2xl">
-        <h2 class="font-sans text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 class="font-serif text-4xl font-400 tracking-tight md:text-5xl">
           Built for developers.<br/>
-          <span class="text-accent">Purpose-built</span> for the edge.
+          <span class="text-accent">Deployed</span> on the edge.
         </h2>
-        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
+        <p class="mt-2 text-base leading-relaxed text-muted-foreground">
           Every feature is designed to make language detection fast, private, and painless to integrate.
         </p>
       </div>
@@ -143,7 +147,7 @@
                   }]">
                 </span>
               </span>
-              <h3 class="text-xl font-semibold tracking-tight">{{ feature.title }}</h3>
+              <h3 class="text-2xl font-600 font-mono tracking-tight">{{ feature.title }}</h3>
             </div>
             <p class="max-w-lg text-sm leading-relaxed text-muted-foreground">{{ feature.description }}</p>
           </div>
@@ -157,7 +161,7 @@
         <div class="max-w-5xl mx-auto">
           <div class="max-w-2xl flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
-              <h2 class="font-sans text-5xl font-bold tracking-tight">API quickstart</h2>
+              <h2 class="font-serif text-5xl font-400 tracking-tight">API quickstart</h2>
               <p class="mt-1 text-sm text-muted-foreground">One endpoint, one header, any language.</p>
             </div>
           </div>
@@ -165,20 +169,20 @@
           <!-- Compact inline demo -->
           <div class="rounded-1 max-w-2xl border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
             <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
-              <span class="text-xs text-muted-foreground/50">Terminal</span>
-              <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
+              <span class="text-xs text-muted-foreground">Terminal</span>
+              <span class="ml-auto font-mono text-[10px] text-muted-foreground/60">bash</span>
             </div>
             <div class="px-4 py-4 font-mono text-xs leading-loose">
               <div class="flex items-start gap-2 opacity-70">
                 <span class="text-muted-foreground/30 shrink-0">$</span>
                 <div>
-                  <span class="text-muted-foreground/40  dark:text-foreground">curl -X POST</span>
+                  <span class="text-muted-foreground/90  dark:text-foreground">curl -X POST</span>
                   <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span>
-                  <span class="text-muted-foreground/40 dark:text-foreground">\</span><br/>
-                  <span class="text-muted-foreground/40 dark:text-foreground">&nbsp;&nbsp;-H</span>
+                  <span class="text-muted-foreground/90 dark:text-foreground">\</span><br/>
+                  <span class="text-muted-foreground/90 dark:text-foreground">&nbsp;&nbsp;-H</span>
                   <span class="text-accent">'x-api-key: fcs_****'</span>
-                  <span class="text-muted-foreground/40 dark:text-foreground">\</span><br/>
-                  <span class="text-muted-foreground/40 dark:text-foreground">&nbsp;&nbsp;-d</span>
+                  <span class="text-muted-foreground/90 dark:text-foreground">\</span><br/>
+                  <span class="text-muted-foreground/90 dark:text-foreground">&nbsp;&nbsp;-d</span>
                   <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world"}'</span>
                 </div>
               </div>
@@ -249,15 +253,15 @@
     <!-- Stats -->
     <div class="max-w-5xl mx-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border dark:bg-gray-800">
       <div class="bg-muted/50 p-6 md:p-8">
-        <NuxtLink to="/languages" class="font-sans text-3xl font-bold tracking-tight md:text-4xl hover:opacity-70 transition-opacity">400+</NuxtLink>
+        <NuxtLink to="/languages" class="font-serif text-3xl font-bold tracking-tight md:text-4xl">400+</NuxtLink>
         <NuxtLink to="/languages" class="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors block">Languages supported</NuxtLink>
       </div>
       <div class="bg-muted/50 p-6 md:p-8">
-        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">&lt;50ms</p>
+        <p class="font-serif text-3xl font-bold tracking-tight md:text-4xl">&lt;50ms</p>
         <p class="mt-1 text-xs text-muted-foreground">Average response time</p>
       </div>
       <div class="bg-muted/50 p-6 md:p-8">
-        <p class="font-sans text-3xl font-bold tracking-tight md:text-4xl">0</p>
+        <p class="font-serif text-3xl font-bold tracking-tight md:text-4xl">0</p>
         <p class="mt-1 text-xs text-muted-foreground">Data retention</p>
       </div>
     </div>
@@ -265,7 +269,7 @@
     <!-- CTA -->
     <div class="max-w-5xl mx-auto rounded-2 bg-foreground dark:bg-gray-950 p-8 md:p-12">
       <div class="max-w-xl mx-auto text-center space-y-6">
-        <h2 class="font-sans text-3xl font-bold tracking-tight text-background dark:text-white md:text-4xl">
+        <h2 class="font-serif text-3xl font-bold tracking-tight text-background dark:text-white md:text-4xl">
           Start detecting language<br/>
           in <span class="text-accent">milliseconds</span>.
         </h2>

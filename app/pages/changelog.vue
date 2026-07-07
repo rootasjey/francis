@@ -1,8 +1,8 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-4xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-16">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
       <div class="flex items-center gap-3">
-        <h1 class="font-sans text-4xl md:text-6xl font-bold tracking-tight">
+        <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">
           Changelog
         </h1>
         <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-400/10">

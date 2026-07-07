@@ -1,7 +1,7 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-5xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-24">
-      <h1 class="font-sans text-3xl md:text-6xl font-bold tracking-tight">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
+      <h1 class="font-serif text-3xl md:text-6xl font-bold tracking-tight">
         Simple, usage-based pricing
       </h1>
       <p class="max-w-lg text-md leading-relaxed text-muted-foreground">
@@ -55,7 +55,7 @@
         Contact us for enterprise pricing, dedicated support, and custom SLAs.
       </p>
       <a
-        href="mailto:admin@verbatims.cc"
+        href="mailto:contact@verbatims.cc"
         class="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted"
       >
         <span class="i-lucide-mail text-sm" />

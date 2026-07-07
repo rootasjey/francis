@@ -1,13 +1,10 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-4xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-16">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
       <div class="flex items-center gap-3">
-        <h1 class="font-sans text-4xl md:text-6xl font-bold tracking-tight">
+        <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">
           API Reference
         </h1>
-        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-400/10">
-          <span class="i-lucide-book-open text-sm text-blue-400" />
-        </div>
       </div>
       <p class="max-w-2xl text-base leading-relaxed text-muted-foreground">
         Complete documentation for the Francis API. All endpoints are hosted at <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">https://francis.verbatims.cc/api/v1</code>.
@@ -16,7 +13,7 @@
 
     <!-- Authentication -->
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">Authentication</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Authentication</h2>
       <p class="text-sm text-muted-foreground leading-relaxed">
         All API requests require an API key passed via the <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">x-api-key</code> header or <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">Authorization: Bearer</code> header. Keys are prefixed with <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">fcs_</code> and managed through the dashboard.
       </p>
@@ -32,7 +29,7 @@
 
     <!-- Endpoints -->
     <div class="px-6 md:px-12 space-y-8">
-      <h2 class="text-2xl font-bold tracking-tight">Endpoints</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Endpoints</h2>
 
       <!-- Detect -->
       <div class="space-y-3">
@@ -281,7 +278,7 @@
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">Error codes</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Error codes</h2>
       <div class="rounded-2 border border-border dark:border-gray-800 overflow-hidden">
         <div class="divide-y divide-border dark:divide-gray-800">
           <div v-for="err in errors" :key="err.code" class="flex gap-4 px-5 py-3">

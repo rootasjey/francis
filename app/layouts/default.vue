@@ -136,6 +136,5 @@ const navItems = [
   },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Purpose', to: '/purpose' },
-  { label: 'About', to: '/about' },
 ]
 </script>

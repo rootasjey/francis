@@ -1,7 +1,7 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-5xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-16">
-      <h1 class="font-sans text-4xl md:text-6xl font-bold tracking-tight">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
+      <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">
         Supported languages
       </h1>
       <p class="max-w-xl text-base leading-relaxed text-muted-foreground">

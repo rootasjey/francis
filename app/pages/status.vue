@@ -1,7 +1,7 @@
 <template>
-  <section class="space-y-12 border-x max-w-4xl mx-auto py-12 px-6">
+  <section class="space-y-12 border-x max-w-5xl mx-auto py-12 px-6">
     <!-- Header -->
-    <div class="space-y-4">
+    <div>
       <div class="flex items-center gap-3">
         <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold font-mono tracking-wide"
           :class="overallClass"
@@ -13,7 +13,7 @@
           v{{ data?.version }}
         </span>
       </div>
-      <h1 class="font-sans text-4xl font-bold tracking-tight md:text-5xl">
+      <h1 class="mt-2 font-serif text-4xl font-bold tracking-tight md:text-5xl">
         API Status
       </h1>
       <p class="max-w-lg text-sm leading-relaxed text-muted-foreground">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Loading skeleton -->
-    <div v-if="loading && !data" class="rounded-2 border border-border dark:border-gray-800 overflow-hidden">
+    <div v-if="loading && !data" class="max-w-3xl rounded-2 border border-border dark:border-gray-800 overflow-hidden">
       <div class="divide-y divide-border">
         <div v-for="n in 5" :key="n" class="flex items-center gap-4 px-6 py-5">
           <div class="h-2 w-2 rounded-full bg-muted-foreground/10" />
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Status panel -->
-    <div v-else-if="data" class="rounded-2 border border-border dark:border-gray-800 bg-muted/30 overflow-hidden">
+    <div v-else-if="data" class="max-w-3xl rounded-2 border border-border dark:border-gray-800 bg-muted/30 overflow-hidden">
       <!-- Panel header -->
       <div class="flex items-center justify-between border-b border-border dark:border-gray-800 px-6 py-3.5">
         <div class="flex items-center gap-3">

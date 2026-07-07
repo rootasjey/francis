@@ -1,8 +1,8 @@
 <template>
   <section class="space-y-12 border-x dark:border-gray-800 max-w-5xl mx-auto py-12">
-    <div class="px-6 md:px-12 space-y-4 mt-16">
+    <div class="px-6 md:px-12 space-y-4 mt-6">
       <div class="flex items-center gap-3">
-        <h1 class="font-sans text-4xl md:text-6xl font-bold tracking-tight">
+        <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">
           Multi-language Translation
         </h1>
       </div>
@@ -80,7 +80,7 @@
 
     <!-- Parameters -->
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">Parameters</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Parameters</h2>
       <div class="rounded-2 border border-border dark:border-gray-800 overflow-hidden">
         <div class="divide-y divide-border dark:divide-gray-800">
           <div v-for="param in params" :key="param.name" class="grid grid-cols-[auto_1fr_auto] gap-4 px-6 py-4 items-center">
@@ -98,7 +98,7 @@
 
     <!-- Interactive demo -->
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">Try it out</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Try it out</h2>
       <div class="rounded-2 border border-border dark:border-gray-800 bg-background shadow-md overflow-hidden">
         <div class="p-6 space-y-4">
           <div>
@@ -156,7 +156,7 @@
 
     <!-- Code examples with tabs -->
     <div class="px-6 md:px-12 space-y-4">
-      <h2 class="text-2xl font-bold tracking-tight">Code examples</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Code examples</h2>
       <div class="rounded-2 border border-border dark:border-gray-800 shadow-md overflow-hidden">
         <!-- Tabs -->
         <div class="flex border-b border-border dark:border-gray-800">
@@ -181,7 +181,7 @@
 
     <!-- Usage info -->
     <div class="px-6 md:px-12 border-t border-border dark:border-gray-800 pt-8 space-y-4">
-      <h2 class="text-lg font-bold tracking-tight">Usage &amp; limits</h2>
+      <h2 class="text-2xl font-serif font-bold tracking-tight">Usage &amp; limits</h2>
       <div class="grid gap-4 md:grid-cols-3">
         <div class="rounded-2 border border-border dark:border-gray-800 bg-gray-100 dark:bg-gray-950 p-5 hover:bg-card hover:border-pink transition-[colors] duration-300">
           <span class="i-lucide-coins text-xl text-muted-foreground/50" />
