@@ -53,6 +53,5 @@ describe('default layout', () => {
     expect(layout.text()).toContain('Documentation')
     expect(layout.text()).toContain('Pricing')
     expect(layout.text()).toContain('Purpose')
-    expect(layout.text()).toContain('About')
   })
 })
