@@ -129,7 +129,7 @@ const navItems = [
         to: '/docs/api-reference',
       },
       {
-        label: 'Changelog',
+        label: `Changelog – v${version}`,
         description: 'Latest updates and releases.',
         to: '/changelog',
       },
