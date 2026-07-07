@@ -70,39 +70,7 @@
 </template>
 
 <script setup lang="ts">
-interface ReleaseGroup {
-  label: string
-  labelClass: string
-  items: string[]
-}
+import type { Release } from '~~/shared/types/changelog'
 
-interface Release {
-  version: string
-  date: string
-  groups: ReleaseGroup[]
-}
-
-const releases: Release[] = [
-  {
-    version: '0.1.0',
-    date: '2026-06-29',
-    groups: [
-      {
-        label: 'features',
-        labelClass: 'text-emerald-500',
-        items: [
-          'Initialize Nuxt 4 project with SQLite support and testing setup.',
-          'Language detection API with franc-all on Cloudflare Workers.',
-        ],
-      },
-      {
-        label: 'chores',
-        labelClass: 'text-muted-foreground/50',
-        items: [
-          'Update bun.lock after removing @noble/hashes.',
-        ],
-      },
-    ],
-  },
-]
+const { data: releases } = await useFetch<Release[]>('/api/changelog')
 </script>

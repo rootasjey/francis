@@ -1,6 +1,8 @@
 import { execSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 
+const changelogContent = readFileSync(new URL('./CHANGELOG.md', import.meta.url), 'utf-8')
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -24,6 +26,9 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
+    virtual: {
+      '#changelog-content': `export default ${JSON.stringify(changelogContent)}`,
+    },
     preset: 'cloudflare-module',
     experimental: {
       wasm: true
