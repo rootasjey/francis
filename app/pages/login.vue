@@ -1,50 +1,57 @@
 <template>
-  <section class="mx-auto max-w-lg space-y-8">
-    <div class="space-y-2">
-      <h1 class="font-title text-3xl tracking-tight">Welcome back</h1>
-      <p class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Sign in to access your dashboard.</p>
+  <section class="flex min-h-[calc(100vh-4rem)] items-center justify-center px-6 py-24">
+    <div class="w-full max-w-md space-y-8">
+      <div class="space-y-3 text-center">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
+          <span class="i-lucide-log-in text-xl text-muted-foreground" />
+        </div>
+        <h1 class="font-sans text-3xl font-bold tracking-tight">Welcome back</h1>
+        <p class="text-sm text-muted-foreground">Sign in to access your dashboard.</p>
+      </div>
+
+      <div class="rounded-2 border border-border dark:border-gray-800 bg-card p-8">
+        <form class="space-y-5" @submit.prevent="submit">
+          <div>
+            <label class="text-sm font-medium text-foreground">Email</label>
+            <input
+              v-model="form.email"
+              type="email"
+              class="mt-2 w-full rounded-xl border border-foreground/15 bg-background px-4 py-3 text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              placeholder="you@verbatims.cc"
+              required
+            />
+          </div>
+          <div>
+            <label class="text-sm font-medium text-foreground">Password</label>
+            <input
+              v-model="form.password"
+              type="password"
+              class="mt-2 w-full rounded-xl border border-foreground/15 bg-background px-4 py-3 text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
+              placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;"
+              required
+            />
+          </div>
+          <Transition name="fade">
+            <p v-if="error" class="flex items-center gap-2 text-sm text-rose-400">
+              <span class="i-lucide-alert-circle text-sm" />
+              {{ error }}
+            </p>
+          </Transition>
+          <button
+            class="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+            :disabled="loading"
+          >
+            <span v-if="loading" class="i-lucide-loader-2 animate-spin text-sm" />
+            {{ loading ? 'Signing in&hellip;' : 'Sign in' }}
+          </button>
+        </form>
+      </div>
+
+      <p class="text-center text-sm text-muted-foreground">
+        New here?
+        <NuxtLink to="/signup" class="font-medium text-foreground transition-colors duration-200 hover:underline">Create an account</NuxtLink>
+      </p>
     </div>
-
-    <form class="space-y-5" @submit.prevent="submit">
-      <div>
-        <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Email</label>
-        <input
-          v-model="form.email"
-          type="email"
-          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
-          placeholder="you@verbatims.cc"
-          required
-        />
-      </div>
-      <div>
-        <label class="font-meta text-xs tracking-wider text-muted-foreground uppercase">Password</label>
-        <input
-          v-model="form.password"
-          type="password"
-          class="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-primary/30 focus:outline-none"
-          placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;"
-          required
-        />
-      </div>
-      <button
-        class="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
-        :disabled="loading"
-      >
-        <span v-if="loading" class="i-lucide-loader-2 animate-spin text-sm" />
-        {{ loading ? 'Signing in&hellip;' : 'Sign in' }}
-      </button>
-      <Transition name="fade">
-        <p v-if="error" class="flex items-center gap-2 font-meta text-xs text-rose-400">
-          <span class="i-lucide-alert-circle text-xs" />
-          {{ error }}
-        </p>
-      </Transition>
-    </form>
-
-    <p class="font-meta text-xs text-muted-foreground">
-      New here?
-      <NuxtLink to="/signup" class="font-medium text-foreground underline decoration-border decoration-1 underline-offset-2 transition-colors duration-200 hover:decoration-foreground">Create an account</NuxtLink>
-    </p>
   </section>
 </template>
 

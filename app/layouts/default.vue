@@ -38,10 +38,18 @@
             Console
           </NuxtLink>
           <NuxtLink
+            v-if="!session.loggedIn.value"
             to="/dashboard"
             class="rounded-xl bg-foreground px-5 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110"
           >
             Get Started
+          </NuxtLink>
+          <NuxtLink
+            v-if="session.loggedIn.value && session.user.value?.role === 'admin'"
+            to="/admin"
+            class="rounded-xl bg-foreground px-5 py-2 text-sm font-semibold text-background transition-all duration-200 hover:brightness-110"
+          >
+            Admin
           </NuxtLink>
         </div>
       </div>

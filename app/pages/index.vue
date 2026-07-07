@@ -13,15 +13,6 @@
         in milliseconds with API keys, usage tracking, and a modern console.
       </p>
 
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-3 rounded-1 bg-foreground
-        px-5 py-2 text-sm font-600 text-background
-        dark:bg-gray-900 dark:text-white border border-gray-500 dark:border-transparent">
-        <span>Francis is now live on Cloudflare Workers</span>
-        <span class="opacity-30">|</span>
-        <span class="opacity-80">Learn more</span>
-        <span class="opacity-60">&rarr;</span>
-      </div>
     </div>
 
     <!-- Product showcase -->
