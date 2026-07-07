@@ -18,48 +18,48 @@
 
       <!-- Product showcase -->
       <div class="mt-8 animate-slide-up p-8 md:p-12 lg:p-16 max-w-5xl mx-auto
-        overflow-hidden rounded-2 border border-border dark:border-gray-800
-        hover:border-primary
-        bg-transparent dark:bg-gray-950 shadow-md hover:shadow-lg
-        transition-[shadow,colors]">
+        overflow-hidden rounded-2 border-2 border-border/80 dark:border-gray-700
+        hover:border-accent/40
+        bg-gray-100 dark:bg-gray-950 shadow-lg hover:shadow-xl
+        transition-[shadow,colors,border-color]">
       <!-- Meta line -->
-      <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border dark:border-gray-800 pb-4 font-mono text-[11px] text-muted-foreground/60">
+      <div v-if="feed" class="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border/60 dark:border-gray-800 pb-4 font-mono text-[12px] text-muted-foreground/70">
         <span class="flex items-center gap-1.5">
-          <span class="i-lucide-calendar h-3 w-3" />
+          <span class="i-lucide-calendar h-3.5 w-3.5" />
           {{ feed.date }}
         </span>
         <span class="flex items-center gap-1.5">
-          <span class="i-lucide-clock h-3 w-3" />
+          <span class="i-lucide-clock h-3.5 w-3.5" />
           {{ feed.time }}
         </span>
         <span class="flex items-center gap-1.5">
-          <span class="i-lucide-map-pin h-3 w-3" />
+          <span class="i-lucide-map-pin h-3.5 w-3.5" />
           {{ feed.city }}
         </span>
         <span v-if="feed.weather" class="flex items-center gap-1.5">
-          <span class="i-lucide-thermometer h-3 w-3" />
+          <span class="i-lucide-thermometer h-3.5 w-3.5" />
           {{ feed.weather.temp }}°C &middot; {{ feed.weather.description }}
         </span>
         <span v-if="feed.sun" class="flex items-center gap-1.5">
-          <span class="i-lucide-sun h-3 w-3" />
+          <span class="i-lucide-sun h-3.5 w-3.5" />
           ↑ {{ feed.sun.sunrise }} / ↓ {{ feed.sun.sunset }}
         </span>
         <span v-if="feed.exchangeRate" class="flex items-center gap-1.5">
-          <span class="i-lucide-banknote h-3 w-3" />
+          <span class="i-lucide-banknote h-3.5 w-3.5" />
           1 {{ feed.exchangeRate.base }} = {{ feed.exchangeRate.rate.toFixed(3) }} {{ feed.exchangeRate.target }}
         </span>
       </div>
 
       <!-- Loading skeleton -->
       <div v-if="isLoading" class="space-y-3">
-        <div class="h-5 w-3/4 animate-pulse rounded bg-muted dark:bg-gray-700" />
-        <div class="h-5 w-2/3 animate-pulse rounded bg-muted dark:bg-gray-700" />
-        <div class="h-5 w-1/2 animate-pulse rounded bg-muted dark:bg-gray-700" />
-        <div class="h-5 w-3/5 animate-pulse rounded bg-muted dark:bg-gray-700" />
+        <div class="h-6 w-3/4 animate-pulse rounded bg-muted-foreground/20 dark:bg-gray-700" />
+        <div class="h-6 w-2/3 animate-pulse rounded bg-muted-foreground/20 dark:bg-gray-700" />
+        <div class="h-6 w-1/2 animate-pulse rounded bg-muted-foreground/20 dark:bg-gray-700" />
+        <div class="h-6 w-3/5 animate-pulse rounded bg-muted-foreground/20 dark:bg-gray-700" />
       </div>
 
       <!-- Paragraph -->
-      <p v-else class="max-w-3xl text-lg leading-relaxed tracking-tight md:text-xl lg:leading-[1.6]">
+      <p v-else class="max-w-4xl text-xl leading-relaxed tracking-tight md:text-2xl lg:leading-[1.7]">
         <span
           v-for="(sentence, i) in sentences"
           :key="i"
@@ -68,30 +68,30 @@
         >
           <span
             :style="{ '--sentence-color': `var(--lang-${activeVariant(sentence, i).code})` }"
-            class="inline border-b border-dashed border-foreground/20 text-[var(--sentence-color)] transition-colors duration-200 group-hover:border-foreground/60 group-hover:bg-foreground/[0.04] group-hover:text-foreground"
+            class="inline px-0.5 text-[var(--sentence-color)] transition-all duration-200 group-hover:bg-[var(--sentence-color)] group-hover:text-white dark:group-hover:text-black group-hover:rounded-[3px]"
           >
             {{ displayedSentences[i] }}
             <span
               v-if="isTyping && i === currentTypingIndex"
-              class="ml-0.5 inline-block h-[1em] w-[2px] -mb-0.5 bg-foreground animate-cursor align-middle"
+              class="ml-0.5 inline-block h-[1em] w-[2.5px] -mb-0.5 bg-foreground animate-cursor align-middle"
             />
           </span>
-          <span class="invisible absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-2 border border-border dark:border-gray-800 bg-card p-2 text-xs shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 z-10">
+          <span class="invisible absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-2 border border-border dark:border-gray-800 bg-card p-2.5 text-xs shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 z-10">
             <span class="flex items-center gap-2">
-              <span class="text-base leading-none">{{ activeVariant(sentence, i).flag }}</span>
-              <span class="font-medium text-foreground/90">{{ activeVariant(sentence, i).name }}</span>
-              <span class="rounded bg-emerald-500/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">{{ activeVariant(sentence, i).code }}</span>
-              <span class="font-mono text-[10px] text-muted-foreground/50">{{ activeVariant(sentence, i).confidence }}%</span>
+              <span class="text-lg leading-none">{{ activeVariant(sentence, i).flag }}</span>
+              <span class="font-semibold text-foreground">{{ activeVariant(sentence, i).name }}</span>
+              <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 font-mono text-[11px] font-bold text-emerald-700 dark:text-emerald-400">{{ activeVariant(sentence, i).code }}</span>
+              <span class="font-mono text-[10px] text-muted-foreground/60">{{ activeVariant(sentence, i).confidence }}%</span>
             </span>
           </span>
         </span>
       </p>
 
-      <div class="mt-10 flex items-center justify-between border-t border-border dark:border-gray-900 pt-6">
-        <p class="text-sm text-muted-foreground/50">Multilingual text &middot; {{ sentences.length }} sentences &middot; {{ sentences.length }} languages</p>
-        <div class="flex items-center gap-2 text-sm text-muted-foreground/40">
-          <span class="i-lucide-mouse-pointer-2 h-3 w-3" />
-          <span class="text-sm text-muted-foreground/50">Click any sentence to switch its language</span>
+      <div class="mt-10 flex items-center justify-between border-t border-border/60 dark:border-gray-800 pt-6">
+        <p class="text-sm text-muted-foreground/60">Multilingual text &middot; {{ sentences.length }} sentences &middot; {{ sentences.length }} languages</p>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground/50">
+          <span class="i-lucide-mouse-pointer-2 h-3.5 w-3.5" />
+          <span class="text-sm text-muted-foreground/60">Click any sentence to switch its language</span>
         </div>
       </div>
         </div>
