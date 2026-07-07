@@ -81,7 +81,7 @@
             <span class="absolute right-1 pointer-events-none i-lucide-chevron-down text-[10px] text-muted-foreground" />
           </div>
         </div>
-        <p class="font-mono text-xs">francis.verbatims.cc</p>
+        <p class="font-mono text-xs">v{{ version }}</p>
       </div>
     </footer>
   </div>
@@ -92,6 +92,7 @@ import { useUserSession } from '#imports'
 
 const session = useUserSession()
 const colorMode = useColorMode()
+const { public: { appVersion: version } } = useRuntimeConfig()
 
 const navItems = [
   {

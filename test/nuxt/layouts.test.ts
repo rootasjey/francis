@@ -44,7 +44,7 @@ describe('default layout', () => {
   it('should render footer text', async () => {
     const layout = await mountLayout()
     expect(layout.text()).toContain('Status')
-    expect(layout.text()).toContain('francis.verbatims.cc')
+    expect(layout.text()).toMatch(/v\d+\.\d+\.\d+/)
   })
 
   it('should render navigation items', async () => {
