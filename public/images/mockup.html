@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francis – Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #faf9f6 0%, #f0ece4 50%, #e8e0d4 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 40px;
+    }
+
+    .mockup {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .mockup__glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 106, 0, 0.08) 0%, transparent 70%);
+      border-radius: 32px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .mockup__frame {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 8px rgba(0,0,0,0.04),
+        0 12px 24px rgba(0,0,0,0.06),
+        0 24px 48px rgba(0,0,0,0.04);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .mockup__toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      background: #faf9f6;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .mockup__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e0ddd5;
+    }
+    .mockup__dot--red { background: #ff5f57; }
+    .mockup__dot--yellow { background: #febc2e; }
+    .mockup__dot--green { background: #28c840; }
+
+    .mockup__url {
+      flex: 1;
+      margin-left: 12px;
+      padding: 6px 14px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      font-size: 13px;
+      color: #888;
+      letter-spacing: 0.01em;
+    }
+
+    .mockup__screenshot {
+      width: 100%;
+      display: block;
+    }
+
+    /* Placeholder when no image is set */
+    .mockup__placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #faf9f6, #f0ece4);
+      color: #aaa;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .mockup__badge {
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      white-space: nowrap;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="mockup">
+    <div class="mockup__glow"></div>
+    <div class="mockup__frame">
+      <div class="mockup__toolbar">
+        <div class="mockup__dot mockup__dot--red"></div>
+        <div class="mockup__dot mockup__dot--yellow"></div>
+        <div class="mockup__dot mockup__dot--green"></div>
+        <div class="mockup__url">francis.verbatims.cc</div>
+      </div>
+      <!-- Replace the placeholder below with your screenshot -->
+      <!-- Option 1: Use an <img> tag with your saved screenshot -->
+      <!-- <img class="mockup__screenshot" src="francis-home-light.png" alt="Francis App"> -->
+      <img class="mockup__screenshot" src="francis-home-light.png" alt="Francis App">
+      <!-- Option 2: Keep the placeholder for reference -->
+      <!--<div class="mockup__placeholder">
+        Place your screenshot here
+      </div>-->
+    </div>
+    <div class="mockup__badge">Francis API</div>
+  </div>
+</body>
+</html>

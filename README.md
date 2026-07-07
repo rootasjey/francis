@@ -1,4 +1,4 @@
-![Francis API](/public/images/francis-home-light.png)
+![Francis API](/public/images/francis-home-light-mockup.png)
 
 # Francis
 
@@ -9,13 +9,13 @@ Language detection API powered by [franc-all](https://github.com/wooorm/franc) o
 Francis is a **Nuxt 4 + NuxtHub** app deployed on Cloudflare Workers with D1 (SQLite). It wraps `franc-all` in an authenticated HTTP API with usage tracking and key management.
 
 ```
-┌─────────────┐     POST /api/v1/detect     ┌──────────────┐
-│  Verbatims  │ ──────────────────────────►  │   Francis    │
-│  (Worker)   │    x-api-key: fcs_****      │   (Worker)   │
-└─────────────┘                              │   + D1 DB    │
-       ▲                                      └──────────────┘
-       │  { language: "fra", score: 0.8, ... }
-       └──────────────────────────────────────
+┌─────────────┐     POST /api/v1/detect                ┌────────┐
+│  Verbatims  │ ──────────────────────────► │   Francis    │
+│  (Worker)   │    x-api-key: fcs_****                            │   (Worker)   │
+└─────────────┘                                        │   + D1 DB    │
+       ▲                                                           └────────┘
+       │  { language: "fra", score: 0.8, ... }                                |
+       └──────────────────────────────────────┘
 ```
 
 ## Directory structure
