@@ -2,8 +2,8 @@ import { createError, readBody } from 'h3'
 import { eq } from 'drizzle-orm'
 import { emailVerificationTokens, users } from '../../db/schema'
 import { getDb } from '../../db/client'
-import { hashPassword as hashPasswordLocal } from '../../utils/password'
-import { setUserSession as setUserSessionLocal } from '../../utils/session'
+import { hashFrancisPassword } from '../../utils/password'
+import { setFrancisUserSession } from '../../utils/session'
 import { sendVerificationEmail } from '../../utils/email'
 import { createToken, hashToken } from '../../utils/tokens'
 
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
     .limit(1)
 
   const role: 'user' | 'admin' = firstUser ? 'user' : 'admin'
-  const passwordHash = await hashPasswordLocal(password)
+  const passwordHash = await hashFrancisPassword(password)
 
   const record = {
     id: crypto.randomUUID(),
@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
   })
   await sendVerificationEmail(event, record.email, verificationToken)
 
-  await setUserSessionLocal(event, {
+  await setFrancisUserSession(event, {
     user: {
       id: record.id,
       email: record.email,

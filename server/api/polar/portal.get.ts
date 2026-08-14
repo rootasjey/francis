@@ -2,10 +2,10 @@ import { createError } from 'h3'
 import { eq } from 'drizzle-orm'
 import { getDb } from '../../db/client'
 import { users } from '../../db/schema'
-import { requireSessionUser } from '../../utils/session'
+import { requireFrancisSessionUser } from '../../utils/session'
 
 export default defineEventHandler(async (event) => {
-  const session = await requireSessionUser(event)
+  const session = await requireFrancisSessionUser(event)
   const config = useRuntimeConfig()
 
   const db = getDb(event)

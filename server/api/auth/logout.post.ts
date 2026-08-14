@@ -1,6 +1,6 @@
-import { clearUserSession } from '../../utils/session'
+import { clearFrancisUserSession } from '../../utils/session'
 
 export default defineEventHandler(async (event) => {
-  await clearUserSession(event)
+  await clearFrancisUserSession(event)
   return { ok: true }
 })

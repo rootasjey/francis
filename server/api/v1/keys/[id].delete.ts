@@ -5,7 +5,7 @@ import { getDb } from '../../../db/client'
 import * as sessionUtils from '../../../utils/session'
 
 export default defineEventHandler(async (event) => {
-  const session = await sessionUtils.requireSessionUser(event)
+  const session = await sessionUtils.requireFrancisSessionUser(event)
 
   const id = getRouterParam(event, 'id')
 

@@ -1,10 +1,10 @@
 import { createError, getQuery, sendRedirect } from 'h3'
 import { Polar } from '@polar-sh/sdk'
-import { requireSessionUser } from '../../utils/session'
+import { requireFrancisSessionUser } from '../../utils/session'
 import { getOrCreatePolarCustomer, syncPolarCustomerId } from '../../utils/polar'
 
 export default defineEventHandler(async (event) => {
-  const session = await requireSessionUser(event)
+  const session = await requireFrancisSessionUser(event)
   const config = useRuntimeConfig()
 
   const query = getQuery(event)

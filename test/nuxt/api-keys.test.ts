@@ -8,7 +8,7 @@ const mockRequireSessionUser = vi.fn()
 
 vi.mock('../../server/db/client', () => ({ getDb: vi.fn(() => mockDb) }))
 vi.mock('../../server/utils/session', () => ({
-  requireSessionUser: mockRequireSessionUser,
+  requireFrancisSessionUser: mockRequireSessionUser,
 }))
 vi.mock('h3', async () => {
   const actual = await vi.importActual<typeof import('h3')>('h3')

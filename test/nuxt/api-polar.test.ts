@@ -16,8 +16,8 @@ const mockSendRedirect = vi.fn()
 
 vi.mock('../../server/db/client', () => ({ getDb: vi.fn(() => mockDb) }))
 vi.mock('../../server/utils/session', () => ({
-  requireSessionUser: mockRequireSessionUser,
-  getUserSession: mockRequireSessionUser,
+  requireFrancisSessionUser: mockRequireSessionUser,
+  getFrancisUserSession: mockRequireSessionUser,
 }))
 vi.mock('../../server/utils/polar', () => ({
   getOrCreatePolarCustomer: vi.fn((_event: any, user: any) =>

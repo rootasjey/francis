@@ -18,8 +18,8 @@ const mockClearUserSession = vi.fn(() => Promise.resolve(true))
 const mockGetUserSession = vi.fn()
 
 vi.mock('../../server/utils/session', () => ({
-  clearUserSession: mockClearUserSession,
-  getUserSession: mockGetUserSession,
+  clearFrancisUserSession: mockClearUserSession,
+  getFrancisUserSession: mockGetUserSession,
 }))
 
 beforeEach(() => {

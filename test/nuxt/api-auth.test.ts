@@ -9,10 +9,10 @@ const mockVerifyPassword = vi.fn()
 const mockHashPassword = vi.fn()
 
 vi.mock('../../server/db/client', () => ({ getDb: vi.fn(() => mockDb) }))
-vi.mock('../../server/utils/session', () => ({ setUserSession: mockSetUserSession }))
+vi.mock('../../server/utils/session', () => ({ setFrancisUserSession: mockSetUserSession }))
 vi.mock('../../server/utils/password', () => ({
-  verifyPassword: mockVerifyPassword,
-  hashPassword: mockHashPassword,
+  verifyFrancisPassword: mockVerifyPassword,
+  hashFrancisPassword: mockHashPassword,
 }))
 vi.mock('../../server/utils/email', () => ({
   sendVerificationEmail: vi.fn(),

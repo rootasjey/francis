@@ -4,11 +4,11 @@ import { and, eq, isNull, sql } from 'drizzle-orm'
 import { apiKeys, usageDaily } from '../db/schema'
 import { getDb } from '../db/client'
 import { hashKey, normalizeKey } from './api-key'
-import { requireSessionUser } from './session'
+import { requireFrancisSessionUser } from './session'
 import { getPolarClient } from './polar'
 
 export async function requireAdmin(event: H3Event) {
-  const session = await requireSessionUser(event)
+  const session = await requireFrancisSessionUser(event)
   const role = session?.user?.role
 
   if (role !== 'admin') {

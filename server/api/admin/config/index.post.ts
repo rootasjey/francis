@@ -1,9 +1,9 @@
 import { setConfig, CONFIG_KEYS } from '~~/server/utils/config'
-import { getUserSession } from '~~/server/utils/session'
+import { getFrancisUserSession } from '~~/server/utils/session'
 
 export default defineEventHandler(async (event) => {
   await requireAdmin(event)
-  const session = await getUserSession(event)
+  const session = await getFrancisUserSession(event)
   const body = await readBody<{ key: string, value: string }>(event)
 
   if (!body?.key || typeof body.value !== 'string') {

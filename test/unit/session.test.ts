@@ -29,7 +29,7 @@ vi.mock('h3', () => {
   return { createError, useSession }
 })
 
-import { getUserSession, setUserSession, clearUserSession, requireSessionUser } from '../../server/utils/session'
+import { getFrancisUserSession, setFrancisUserSession, clearFrancisUserSession, requireFrancisSessionUser } from '../../server/utils/session'
 
 const mockEvent = {} as any
 
@@ -46,17 +46,17 @@ beforeEach(() => {
 describe('getUserSession', () => {
   it('should return session data', async () => {
     mockSessionStore.data.user = { id: '1', email: 'test@test.com', role: 'user' }
-    const session = await getUserSession(mockEvent)
+    const session = await getFrancisUserSession(mockEvent)
     expect(session.user?.email).toBe('test@test.com')
   })
 
   it('should return session with default id', async () => {
-    const session = await getUserSession(mockEvent)
+    const session = await getFrancisUserSession(mockEvent)
     expect(session.id).toBe('test-session-id')
   })
 
   it('should return empty session when no data', async () => {
-    const session = await getUserSession(mockEvent)
+    const session = await getFrancisUserSession(mockEvent)
     expect(session.user).toBeUndefined()
   })
 })
@@ -64,44 +64,44 @@ describe('getUserSession', () => {
 describe('setUserSession', () => {
   it('should store user data in session', async () => {
     const data = { user: { id: '1', email: 'a@b.com', role: 'user' as const }, loggedInAt: Date.now() }
-    const session = await setUserSession(mockEvent, data)
+    const session = await setFrancisUserSession(mockEvent, data)
     expect(session.user?.email).toBe('a@b.com')
   })
 
   it('should persist data across calls', async () => {
-    await setUserSession(mockEvent, { user: { id: '1', email: 'a@b.com', role: 'user' } })
-    const session = await getUserSession(mockEvent)
+    await setFrancisUserSession(mockEvent, { user: { id: '1', email: 'a@b.com', role: 'user' } })
+    const session = await getFrancisUserSession(mockEvent)
     expect(session.user?.email).toBe('a@b.com')
   })
 })
 
 describe('clearUserSession', () => {
   it('should clear session data', async () => {
-    await setUserSession(mockEvent, { user: { id: '1', email: 'a@b.com', role: 'user' } })
-    await clearUserSession(mockEvent)
-    const session = await getUserSession(mockEvent)
+    await setFrancisUserSession(mockEvent, { user: { id: '1', email: 'a@b.com', role: 'user' } })
+    await clearFrancisUserSession(mockEvent)
+    const session = await getFrancisUserSession(mockEvent)
     expect(session.user).toBeUndefined()
   })
 
   it('should return true', async () => {
-    await expect(clearUserSession(mockEvent)).resolves.toBe(true)
+    await expect(clearFrancisUserSession(mockEvent)).resolves.toBe(true)
   })
 })
 
 describe('requireSessionUser', () => {
   it('should return session when user exists', async () => {
     mockSessionStore.data.user = { id: '1', email: 'a@b.com', role: 'user' }
-    const session = await requireSessionUser(mockEvent)
+    const session = await requireFrancisSessionUser(mockEvent)
     expect(session.user.email).toBe('a@b.com')
   })
 
   it('should throw 401 when no user', async () => {
-    await expect(requireSessionUser(mockEvent)).rejects.toThrow('Unauthorized')
+    await expect(requireFrancisSessionUser(mockEvent)).rejects.toThrow('Unauthorized')
   })
 
   it('should throw custom status code and message', async () => {
     await expect(
-      requireSessionUser(mockEvent, { statusCode: 403, message: 'Forbidden' }),
+      requireFrancisSessionUser(mockEvent, { statusCode: 403, message: 'Forbidden' }),
     ).rejects.toMatchObject({ statusCode: 403, statusMessage: 'Forbidden' })
   })
 })
@@ -110,7 +110,7 @@ describe('getSessionConfig (internal)', () => {
   it('should throw 500 when session password is missing', async () => {
     mockUseRuntimeConfig.mockReturnValueOnce({} as any)
 
-    await expect(getUserSession(mockEvent)).rejects.toMatchObject({
+    await expect(getFrancisUserSession(mockEvent)).rejects.toMatchObject({
       statusCode: 500,
       statusMessage: 'Missing session password',
     })

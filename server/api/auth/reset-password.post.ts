@@ -2,7 +2,7 @@ import { createError, readBody } from 'h3'
 import { eq } from 'drizzle-orm'
 import { passwordResetTokens, users } from '../../db/schema'
 import { getDb } from '../../db/client'
-import { hashPassword } from '../../utils/password'
+import { hashFrancisPassword } from '../../utils/password'
 import { hashToken } from '../../utils/tokens'
 
 export default defineEventHandler(async (event) => {
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid or expired reset token' })
   }
 
-  await db.update(users).set({ passwordHash: await hashPassword(password) }).where(eq(users.id, record.userId))
+  await db.update(users).set({ passwordHash: await hashFrancisPassword(password) }).where(eq(users.id, record.userId))
   await db.delete(passwordResetTokens).where(eq(passwordResetTokens.id, record.id))
   return { reset: true }
 })

@@ -56,13 +56,13 @@ async function deriveKey(password: string, salt: Uint8Array, iterations: number)
   return new Uint8Array(bits)
 }
 
-export async function hashPassword(password: string, iterations = 100_000): Promise<string> {
+export async function hashFrancisPassword(password: string, iterations = 100_000): Promise<string> {
   const salt = crypto.getRandomValues(new Uint8Array(16))
   const derived = await deriveKey(password, salt, iterations)
   return `pbkdf2$${iterations}$${toBase64(salt)}$${toBase64(derived)}`
 }
 
-export async function verifyPassword(hashed: string, password: string): Promise<boolean> {
+export async function verifyFrancisPassword(hashed: string, password: string): Promise<boolean> {
   const parts = hashed.split('$')
   if (parts.length !== 4 || parts[0] !== 'pbkdf2') return false
 

@@ -32,7 +32,7 @@ function getSessionConfig(): SessionConfig {
   return config
 }
 
-export async function getUserSession(event: H3Event): Promise<UserSession> {
+export async function getFrancisUserSession(event: H3Event): Promise<UserSession> {
   const session = await useSession<UserSession>(event, getSessionConfig())
   return {
     id: session.id || '',
@@ -40,7 +40,7 @@ export async function getUserSession(event: H3Event): Promise<UserSession> {
   } as UserSession
 }
 
-export async function setUserSession(event: H3Event, data: Omit<UserSession, 'id'>): Promise<UserSession> {
+export async function setFrancisUserSession(event: H3Event, data: Omit<UserSession, 'id'>): Promise<UserSession> {
   const session = await useSession<UserSession>(event, getSessionConfig())
   await session.update(data)
   return {
@@ -50,14 +50,14 @@ export async function setUserSession(event: H3Event, data: Omit<UserSession, 'id
   } as UserSession
 }
 
-export async function clearUserSession(event: H3Event): Promise<boolean> {
+export async function clearFrancisUserSession(event: H3Event): Promise<boolean> {
   const session = await useSession<UserSession>(event, getSessionConfig())
   await session.clear()
   return true
 }
 
-export async function requireSessionUser(event: H3Event, opts?: { statusCode?: number; message?: string }): Promise<UserSessionRequired> {
-  const session = await getUserSession(event)
+export async function requireFrancisSessionUser(event: H3Event, opts?: { statusCode?: number; message?: string }): Promise<UserSessionRequired> {
+  const session = await getFrancisUserSession(event)
 
   if (!session.user) {
     throw createError({

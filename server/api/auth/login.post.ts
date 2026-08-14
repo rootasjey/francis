@@ -2,8 +2,8 @@ import { createError, readBody } from 'h3'
 import { eq } from 'drizzle-orm'
 import { users } from '../../db/schema'
 import { getDb } from '../../db/client'
-import { verifyPassword as verifyPasswordLocal } from '../../utils/password'
-import { setUserSession as setUserSessionLocal } from '../../utils/session'
+import { verifyFrancisPassword } from '../../utils/password'
+import { setFrancisUserSession } from '../../utils/session'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ email?: string; password?: string }>(event)
@@ -25,13 +25,13 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
   }
 
-  const valid = await verifyPasswordLocal(user.passwordHash, password)
+  const valid = await verifyFrancisPassword(user.passwordHash, password)
 
   if (!valid) {
     throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
   }
 
-  await setUserSessionLocal(event, {
+  await setFrancisUserSession(event, {
     user: {
       id: user.id,
       email: user.email,

@@ -1,6 +1,6 @@
 import { defineNitroPlugin } from 'nitropack/runtime/plugin'
 import { eq } from 'drizzle-orm'
-import { hashPassword } from '../utils/password'
+import { hashFrancisPassword } from '../utils/password'
 
 export default defineNitroPlugin(async () => {
   if (import.meta.dev) {
@@ -25,7 +25,7 @@ export default defineNitroPlugin(async () => {
       return
     }
 
-    const passwordHash = await hashPassword(adminPassword)
+      const passwordHash = await hashFrancisPassword(adminPassword)
 
     await db.insert(schema.users).values({
       id: crypto.randomUUID(),

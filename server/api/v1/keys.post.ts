@@ -6,7 +6,7 @@ import { generateApiKey, hashKey, keyPrefix } from '../../utils/api-key'
 import * as sessionUtils from '../../utils/session'
 
 export default defineEventHandler(async (event) => {
-  const session = await sessionUtils.requireSessionUser(event)
+  const session = await sessionUtils.requireFrancisSessionUser(event)
 
   const body = await readBody<CreateKeyRequest>(event)
   const runtimeConfig = useRuntimeConfig()
