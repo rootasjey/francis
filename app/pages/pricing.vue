@@ -55,7 +55,7 @@
         Contact us for enterprise pricing, dedicated support, and custom SLAs.
       </p>
       <a
-        href="mailto:contact@verbatims.cc"
+        href="mailto:francis@verbatims.cc"
         class="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted"
       >
         <span class="i-lucide-mail text-sm" />

@@ -1,9 +1,11 @@
 import { createError, readBody } from 'h3'
 import { eq } from 'drizzle-orm'
-import { users } from '../../db/schema'
+import { emailVerificationTokens, users } from '../../db/schema'
 import { getDb } from '../../db/client'
 import { hashPassword as hashPasswordLocal } from '../../utils/password'
 import { setUserSession as setUserSessionLocal } from '../../utils/session'
+import { sendVerificationEmail } from '../../utils/email'
+import { createToken, hashToken } from '../../utils/tokens'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ email?: string; password?: string; name?: string }>(event)
@@ -49,6 +51,15 @@ export default defineEventHandler(async (event) => {
   }
 
   await db.insert(users).values(record)
+
+  const verificationToken = createToken()
+  await db.insert(emailVerificationTokens).values({
+    id: crypto.randomUUID(),
+    userId: record.id,
+    tokenHash: await hashToken(verificationToken),
+    expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
+  })
+  await sendVerificationEmail(event, record.email, verificationToken)
 
   await setUserSessionLocal(event, {
     user: {

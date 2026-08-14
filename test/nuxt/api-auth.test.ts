@@ -14,6 +14,9 @@ vi.mock('../../server/utils/password', () => ({
   verifyPassword: mockVerifyPassword,
   hashPassword: mockHashPassword,
 }))
+vi.mock('../../server/utils/email', () => ({
+  sendVerificationEmail: vi.fn(),
+}))
 vi.mock('h3', async () => {
   const actual = await vi.importActual<typeof import('h3')>('h3')
   return {

@@ -65,12 +65,13 @@ export default defineNuxtConfig({
     polarOrganizationId: process.env.NUXT_POLAR_ORGANIZATION_ID || '',
     polarServer: process.env.NUXT_POLAR_SERVER || 'sandbox',
     polarCheckoutSuccessUrl: process.env.NUXT_POLAR_CHECKOUT_SUCCESS_URL || 'http://localhost:3000/dashboard',
+    emailFromAddress: process.env.NUXT_EMAIL_FROM_ADDRESS || 'Francis <francis@verbatims.cc>',
     // Public keys (exposed to client-side)
     public: {
       authUrl: process.env.NUXT_AUTH_ORIGIN || 'http://localhost:3000',
       // Injected at build time; used in UI (About, header, footer)
       appVersion: computeVersion(),
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://francis.corpinot.cc',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://francis.verbatims.cc',
       // Bump to invalidate all previously rendered OG images
       ogStyleVersion: process.env.NUXT_PUBLIC_OG_STYLE_VERSION || '1'
     }

@@ -61,8 +61,10 @@
 
     <footer class="border-t border-border dark:border-gray-800 py-10">
       <div class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-        <div class="flex items-center gap-4">
-          <NuxtLink to="/status" class="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">Status</NuxtLink>
+         <div class="flex items-center gap-4">
+           <a href="mailto:francis@verbatims.cc" class="transition-colors hover:text-foreground">francis@verbatims.cc</a>
+           <div class="w-px h-4 bg-muted-foreground/30"></div>
+           <NuxtLink to="/status" class="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">Status</NuxtLink>
           <div class="w-px h-4 bg-muted-foreground/30 hover:bg-blue/50"></div>
           <span class="font-500">Francis API</span> <span>&bull;</span> <span class="font-500">Language detection</span>
           <div class="relative flex items-center">

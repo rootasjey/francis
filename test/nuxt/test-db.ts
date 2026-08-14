@@ -11,6 +11,7 @@ const MIGRATIONS = [
     email TEXT NOT NULL UNIQUE,
     name TEXT,
     password_hash TEXT NOT NULL DEFAULT '',
+    email_verified_at INTEGER,
     role TEXT NOT NULL DEFAULT 'user',
     polar_customer_id TEXT,
     polar_subscription_id TEXT,
@@ -50,6 +51,20 @@ const MIGRATIONS = [
     updated_by TEXT
   )`,
   `CREATE INDEX IF NOT EXISTS app_config_updated_at_idx ON app_config(updated_at)`,
+  `CREATE TABLE IF NOT EXISTS email_verification_tokens (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users(id),
+    token_hash TEXT NOT NULL UNIQUE,
+    expires_at INTEGER NOT NULL,
+    created_at INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000)
+  )`,
+  `CREATE TABLE IF NOT EXISTS password_reset_tokens (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users(id),
+    token_hash TEXT NOT NULL UNIQUE,
+    expires_at INTEGER NOT NULL,
+    created_at INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000)
+  )`,
 ]
 
 export async function createTestDb(): Promise<TestDb> {

@@ -51,6 +51,9 @@
         New here?
         <NuxtLink to="/signup" class="font-medium text-foreground transition-colors duration-200 hover:underline">Create an account</NuxtLink>
       </p>
+      <p class="text-center text-sm">
+        <NuxtLink to="/forgot-password" class="text-muted-foreground transition-colors duration-200 hover:text-foreground hover:underline">Forgot your password?</NuxtLink>
+      </p>
     </div>
   </section>
 </template>
@@ -106,4 +109,3 @@ async function submit() {
   transform: translateY(-4px);
 }
 </style>
-
