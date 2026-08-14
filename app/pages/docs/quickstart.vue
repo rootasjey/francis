@@ -19,27 +19,7 @@
       <p class="text-sm text-muted-foreground leading-relaxed">
         Sign up for a free account to receive an API key. Keys are prefixed with <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">fcs_</code> and are immediately ready to use.
       </p>
-      <div class="rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-        <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
-          <span class="text-xs text-muted-foreground/50">Terminal</span>
-          <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
-        </div>
-        <div class="px-4 py-3 font-mono text-xs leading-loose">
-          <div class="flex items-start gap-2">
-            <span class="text-muted-foreground/30 shrink-0">$</span>
-            <span>
-              <span class="text-muted-foreground/40">curl -X POST</span>
-              <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/keys'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-H</span>
-              <span class="text-accent">'Authorization: Bearer &lt;session_token&gt;'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
-              <span class="text-emerald-600 dark:text-emerald-400">'{"name": "My First Key"}'</span>
-            </span>
-          </div>
-        </div>
-      </div>
+      <CodeBlock :code="createKeyCode" language="bash" label="Terminal" />
       <p class="text-xs text-muted-foreground/60 italic">
         Or sign in to the <NuxtLink to="/dashboard" class="text-accent hover:underline">dashboard</NuxtLink> to generate a key with one click.
       </p>
@@ -50,36 +30,7 @@
       <p class="text-sm text-muted-foreground leading-relaxed">
         Send a <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">POST</code> request to <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">/api/v1/detect</code> with your text and API key.
       </p>
-      <div class="rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-        <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
-          <span class="text-xs text-muted-foreground/50">Terminal</span>
-          <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
-        </div>
-        <div class="px-4 py-3 font-mono text-xs leading-loose space-y-3">
-          <div class="flex items-start gap-2 opacity-70">
-            <span class="text-muted-foreground/30 shrink-0">$</span>
-            <div>
-              <span class="text-muted-foreground/40">curl -X POST</span>
-              <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-H</span>
-              <span class="text-accent">'x-api-key: fcs_a1b2c3d4...'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
-              <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world"}'</span>
-            </div>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-500 shrink-0">&rarr;</span>
-            <div class="rounded-md bg-foreground dark:bg-gray-900 px-3 py-2 w-full">
-              <span class="text-background/40 dark:text-foreground">{ </span>
-              <span class="text-background/60 dark:text-foreground">"language"</span><span class="text-background/40">: </span><span class="text-emerald-400">"eng"</span><span class="text-background/40 dark:text-foreground">, </span>
-              <span class="text-background/60 dark:text-foreground">"confidence"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-background/80 dark:text-foreground">0.97</span><span class="text-background/40 dark:text-foreground">, </span>
-              <span class="text-background/60 dark:text-foreground">"alternatives"</span><span class="text-background/40 dark:text-foreground">: [</span><span class="text-background/60 dark:text-foreground">"spa"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"fra"</span><span class="text-background/40 dark:text-foreground">] }</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CodeBlock :code="detectCode" language="bash" label="Terminal" />
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
@@ -87,40 +38,7 @@
       <p class="text-sm text-muted-foreground leading-relaxed">
         Translate text into one or more languages with a single <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">POST /api/v1/translate</code> request.
       </p>
-      <div class="rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-        <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
-          <span class="text-xs text-muted-foreground/50">Terminal</span>
-          <span class="ml-auto font-mono text-[10px] text-muted-foreground/30">bash</span>
-        </div>
-        <div class="px-4 py-3 font-mono text-xs leading-loose space-y-3">
-          <div class="flex items-start gap-2 opacity-70">
-            <span class="text-muted-foreground/30 shrink-0">$</span>
-            <div>
-              <span class="text-muted-foreground/40">curl -X POST</span>
-              <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/translate'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-H</span>
-              <span class="text-accent">'x-api-key: fcs_a1b2c3d4...'</span>
-              <span class="text-muted-foreground/40">\</span><br/>
-              <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
-              <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world", "target": ["fr", "es", "ja"]}'</span>
-            </div>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-500 shrink-0">&rarr;</span>
-            <div class="rounded-md bg-foreground dark:bg-gray-900 px-3 py-2 w-full">
-              <span class="text-background/40 dark:text-foreground">{ </span>
-              <span class="text-background/60 dark:text-foreground">"translations"</span><span class="text-background/40 dark:text-foreground">: [</span><br/>
-              <span class="text-background/40 dark:text-foreground">&nbsp;&nbsp;{ </span><span class="text-background/60 dark:text-foreground">"target"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"fr"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"text"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"Bonjour le monde"</span><span class="text-background/40 dark:text-foreground"> },</span><br/>
-              <span class="text-background/40 dark:text-foreground">&nbsp;&nbsp;{ </span><span class="text-background/60 dark:text-foreground">"target"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"es"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"text"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"Hola mundo"</span><span class="text-background/40 dark:text-foreground"> },</span><br/>
-              <span class="text-background/40 dark:text-foreground">&nbsp;&nbsp;{ </span><span class="text-background/60 dark:text-foreground">"target"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"ja"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"text"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"こんにちは世界"</span><span class="text-background/40 dark:text-foreground"> }</span><br/>
-              <span class="text-background/40 dark:text-foreground">], </span>
-              <span class="text-background/60 dark:text-foreground">"model"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-emerald-400">"openai/gpt-4o-mini"</span>
-              <span class="text-background/40 dark:text-foreground"> }</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CodeBlock :code="translateCode" language="bash" label="Terminal" />
     </div>
 
     <div class="px-6 md:px-12 space-y-4">
@@ -153,3 +71,21 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const createKeyCode = `curl -X POST 'https://francis.verbatims.cc/api/v1/keys' \\
+  -H 'Authorization: Bearer <session_token>' \\
+  -d '{"name": "My First Key"}'`
+
+const detectCode = `$ curl -X POST 'https://francis.verbatims.cc/api/v1/detect' \\
+  -H 'x-api-key: fcs_a1b2c3d4...' \\
+  -d '{"text": "Hello world"}'
+
+{ "language": "eng", "confidence": 0.97, "alternatives": ["spa", "fra"] }`
+
+const translateCode = `$ curl -X POST 'https://francis.verbatims.cc/api/v1/translate' \\
+  -H 'x-api-key: fcs_a1b2c3d4...' \\
+  -d '{"text": "Hello world", "target": ["fr", "es", "ja"]}'
+
+{ "translations": [{ "target": "fr", "text": "Bonjour le monde" }], "model": "openai/gpt-4o-mini" }`
+</script>

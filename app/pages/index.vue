@@ -167,33 +167,7 @@
           </div>
 
           <!-- Compact inline demo -->
-          <div class="rounded-1 max-w-2xl border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-            <div class="flex items-center gap-3 px-4 py-3 border-b border-border dark:border-gray-800">
-              <span class="text-xs text-muted-foreground">Terminal</span>
-              <span class="ml-auto font-mono text-[10px] text-muted-foreground/60">bash</span>
-            </div>
-            <div class="px-4 py-4 font-mono text-xs leading-loose">
-              <div class="flex items-start gap-2 opacity-70">
-                <span class="text-muted-foreground/30 shrink-0">$</span>
-                <div>
-                  <span class="text-muted-foreground/90  dark:text-foreground">curl -X POST</span>
-                  <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span>
-                  <span class="text-muted-foreground/90 dark:text-foreground">\</span><br/>
-                  <span class="text-muted-foreground/90 dark:text-foreground">&nbsp;&nbsp;-H</span>
-                  <span class="text-accent">'x-api-key: fcs_****'</span>
-                  <span class="text-muted-foreground/90 dark:text-foreground">\</span><br/>
-                  <span class="text-muted-foreground/90 dark:text-foreground">&nbsp;&nbsp;-d</span>
-                  <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Hello world"}'</span>
-                </div>
-              </div>
-              <div class="mt-3 flex items-start gap-2">
-                <span class="text-emerald-500 shrink-0">&rarr;</span>
-                <div class="rounded-md bg-foreground dark:bg-gray-900 px-3 py-2 w-full">
-                  <span class="text-background/40 dark:text-foreground">{ </span><span class="text-background/60 dark:text-foreground">"language"</span><span class="text-background/40">: </span><span class="text-emerald-400">"eng"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"confidence"</span><span class="text-background/40 dark:text-foreground">: </span><span class="text-background/80 dark:text-foreground">0.97</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"alternatives"</span><span class="text-background/40 dark:text-foreground">: [</span><span class="text-background/60 dark:text-foreground">"spa"</span><span class="text-background/40 dark:text-foreground">, </span><span class="text-background/60 dark:text-foreground">"fra"</span><span class="text-background/40 dark:text-foreground">] }</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CodeBlock :code="quickstartCode" language="bash" label="Terminal" />
 
           <div class="mt-4 mb-6 max-w-2xl flex flex-wrap justify-center gap-2">
             <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-600 text-muted-foreground">
@@ -551,6 +525,12 @@ const features = [
     number: 3,
   },
 ]
+
+const quickstartCode = `$ curl -X POST 'https://francis.verbatims.cc/api/v1/detect' \\
+  -H 'x-api-key: fcs_****' \\
+  -d '{"text": "Hello world"}'
+
+{ "language": "eng", "confidence": 0.97, "alternatives": ["spa", "fra"] }`
 </script>
 
 <style>

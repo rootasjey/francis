@@ -174,7 +174,7 @@
         </div>
         <!-- Code -->
         <div class="p-6">
-          <pre class="rounded-xl border border-border dark:border-gray-800 bg-muted/30 p-4 font-mono text-xs leading-relaxed text-foreground overflow-x-auto">{{ activeCode }}</pre>
+          <CodeBlock :code="activeCode" :language="activeTab === 'curl' ? 'bash' : activeTab === 'js' ? 'javascript' : 'python'" />
         </div>
       </div>
     </div>

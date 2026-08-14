@@ -17,14 +17,7 @@
       <p class="text-sm text-muted-foreground leading-relaxed">
         All API requests require an API key passed via the <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">x-api-key</code> header or <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">Authorization: Bearer</code> header. Keys are prefixed with <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">fcs_</code> and managed through the dashboard.
       </p>
-      <div class="rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-        <div class="px-4 py-3 font-mono text-xs leading-loose">
-          <span class="text-muted-foreground/40"># Recommended</span><br/>
-          <span class="text-muted-foreground/40">x-api-key: </span><span class="text-accent">fcs_a1b2c3d4...</span><br/><br/>
-          <span class="text-muted-foreground/40"># Alternative</span><br/>
-          <span class="text-muted-foreground/40">Authorization: Bearer </span><span class="text-accent">fcs_a1b2c3d4...</span>
-        </div>
-      </div>
+      <CodeBlock :code="authCode" language="http" label="Headers" />
     </div>
 
     <!-- Endpoints -->
@@ -111,27 +104,7 @@
             <span class="i-lucide-chevron-right text-[10px] inline-block group-open:rotate-90 transition-transform" />
             Example request
           </summary>
-          <div class="mt-2 rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-            <div class="flex items-center gap-3 px-4 py-2 border-b border-border dark:border-gray-800">
-              <span class="text-[10px] text-muted-foreground/50">bash</span>
-            </div>
-            <div class="px-4 py-3 font-mono text-xs leading-loose">
-              <div class="flex items-start gap-2">
-                <span class="text-muted-foreground/30 shrink-0">$</span>
-                <div>
-                  <span class="text-muted-foreground/40">curl -X POST</span>
-                  <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/detect'</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-H 'x-api-key: fcs_...'</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
-                  <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Bonjour le monde"}'</span>
-                </div>
-              </div>
-              <div class="mt-2 flex items-start gap-2">
-                <span class="text-emerald-500 shrink-0">&rarr;</span>
-                <span class="text-background/60 dark:text-foreground">{ "language": "fra", "confidence": 0.98, "alternatives": ["ita", "spa"] }</span>
-              </div>
-            </div>
-          </div>
+          <CodeBlock :code="detectCode" language="bash" label="bash" />
         </details>
       </div>
 
@@ -203,20 +176,7 @@
             <span class="i-lucide-chevron-right text-[10px] inline-block group-open:rotate-90 transition-transform" />
             Example request
           </summary>
-          <div class="mt-2 rounded-2 border border-border dark:border-gray-800 bg-gray-200 dark:bg-gray-950 overflow-hidden">
-            <div class="px-4 py-3 font-mono text-xs leading-loose">
-              <div class="flex items-start gap-2">
-                <span class="text-muted-foreground/30 shrink-0">$</span>
-                <div>
-                  <span class="text-muted-foreground/40">curl -X POST</span>
-                  <span class="text-blue-500">'https://francis.verbatims.cc/api/v1/translate'</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-H 'x-api-key: fcs_...'</span><br/>
-                  <span class="text-muted-foreground/40">&nbsp;&nbsp;-d</span>
-                  <span class="text-emerald-600 dark:text-emerald-400">'{"text": "Good morning", "target": ["fr", "de"]}'</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CodeBlock :code="translateCode" language="bash" label="bash" />
         </details>
       </div>
 
@@ -295,6 +255,22 @@
 </template>
 
 <script setup lang="ts">
+const authCode = `# Recommended
+x-api-key: fcs_a1b2c3d4...
+
+# Alternative
+Authorization: Bearer fcs_a1b2c3d4...`
+
+const detectCode = `$ curl -X POST 'https://francis.verbatims.cc/api/v1/detect'
+  -H 'x-api-key: fcs_...'
+  -d '{"text": "Bonjour le monde"}'
+
+{ "language": "fra", "confidence": 0.98, "alternatives": ["ita", "spa"] }`
+
+const translateCode = `$ curl -X POST 'https://francis.verbatims.cc/api/v1/translate'
+  -H 'x-api-key: fcs_...'
+  -d '{"text": "Good morning", "target": ["fr", "de"]}'`
+
 const errors = [
   { code: '400', message: 'Bad Request', description: 'Missing or invalid parameters. Check your request body.', colorClass: 'text-amber-500' },
   { code: '401', message: 'Unauthorized', description: 'Missing or invalid API key.', colorClass: 'text-red-500' },
